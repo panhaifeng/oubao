@@ -1,0 +1,43 @@
+<style>
+<!--
+.tableform table {margin-top:5px;}
+.tableform th,.tableform td{padding:5px;border:1px solid #ddd; vertical-align:middle;line-height:1.8}
+.tableform th {background-color:#E2E8EB}
+.tableform input {padding:2px;line-height:18px;}
+.tableform i {color:#FF0000;}
+-->
+</style>
+
+<div class="tableform">
+	<table>
+    	<tr>
+        <th>文章栏目标题：</th>
+        <td><input type="text" name="title" value="<{$setting.title}>" style="width:200px;" /></td>
+        </tr>
+        <tr>
+        	<th><{t app='content'}>选择栏目节点:<{/t}></th>
+            <td>
+            	<select  name="node_id">
+                 <{foreach from=$data item=item}>
+                 <option value="<{$item.node_id}>"<{if $setting.node_id == $item.node_id}> selected<{/if}>>--<{$item.node_name}></option>
+                 <{/foreach}>
+             </select>
+            </td>
+        </tr>
+        <tr>
+        	<th>显示文章数：</th>
+            <td><input type='text' name='limit' value="<{$setting.limit|default:'10'}>"  style="width:80px;"></td>
+        </tr>
+        <tr>
+        <th>文章标题截取字数：</th>
+            <td><input type="text" name="titlecut" value="<{$setting.titlecut|default:'20'}>" style='width:80px;'></td>
+        </tr>
+								<th>排序方式：</th>
+            <td><select name="order_by">
+																			<option value="desc"<{if $setting.order_by =='desc'}> selected="selected"<{/if}> >降序</option>
+																				<option value="asc"<{if $setting.order_by =='asc'}> selected="selected"<{/if}> >升序</option>
+                </select>
+														</td>
+        </tr>
+   </table>
+</div>

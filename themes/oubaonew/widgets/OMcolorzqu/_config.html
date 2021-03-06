@@ -1,0 +1,129 @@
+<div class="tableform">
+    <div class="widgetconfig">
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+			<tr>
+                    <th><{t app='b2c'}>标题：<{/t}></th>
+                    <td>
+                       <input type="text" name="colorzqu_title" value="<{$setting.colorzqu_title}>">
+					   
+                    </td>
+                </tr>
+				<tr><td><hr></td><td><hr></td></tr>
+                <tr>
+                    <th><{t app='b2c'}>左侧大图：<{/t}></th>
+                    <td>
+                        <input type=hidden name="zqu_pic1" value="<{$setting.zqu_pic1}>"><input name='zqu_pic1' class="imgsrc" id="zqu_pic1" value="<{$setting.zqu_pic1}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic1()">
+                    左侧标题：<input type="text" name="colorzqu_dtitle" value="<{$setting.colorzqu_dtitle}>"> <Br>
+					左侧按钮标题：<input type="text" name="colorzqu_left_button_title" value="<{$setting.colorzqu_left_button_title}>">
+					左侧按钮链接： <input type="text" name="colorzqu_left_button_link" value="<{$setting.colorzqu_left_button_link}>">
+					
+					</td>
+                </tr>
+				
+				<tr><td><hr></td><td><hr></td></tr> 
+				
+				 
+        </tbody></table>
+		 <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>小图图片1：<{/t}></th>
+                    <td>
+                        <input type=hidden name="zqu_pic2" value="<{$setting.zqu_pic2}>"><input name='zqu_pic2' class="imgsrc" id="zqu_pic2" value="<{$setting.zqu_pic2}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic2()">
+                    标题1: <input type="text" name="zqu_title2" value="<{$setting.zqu_title2}>">
+					图片链接1：<input type="text" name="zqu_link2" value="<{$setting.zqu_link2}>"><Br>
+					底色1：<input type="text" name="zqu_color2" value="<{$setting.zqu_color2|default:'#0e6eb8'}>">
+					</td>
+                </tr>
+				      
+               <tr><td><hr></td><td><hr></td></tr> 
+			</tbody>
+		</table>
+		<table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>小图图片2：<{/t}></th>
+                    <td>
+                        <input type=hidden name="zqu_pic3" value="<{$setting.zqu_pic3}>"><input name='zqu_pic3' class="imgsrc" id="zqu_pic3" value="<{$setting.zqu_pic3}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic3()">
+						标题2： <input type="text" name="zqu_title3" value="<{$setting.zqu_title3}>">
+						图片链接2：<input type="text" name="zqu_link3" value="<{$setting.zqu_link3}>"><Br>
+						底色2：<input type="text" name="zqu_color3" value="<{$setting.zqu_color3|default:'#c30d23'}>">
+				   </td>
+                </tr>
+				  <tr><td><hr></td><td><hr></td></tr>       
+			</tbody>
+		</table>
+		<table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>小图图片3：<{/t}></th>
+                    <td>
+                        <input type=hidden name="zqu_pic4" value="<{$setting.zqu_pic4}>"><input name='zqu_pic4' class="imgsrc" id="zqu_pic4" value="<{$setting.zqu_pic4}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic4()">
+                    标题3： <input type="text" name="zqu_title4" value="<{$setting.zqu_title4}>">
+					图片链接3：<input type="text" name="zqu_link4" value="<{$setting.zqu_link4}>"><Br>
+					底色3：<input type="text" name="zqu_color4" value="<{$setting.zqu_color4|default:'#c30d23'}>">
+					</td>
+                </tr>
+				   <tr><td><hr></td><td><hr></td></tr>       
+			</tbody>
+		</table>
+		 <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>小图图片4：<{/t}></th>
+                    <td>
+                        <input type=hidden name="zqu_pic5" value="<{$setting.zqu_pic5}>"><input name='zqu_pic5' class="imgsrc" id="zqu_pic5" value="<{$setting.zqu_pic5}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic5()">
+                    标题4： <input type="text" name="zqu_title5" value="<{$setting.zqu_title5}>">
+					图片链接4：<input type="text" name="zqu_link5" value="<{$setting.zqu_link5}>"><Br>
+					底色4：<input type="text" name="zqu_color5" value="<{$setting.zqu_color5|default:'#898989'}>">
+					</td>
+                </tr>
+				  <tr><td><hr></td><td><hr></td></tr>          
+			</tbody>
+		</table>
+		 
+    </div>
+</div>
+<script>
+    function addPic1(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic1').value=image_src;
+            }})	;
+        });
+    }
+	function addPic2(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic2').value=image_src;
+            }})	;
+        });
+    }
+	function addPic3(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic3').value=image_src;
+            }})	;
+        });
+    }
+	function addPic4(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic4').value=image_src;
+            }})	;
+        });
+    }
+	function addPic5(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic5').value=image_src;
+            }})	;
+        });
+    }
+</script>

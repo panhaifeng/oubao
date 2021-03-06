@@ -1,0 +1,12 @@
+<{if $data.__shownode&&$data.node_name}>
+<div class="hd">
+<h3 class="title">
+  <{if !$data.__stripparenturl}>
+  <a href="<{$data.node_url}>"><{if $setting.title}><{$setting.title}><{else}><{$data.node_name}><{/if}></a>
+  <{else}>
+  <{if $setting.title}><{$setting.title}><{else}><{$data.node_name}><{/if}>
+  <{/if}>
+</h3>
+</div> 
+<{/if}>
+<div class="bd"><ul class="ulist"><{$data.__html}></ul></div>

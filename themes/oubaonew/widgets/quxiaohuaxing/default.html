@@ -1,0 +1,50 @@
+<div class="wow slideInUp fast unite_title_box">
+    <div class="unite_title_line"></div>
+    <div class="unite_title_content" style="width:240px;">
+        <div class="wow slideInUp fast utc_text_ch bg_gray">取消花型 打折促销</div>
+        <div class="wow slideInUp fast utc_text_en bg_gray">DESIGNS ON SALE</div>
+    </div>
+</div>
+<a href="<{$setting.morelink}>" target="_blank" class="more_button"><{t}>更多<{/t}> ></a>
+<div class="slider_card">
+    <{foreach from=$data.goods_duo item=item}>
+    <div class="slide">
+        <{foreach from=$item item=data}>
+        <div class="promotion_box">
+            <div class="promotion_top">
+                <img class="promotion_img" src="<{$data.goodsPicY}>">
+                <{if $data.zhelv}>
+                <div class="promotion_discount">
+                    <span class="en-style"><{t}><{$data.zhelv}>折<{/t}></span>
+                </div>
+                <{/if}>
+            </div>
+            <div class="wow slideInUp fast promotion_model"><{t}><{$data.goodsName}><{/t}></div>
+            <div class="wow slideInUp fast promotion_price">
+                <{if $data.nologin}>
+                    <span style="font-size: 12px;">￥<{t}>登录会员可见<{/t}></span>
+                    <{else}>
+                    <div class="promotion_price_new"><{$data.goodsSalePrice |cur}></div>
+                    <div class="promotion_price_old"><{$data.mktprice |cur}></div>
+                <{/if}>
+            </div>
+            <a href="<{$data.goodsLink}>" target="_blank"><button class="wow slideInUp fast go_bug"><{t}>立即查看<{/t}></button></a>
+        </div>
+        <{/foreach}>
+    </div>
+    <{/foreach}>
+</div>
+<script type="text/javascript">
+    // margin-right: 20px;
+    // margin-top: 20px;
+    // font-size: 14px;
+    //如果是英文版，改变样式
+    var isEn = document.cookie.indexOf('en_US')>0 ? true :false;
+    if(isEn) {
+      $$('.en-style').setStyles({
+        "margin-right": "20px",
+        "margin-top": "20px",
+        "font-size": "14px"
+      });
+    }
+</script>

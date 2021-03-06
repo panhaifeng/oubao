@@ -1,0 +1,43 @@
+<div id="picAddress" class="tableform">
+    <div class="piccontent">
+        <table  width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>图片地址:</th>
+                <td>
+                    <input name='picLink' class="imgsrc" id="picLink"  value="<{$setting.picLink}>">
+                    <input type=button value=上传图片 class="uploadbtn">
+                </td>
+            </tr>
+            <tr>
+                <th><{t app="b2c"}>优惠券:<{/t}></th>
+                <td>
+                    <div>
+                    <select name="coupons" size="7">
+                        <{foreach from=$data.coupons item=items key=k}>
+                            <option value="<{$items.cpns_id}>"  <{if $items.cpns_id == $setting.coupons}>selected="selected"<{/if}>><{$items.cpns_name}></option>
+                        <{/foreach}>
+                    </select>
+                    </div>
+                </td>
+                <th></th>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    (function(){
+        var tag_type='table',tag_class='pic_items';
+            $$(".piccontent .uploadbtn").addEvent('click',function(e){bindevent(this)});
+            function bindevent(el){
+                var target=$(el).getParent(tag_type).getElement('.imgsrc');
+                var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+                Ex_Loader('modedialog',function(){
+                    return new imgDialog(url,{onCallback:function(image_id,image_src){
+                            target.value=image_src;
+                    }});
+                });
+            }
+
+        })();
+    </script>

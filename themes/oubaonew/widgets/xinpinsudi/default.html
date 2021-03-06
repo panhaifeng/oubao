@@ -1,0 +1,34 @@
+<div class="wow slideInUp fast unite_title_box">
+    <div class="unite_title_line"></div>
+    <div class="unite_title_content">
+        <div class="wow slideInUp fast utc_text_ch">新品速递</div>
+        <div class="wow slideInUp fast utc_text_en">New Products</div>
+    </div>
+</div>
+<a href="<{$setting.morelink}>" target="_blank" class="more_button">更多 ></a>
+<div class="slider_card">
+    <{foreach from=$data.goods_duo item=item}>
+    <div class="slide">
+        <{foreach from=$item item=data}>
+        <div class="products_box new_sd">
+            <a href="<{$data.goodsLink}>" target="_blank">
+            <div class="products_imgbox">
+                <div class="new_goods_img">
+                    <img class="productsimg" src="<{$data.goodsPicY}>">
+                </div>
+                <div class="products_content">
+                    <div class="products_data_box">
+                        <div class="products_data_text">款号(Article):<span><{$data.kuanhao}></span></div>
+                        <div class="products_data_text">编号(Number):<span><{$data.bn}></span></div>
+                        <div class="products_data_text">纱支(Yarn count):<span><{$data.shazhi}></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wow slideInUp fast products_model"><{$data.goodsName}></div>
+            <div class="icon_triangle"></div>
+            </a>
+        </div>
+        <{/foreach}>
+    </div>
+    <{/foreach}>
+</div>

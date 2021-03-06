@@ -1,0 +1,207 @@
+<{if $env.conf.search.associate_enabled == '1'}>
+<{assign var=associate value="true"}>
+<{/if}>
+ 
+
+<div style="margin-top: 13px;  margin-top:30px;min-height:520px;margin-bottom:<{$data.search_key|default:$setting.marginbottom}>px;     clear: both;background-color:<{$data.search_key|default:$setting.bgcolor}>;" >
+ 
+ <div style="position:relative;">
+ 
+    <div style="height:45px;">
+		<div style="height:45px;width:10px;background-color:<{$data.search_key|default:$setting.icon_color}>;float:left;margin-right:15px;"></div>
+		<div style="float:left;">
+			<span style="font-size:25px;margin-right:10px;position: relative;top: 15px;"><{$data.search_key|default:$setting.s_dtitle}></span>
+			<span style="position: relative;top: 17px;font-size:15px;margin-right:5px; " class="gray_series_title">
+ <a href="<{$data.search_key|default:$setting.s_link1}>" ><{$data.search_key|default:$setting.s_xtitle1}></a>
+			</span>
+			<span style="position: relative;top: 17px;font-size:15px;margin-right:5px; " class="gray_series_title">
+ <a href="<{$data.search_key|default:$setting.s_link2}>" ><{$data.search_key|default:$setting.s_xtitle2}></a>
+			</span>
+			<span style="position: relative;top: 17px;font-size:15px;margin-right:5px; "  class="gray_series_title">
+ <a href="<{$data.search_key|default:$setting.s_link3}>" ><{$data.search_key|default:$setting.s_xtitle3}></a>
+			</span>
+			<span style="position: relative;top: 17px;font-size:15px; "  class="gray_series_title">
+ <a href="<{$data.search_key|default:$setting.s_link4}>"  ><{$data.search_key|default:$setting.s_xtitle4}></a>
+			</span>
+			
+			</div>
+		<div  style="float:right;padding-right:20px;">
+			 <{if $data.search_key|default:$setting.small_11}>
+			<span style="font-size:5px;color:#ff0000;position: relative;top: 20px;    font-family:宋体;"><{$data.search_key|default:$setting.small_1}></span>
+			<span style="font-size:15px;position: relative;top: 25px;"><a href="<{$data.search_key|default:$setting.small_1_link}>"><{$data.search_key|default:$setting.small_11}></a></span>
+			<{/if}>
+			<{if $data.search_key|default:$setting.small_22}>
+			<span style="font-size:5px;color:#ff0000;position: relative;top: 20px;font-family:宋体;"><{$data.search_key|default:$setting.small_2}></span>
+			<span style="font-size:15px;position: relative;top: 25px;"><a href="<{$data.search_key|default:$setting.small_2_link}>"><{$data.search_key|default:$setting.small_22}></a></span>
+			<{/if}>
+			<{if $data.search_key|default:$setting.small_33}>
+			<span style="font-size:5px;color:#ff0000;position: relative;top: 20px;font-family:宋体;"><{$data.search_key|default:$setting.small_3}></span>
+			<span style="font-size:15px;position: relative;top: 25px;"><a href="<{$data.search_key|default:$setting.small_3_link}>"><{$data.search_key|default:$setting.small_33}></a></span>
+			<{/if}>
+			<{if $data.search_key|default:$setting.small_44}>
+			<span style="font-size:5px;color:#ff0000;position: relative;top: 20px;font-family:宋体;"><{$data.search_key|default:$setting.small_4}></span>
+			<span style="font-size:15px;position: relative;top: 25px;"><a href="<{$data.search_key|default:$setting.small_4_link}>"><{$data.search_key|default:$setting.small_44}></a></span>
+			<{/if}>
+			<span style="font-size:15px;position: relative;top: 25px;margin-left:20px;"><a href="<{$data.search_key|default:$setting.morelink}>">更多商品></a></span>
+			 
+			
+		</div>
+   </div>
+ 
+ <div style="padding:10px;padding-top:20px;">
+     <div class="left_big_img">
+		<img data-src="<{$data.search_key|default:$setting.zqu_pic1|storager}>"> 
+		 <div class="gray_left_big_in">
+	     
+			<{if $data.search}>
+             
+    
+               <{foreach from=$data.search item=rightlink key=right_key name=navslist}>
+			  
+               <a href="<{$rightlink.right_link_url}>"> <li class="gray_left_big_in_li" ><div style="line-height:23px;    display: inline-block;"><{$rightlink.right_link_title}></div> </li></a> 
+             
+			  <{/foreach}>
+              
+            <{/if}>
+  	   
+	  
+	  </div>
+	  </div>
+	  
+	  <div class="right_img">
+		<div>
+			
+			<div class="right_smallimg">
+			    
+			    <div class="right_smallimg_in"><img class="dimg" data-src="<{$data.search_key|default:$setting.zqu_pic2|storager}>"></div>
+				
+				<div class="right_title1"><{$data.search_key|default:$setting.zqu_title2}> </div>
+				<div style="text-align:center;"><img class="simg" data-src="<{$data.search_key|default:$setting.zqu_pic22|storager}>"></div>
+				
+				<a href="<{$data.search_key|default:$setting.gray_zqu_wordlink1_1}>" target="_blank">
+				 <div   class="gray_zqu_word"><{$data.search_key|default:$setting.gray_zqu_word1_1}></div>
+				 </a>
+				 <a href="<{$data.search_key|default:$setting.gray_zqu_wordlink1_2}>" target="_blank">
+				 <div  class="gray_zqu_word"><{$data.search_key|default:$setting.gray_zqu_word1_2}></div>
+				 </a>
+				 <a href="<{$data.search_key|default:$setting.zqu_wordlink1_3}>" target="_blank">
+				 <div   class="gray_zqu_word"><{$data.search_key|default:$setting.gray_zqu_word1_3}></div>
+				 </a>
+				 
+				 <a href="<{$data.search_key|default:$setting.zqu_link2}>" target="_blank">
+				 <div  class="smore"><{$data.search_key|default:$setting.zqu_more2}></div>
+				 </a>
+			</div>
+			</a>
+			
+			<div class="right_smallimg">
+			    
+			    <div class="right_smallimg_in"><img class="dimg" data-src="<{$data.search_key|default:$setting.zqu_pic3|storager}>"></div>
+				
+				<div class="right_title2"><{$data.search_key|default:$setting.zqu_title3}> </div>
+				<div style="text-align:center;"><img class="simg" data-src="<{$data.search_key|default:$setting.zqu_pic33|storager}>"></div>
+				
+				<a href="<{$data.search_key|default:$setting.gray_zqu_wordlink2_1}>" target="_blank">
+				 <div   class="gray_zqu_word"><{$data.search_key|default:$setting.gray_zqu_word2_1}></div>
+				 </a>
+				 <a href="<{$data.search_key|default:$setting.gray_zqu_wordlink2_2}>" target="_blank">
+				 <div  class="gray_zqu_word"><{$data.search_key|default:$setting.gray_zqu_word2_2}></div>
+				 </a>
+				 <a href="<{$data.search_key|default:$setting.zqu_wordlink2_3}>" target="_blank">
+				 <div   class="gray_zqu_word"><{$data.search_key|default:$setting.gray_zqu_word2_3}></div>
+				 </a>
+				 
+				<a href="<{$data.search_key|default:$setting.zqu_link3}>" target="_blank">
+				 <div class="smore"><{$data.search_key|default:$setting.zqu_more3}></div>
+				 </a>
+			</div>
+			
+			
+			
+			<div class="right_smallimg">
+			    
+			    <div class="right_smallimg_in"><img class="dimg" data-src="<{$data.search_key|default:$setting.zqu_pic4|storager}>"></div>
+				
+				<div class="right_title3"><{$data.search_key|default:$setting.zqu_title4}> </div>
+				<div style="text-align:center;"><img class="simg" data-src="<{$data.search_key|default:$setting.zqu_pic44|storager}>"></div>
+				 
+				 <a href="<{$data.search_key|default:$setting.gray_zqu_wordlink3_1}>" target="_blank">
+				 <div   class="gray_zqu_word"><{$data.search_key|default:$setting.gray_zqu_word3_1}></div>
+				 </a>
+				 <a href="<{$data.search_key|default:$setting.gray_zqu_wordlink3_2}>" target="_blank">
+				 <div  class="gray_zqu_word"><{$data.search_key|default:$setting.gray_zqu_word3_2}></div>
+				 </a>
+				 <a href="<{$data.search_key|default:$setting.zqu_wordlink3_3}>" target="_blank">
+				 <div   class="gray_zqu_word"><{$data.search_key|default:$setting.gray_zqu_word3_3}></div>
+				 </a>
+				 
+				 <a href="<{$data.search_key|default:$setting.zqu_link4}>" target="_blank">
+				 <div class="smore"><{$data.search_key|default:$setting.zqu_more4}></div>
+				 </a>
+			</div>
+			
+			 
+	</div>
+		
+	  </div>
+ </div>
+ 
+	 
+
+ </div>
+ </div>
+ 
+<script>
+
+$("document").ready(function(){ 
+ 
+ $("series").hover(function(){ 
+this.removeClass("series");
+}
+ });
+
+(function(scope){
+scope.getElement('button[type=submit]').addEvent('click', function(e){
+    if(scope.getElement('input').value.trim() === '') {
+        e.stop();
+    }
+});
+var search_keywords = decodeURIComponent(Memory.get('search_key'));
+if(search_keywords == 'null'){
+      search_keywords = '';
+  }
+//scope.getElement('input[name=search_keywords]').value = search_keywords;
+<{if $associate == 'true'}>
+var path ='<{$env.statics_host_url}>/b2c/statics/js<{if !defined("DEBUG_JS") || !DEBUG_JS}>_mini<{/if}>/';
+$LAB.script(path + 'autocompleter.js').wait(function(){
+    var item = scope.getElement('[data-autocompleter]');
+    var options = {};
+    try {
+        options = JSON.decode(item.get('data-autocompleter-options'));
+    }catch (e) {}
+    Object.merge(options, item.retrieve('autocompleter_options', {}));
+
+    new Autocompleter.Request.JSON(item, "<{link app=b2c ctl=site_search act=associate}>", options);
+});
+<{/if}>
+})($('searchbar_<{$widgets_id}>'));
+	 
+window.addEvent("domready", function() {	
+	$("search").addEvents({
+	  'mouseenter': function(e){
+		  this.addClass("hover");
+	  },
+	  'mouseleave': function(e){
+		  this.removeClass("hover");
+	  }
+	});
+	$("search").getElement(".searchbar").addEvents({
+	  'click': function(e){
+		  this.addClass("search-focus");
+	  },
+	  'mouseleave':function(e){
+		  this.removeClass("search-focus");
+	  }
+	})
+})
+</script>

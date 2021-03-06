@@ -1,0 +1,187 @@
+<style>
+<!--
+.division table {margin-top:5px;}
+.configad {
+  margin-top:6px;padding-bottom:10px;border-bottom:2px solid #d4dde4;
+}
+-->
+</style>
+<div class="tableform widgetconfig">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>banner图片：</th>
+        <td>
+        <input type="text" name='banner_pic' id="banner_pic" value="<{$setting.banner_pic}>"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($('banner_pic'))" />
+        </td>
+      </tr>
+  </table>
+  <div class="clearfix">
+  	<{button label=$___b2c="添加年份"|t:'b2c' app="desktop" icon="btn_add.gif" id="add_ad_pic"}>
+ </div>
+
+<div class="division" style="margin-top:8px;" id="had">
+  <{foreach from=$setting.year key=key item=year}>
+    <div class="configad">
+      年:<input type="text" name="year[<{$key}>][year]" value="<{$year.year}>"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt=$___b2c="删除年份"|t:'b2c' title=$___b2c="删除年份"|t:'b2c' app="desktop"}></span>
+      <div id="year<{$key}>">
+        <{foreach from=$year.yue key=yuekey item=yue}>
+          <div class="configad"> 月:
+            <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][yue] " style="width:50px;" value="<{$yue.yue}>"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt=$___b2c="删除"|t:'b2c' title=$___b2c="删除月份"|t:'b2c' app="desktop"}></span>
+            <div id="yue<{$yuekey}>">
+              <{foreach from=$yue.shijian key=shijiankey item=shijian}>
+                <div class="configad"> 事件:
+                  <table>
+                    <tr>
+                      <th>标题</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][title]" value="<{$shijian.title}>">
+                      </td>
+                      <th>简介</th>
+                      <td>
+                        <textarea name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][jianjie]" style="width:150px;height:100px;"><{$shijian.jianjie}></textarea>
+                      </td>
+                      <th>视频链接</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][video]" value="<{$shijian.video}>">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>图片</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][pic1]" value="<{$shijian.pic1}>">
+                        <input type="button" value="上传图片" class="uploadbtn" onclick="addPic($('shijian[<{$shijiankey}>][pic1]'))">
+                      </td>
+                      <th>链接</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][link1]" value="<{$shijian.link1}>">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>图片</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][pic2]" value="<{$shijian.pic2}>">
+                        <input type="button" value="上传图片" class="uploadbtn" onclick="addPic($('shijian[<{$shijiankey}>][pic2]'))">
+                      </td>
+                      <th>链接</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][link2]"value="<{$shijian.link2}>">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>图片</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][pic3]" value="<{$shijian.pic3}>">
+                        <input type="button" value="上传图片" class="uploadbtn" onclick="addPic($('shijian[<{$shijiankey}>][pic3]'))">
+                      </td>
+                      <th>链接</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][link3]" value="<{$shijian.link3}>">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>图片</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][pic4]" value="<{$shijian.pic4}>">
+                        <input type="button" value="上传图片" class="uploadbtn" onclick="addPic($('shijian[<{$shijiankey}>][pic4]'))">
+                      </td>
+                      <th>链接</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][link4]" value="<{$shijina.link4}>">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>图片</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][pic5]" value="<{$shijian.pic5}>">
+                        <input type="button" value="上传图片" class="uploadbtn" onclick="addPic($('shijian[<{$shijiankey}>][pic5]'))">
+                      </td>
+                      <th>链接</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][link5]" value="<{$shijina.link5}>">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>图片</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][pic6]" value="<{$shijian.pic6}>">
+                        <input type="button" value="上传图片" class="uploadbtn" onclick="addPic($('shijian[<{$shijiankey}>][pic6]'))">
+                      </td>
+                      <th>链接</th>
+                      <td>
+                        <input type="text" name="year[<{$key}>][yue][<{$yuekey}>][shijian][<{$shijiankey}>][link6]" value="<{$shijina.link6}>">
+                      </td>
+                    </tr>
+                  </table><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt=$___b2c="删除"|t:'b2c' title=$___b2c="删除事件"|t:'b2c' app="desktop"}></span>
+                </div>
+                <button type="button" onclick="addShiJian('<{$key}>','<{$yuekey}>');">添加事件</button>
+              <{/foreach}>
+            </div>
+          </div>
+        <{/foreach}>
+      </div>
+    <button type="button" onclick="addYue('<{$key}>');">添加月份</button>
+    </div>
+  <{/foreach}>
+</div>
+
+<script>
+//添加年份
+$('add_ad_pic').addEvent('click',function(){
+  var d = new Date();
+  var i = d.getTime();
+  $('had').adopt(new Element('div').set('html','\
+    <div class="configad">\
+    年:<input type=text name="year['+i+'][year]">\
+    <span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除年份" app="desktop"}></span>\
+       <div id="year'+i+'"></div>\
+       <button type="button" onclick="addYue('+i+');">添加月份</button>\
+    </div>\
+  ').getFirst());
+});
+//添加月份
+function addYue(o){
+  var d = new Date();
+  var i = d.getTime();
+  var yeardiv = 'year'+o;
+  $(yeardiv).adopt(new Element('div').set('html','\
+    <div class="configad">\
+    月:<input type="text" name="year['+o+'][yue]['+i+'][yue] " style="width:50px;">\
+    <span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除月份" app="desktop"}></span>\
+    <div id="yue'+i+'" ></div>\
+    <button type="button" onclick="addShiJian('+o+','+i+');">添加事件</button>\
+    </div>\
+  ').getFirst());
+}
+//添加事件
+function addShiJian(o,yue){
+  var d = new Date();
+  var i = d.getTime();
+  var yuediv = 'yue'+yue;
+  $(yuediv).adopt(new Element('div').set('html','\
+    <div class="configad">\
+    事件:\
+    <table><tr><th>标题</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][title]"></td>\
+    <th>简介</th><td><textarea name="year['+o+'][yue]['+yue+'][shijian]['+i+'][jianjie]"  style="width:150px;height:100px;" ></textarea></td>\
+    <th>视频链接</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][video]"></td>\</tr>\
+    <tr><th>图片</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][pic1]" id="shijian['+i+'][pic1]"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($(\'shijian['+i+'][pic1]\'))" /></td><th>链接</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][link1]"></td></tr>\
+    <tr><th>图片</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][pic2]" id="shijian['+i+'][pic2]"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($(\'shijian['+i+'][pic2]\'))" /></td><th>链接</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][link2]"></td></tr>\
+    <tr><th>图片</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][pic3]" id="shijian['+i+'][pic3]"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($(\'shijian['+i+'][pic3]\'))" /></td><th>链接</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][link3]"></td></tr>\
+    <tr><th>图片</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][pic4]" id="shijian['+i+'][pic4]"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($(\'shijian['+i+'][pic4]\'))" /></td><th>链接</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][link4]"></td></tr>\
+    <tr><th>图片</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][pic5]" id="shijian['+i+'][pic5]"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($(\'shijian['+i+'][pic1]\'))" /></td><th>链接</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][link5]"></td></tr>\
+    <tr><th>图片</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][pic6]" id="shijian['+i+'][pic6]"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($(\'shijian['+i+'][pic1]\'))" /></td><th>链接</th><td><input type="text" name="year['+o+'][yue]['+yue+'][shijian]['+i+'][link6]"></td></tr>\
+    </table>\
+    <span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除事件" app="desktop"}></span>\
+    </div>\
+  ').getFirst());
+}
+delLink=function(o){$(o).getParent('.configad').remove();}
+function addPic(target){
+  var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+  Ex_Loader('modedialog',function(){
+    return new imgDialog(url,{onCallback:function(image_id,image_src){
+        $(target).value=image_src;
+    }}) ;
+  });
+}
+
+</script>

@@ -1,0 +1,13 @@
+<div class="qf_navs">
+<{if $data}>
+<{if $setting.fronttips}><span class="front"><{if $setting.bold}><strong><{$setting.fronttips}></strong><{else}><{$setting.fronttips}><{/if}></span><{/if}>
+<{foreach from=$data item=menus key=key name=navslist}>
+ 
+<a  href="<{$menus.url}>" target="<{if $menus.target!='1'}>_blank<{else}>_self<{/if}>" title="<{$menus.text|escape:html}>" <{if $menus.classname}>class="<{$menus.classname}>"<{/if}>><{$menus.text}></a>
+ 
+<{if $setting.comma && !$smarty.foreach.navslist.last}><{$setting.comma}><{/if}>
+<{/foreach}>
+<{else}>
+您没有录入数据，请重新编辑!
+<{/if}>
+</div>

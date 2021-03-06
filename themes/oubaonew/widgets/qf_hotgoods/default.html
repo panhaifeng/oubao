@@ -1,0 +1,61 @@
+ <{if $setting.title}>
+    <div class="hd cleafix">
+        <h3 class="title"><{$setting.title}></h3>
+        <span class="morelink r"><a href="<{if $setting.morelink}><{$setting.morelink}><{else}><{$data.goodsMoreLink}><{/if}>"></a></span>
+    </div>
+    <{/if}>
+    <{if $data.goodsRows}>
+<div class="xm-box <{$setting.stylename}>">
+   
+    <div class="bd">
+    	<{foreach from=$data.goodsRows item=item key=gid name=hot}>
+        	<{if $smarty.foreach.hot.first}>
+            
+            <{/if}>
+       <{/foreach}> 
+       <div class="xm-goods-list-wrap">
+       <ul class="xm-goods-list clearfix">      
+        <{assign var="do" value='0'}>
+        <{foreach from=$data.goodsRows item=data key=gid name=goodsrow}>
+        <{if $smarty.foreach.goodsrow.first}>
+        	<{if !$setting.ad_pic}>
+            <li class="item-<{$do}> <{if $do mod 3 ==0 || $smarty.foreach.goodsrow.last}> hot-hide<{/if}>">
+              <div class="xm-goods-item">
+               
+                 <div class="item-thumb"><a href="<{$data.goodsLink}>" target="_blank" title="<{$data.goodsName|escape:html}>"><img data-src="<{$data.goodsPicS}>" alt="<{$data.goodsName|escape:html}>"　data-img-zoom="true" width="180" height="180" /></a></div>
+                 <div class="item-info">
+                <div class="item-name"><a href="<{$data.goodsLink}>" target="_blank"><{$data.goodsName}></a></div>
+                
+                <div class="item-star"><{if $setting.show_star == 'true'}><em class="stars stars-<{$item.star*10}>"><span class="below"><i class="icon star">&#x2f;</i><i class="icon star">&#x2f;</i><i class="icon star">&#x2f;</i><i class="icon star">&#x2f;</i><i class="icon star">&#x2f;</i></span><span class="above"><i class="icon star">&#x2e;</i><i class="icon star">&#x2e;</i><i class="icon star">&#x2e;</i><i class="icon star">&#x2e;</i><i class="icon star">&#x2e;</i></span></em><{/if}></div>
+                
+                <div class="item-price"><{$setting.texttag}><span class="selling-price"><{$data.goodsSalePrice|cur}></span><{if $setting.show_market == 'true'}> <del class="market-price"><{$data.goodsMarketPrice|cur}></del><{/if}>
+                </div>
+                </div>
+               </div>
+             </li>
+        	<{/if}>
+        <{else}>
+            <li class="item-<{$do}> <{if $do mod 3 ==0 || $smarty.foreach.goodsrow.last}> hot-hide<{/if}>">
+              <div class="xm-goods-item">
+               
+                 <div class="item-thumb"><a href="<{$data.goodsLink}>" target="_blank" title="<{$data.goodsName}>"><img data-src="<{$data.goodsPicS}>" data-img-zoom="true" width="180" height="180" alt="<{$data.goodsName}>" /></a></div>
+                 <div class="item-info">
+                <div class="item-name"><a href="<{$data.goodsLink}>" target="_blank"><{$data.goodsName}></a></div>
+                
+                <div class="item-star"><{if $setting.show_star == 'true'}><em class="stars stars-<{$item.star*10}>"><span class="below"><i class="icon star">&#x2f;</i><i class="icon star">&#x2f;</i><i class="icon star">&#x2f;</i><i class="icon star">&#x2f;</i><i class="icon star">&#x2f;</i></span><span class="above"><i class="icon star">&#x2e;</i><i class="icon star">&#x2e;</i><i class="icon star">&#x2e;</i><i class="icon star">&#x2e;</i><i class="icon star">&#x2e;</i></span></em><{/if}></div>
+                
+  <div class="item-price"><{$setting.texttag}><span class="selling-price"><{$data.goodsSalePrice|cur}></span><{if $setting.show_market == 'true'}> <del class="market-price"><{$data.goodsMarketPrice|cur}></del><{/if}>
+                </div>
+                </div>
+
+              </div>
+            </li>
+        <{/if}>
+       <{assign var="do" value=$do+1}>
+       <{/foreach}>
+       </ul>
+      </div>
+    </div>
+    <{/if}>
+</div>
+<{if $data.goodsRows}><script>var b_<{$widgets_id}> = new HightLight('qf-<{$widgets_id}>')</script><{/if}>

@@ -1,0 +1,146 @@
+<div class="history_banner" style="margin-top: -30px;">
+    <img src="<{$setting.banner_pic}>">
+</div>
+<!-- 内容 -->
+<div class="timeline_box">
+    <ul class="tl_l">
+        <{foreach from=$data item=year}>
+        <li><a href="##"><{$year.year}></a><span></span></li>
+        <{/foreach}>
+    </ul>
+    <ul class="tl_r">
+        <{foreach from=$data item=year}>
+        <li>
+            <div class="timeline_year">
+                <div class="tly_icon"></div>
+                <div class="tly_text"><{$year.year}></div>
+            </div>
+            <{foreach from=$year.shijian item=shijian}>
+            <div class="timeline_month_box">
+                <div class="timeline_month">
+                    <div class="tlm_left"><{if $shijian.left_title}><{$shijian.left_title}><{/if}></div>
+                    <div class="tlm_icon"></div>
+                    <!-- <div class="tlm_text"><{$shijian.title}></div>
+                    <div class="tlm_triangle"></div> -->
+                    <div class="wow slideInUp fast timeline_open_new">
+                        <div class="fl notice_list_time">
+                            <div class="nlt_texta"><{$shijian.date}></div>
+                            <div class="nlt_textb"><{$shijian.year_month}></div>
+                        </div>
+                        <div class="fl notice_list_content" onclick='window.open("<{$shijian.video}>","_blank")'>
+                            <div class="nlc_title_new"><{$shijian.title}></div>
+                            <div class="nlc_text_new"><{$shijian.jianjie}>
+                                <img class="notice_more" src="%THEME%/images/newest/img/more.png">
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="notice_line_new"></div>
+                    </div>
+                </div>
+                <div class="tl_content">
+                    <div class="timeline_explain">
+                        <{$shijian.content}>
+                    </div>
+                    <div class="timeline_list">
+                        <{if $shijian.pic1}>
+                            <div class="tll_img"><a href="<{$shijian.link1}>" target="_blank"><img src="<{$shijian.pic1}>"></a></div>
+                        <{/if}>
+                        <{if $shijian.pic2}>
+                            <div class="tll_img"><a href="<{$shijian.link2}>" target="_blank"><img src="<{$shijian.pic2}>"></a></div>
+                        <{/if}>
+                        <{if $shijian.pic3}>
+                            <div class="tll_img"><a href="<{$shijian.link3}>" target="_blank"><img src="<{$shijian.pic3}>"></a></div>
+                        <{/if}>
+                        <{if $shijian.pic4}>
+                            <div class="tll_img"><a href="<{$shijian.link4}>" target="_blank"><img src="<{$shijian.pic4}>"></a></div>
+                        <{/if}>
+                        <{if $shijian.pic5}>
+                            <div class="tll_img"><a href="<{$shijian.link5}>" target="_blank"><img src="<{$shijian.pic5}>"></a></div>
+                        <{/if}>
+                        <{if $shijian.pic6}>
+                            <div class="tll_img"><a href="<{$shijian.link6}>" target="_blank"><img src="<{$shijian.pic6}>"></a></div>
+                        <{/if}>
+                        <div class="clear"></div>
+                    </div>
+                    <{if $shijian.video}>
+                    <div class="tl_content">
+                        <div class="timeline_video_box">
+                          <div class="timeline_video" style="position: relative;">
+                              <img class="classification_play open_popup" src="%THEME%/images/newest/img/play2.png">
+                              <div class="popup_bg">
+                                  <div class="popup_box">
+                                        <a href="javascript:;" class="close">×</a>
+                                        <video class="popup_video" controls poster="" data-setup="{}">
+                                            <source src="<{$shijian.video}>" type='video/mp4'>
+                                        </video>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                    <{/if}>
+                </div>
+            </div>
+            <{/foreach}>
+        </li>
+        <{/foreach}>
+    </ul>
+    <div style="clear: both;"></div>
+</div>
+<script type="text/javascript">
+    jq(function(){
+        //设置标杆
+        var _line=parseInt(jq(window).height()/10);
+        jq(window).scroll(function(){
+            //滚动730px，左侧导航固定定位
+            if (jq(window).scrollTop()>730) {
+                jq('.tl_l').css({'position':'fixed','top':10})
+            }else{
+                jq('.tl_l').css({'position':'','top':''})
+            };
+            jq('.tl_l li').eq(0).addClass('active');
+            //滚动到标杆位置,左侧导航加active
+            jq('.tl_r li').each(function(){
+                var _target=parseInt(jq(this).offset().top-jq(window).scrollTop()-_line);
+                var _i=jq(this).index();
+                if (_target<=0) {
+                    jq('.tl_l li').removeClass('active');
+                    jq('.tl_l li').eq(_i).addClass('active');
+                }
+                //如果到达页面底部，给左侧导航最后一个加active
+                else if(jq(document).height()==jq(window).scrollTop()+jq(window).height()){
+                    jq('.tl_l li').removeClass('active');
+                    jq('.tl_l li').eq(jq('.tl_r li').length-1).addClass('active');
+                }
+            });
+        });
+        jq('.tl_l li').click(function(){
+            jq(this).addClass('active').siblings().removeClass('active');
+            var _i=jq(this).index();
+             jq('body, html').animate({scrollTop:jq('.tl_r li').eq(_i).offset().top-_line},500);
+        });
+    });
+</script>
+
+
+<!-- 视频弹出 -->
+<script type="text/javascript">
+jq(document).ready(function($) {
+    jq('.open_popup').click(function(){
+        jq('.popup_bg').fadeIn(100);
+        jq('.popup_box').slideDown(200);
+    });
+    jq('.close').click(function(){
+        jq('.popup_bg').fadeOut(200);
+        jq('.popup_box').slideUp(100);
+    });
+});
+</script>
+
+<!-- 时间轴展开 -->
+<script type="text/javascript">
+    // jq('.timeline_month_box .timeline_open_new').on('click',function(e){
+    //     jq(this).parents('.timeline_month_box').find('.tl_content').toggle();
+    // });
+
+</script>

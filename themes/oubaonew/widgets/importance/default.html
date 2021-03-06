@@ -1,0 +1,71 @@
+<div class="wow slideInUp fast unite_title_box">
+    <div class="unite_title_line"></div>
+    <div class="unite_title_content">
+        <div class="wow slideInUp fast utc_text_ch">重要公告</div>
+        <div class="wow slideInUp fast utc_text_en">IMPORTANT ANNOUNCEMENTS</div>
+    </div>
+</div>
+<div class="notice_box">
+    <div class="fl notice_left">
+        <div class="notice_imgbox">
+            <img class="notice_img" src="<{$setting.video_img}>">
+            <{if $setting.video_link}>
+            <img class="notice_play open_popup" src="%THEME%/images/newest/img/play.png">
+            <{/if}>
+            <{if $setting.video_date && $setting.video_ym}>
+            <div class="notice_corner_box">
+                <div class="notice_corner_texta"><{$setting.video_date}></div>
+                <div class="notice_corner_textb"><{$setting.video_ym}></div>
+            </div>
+            <{/if}>
+        </div>
+        <div class="wow slideInUp fast notice_left_title"><{$setting.video_title}></div>
+        <div class="wow slideInUp fast notice_left_text"><{$setting.video_memo}></div>
+        <{if $setting.video_link}>
+        <div class="popup_bg">
+            <div class="popup_box">
+                <a href="javascript:;" class="close">×</a>
+                <video class="popup_video" controls poster="" data-setup="{}">
+                    <source src="<{$setting.video_link}>" type='video/mp4'>
+                </video>
+            </div>
+        </div>
+        <{/if}>
+    </div>
+    <div class="fr notice_right">
+        <ul class="notice_list">
+            <{foreach from=$setting.had item=data}>
+                <li class="wow slideInUp fast newcircle" onclick='window.open("<{$data.tolink}>","_blank")'>
+                    <i></i>
+                    <div class="fl notice_list_time">
+                        <div class="nlt_texta"><{$data.date}></div>
+                        <div class="nlt_textb"><{$data.y_m}></div>
+                    </div>
+                    <div class="fl notice_list_content">
+                        <div class="nlc_title"><{$data.title}></div>
+                        <div class="nlc_text">
+                            <{$data.content}>
+                            <img class="notice_more" src="%THEME%/images/newest/img/more.png">
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </li>
+            <{/foreach}>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <a href="<{$setting.more_link}>" target="_blank" class="wow slideInUp fast notice_button">查看更多</a>
+</div>
+<!-- 视频弹出 -->
+<script type="text/javascript">
+jq(document).ready(function($) {
+    jq('.open_popup').click(function() {
+        jq('.popup_bg').fadeIn(100);
+        jq('.popup_box').slideDown(200);
+    });
+    jq('.close').click(function() {
+        jq('.popup_bg').fadeOut(200);
+        jq('.popup_box').slideUp(100);
+    });
+});
+</script>

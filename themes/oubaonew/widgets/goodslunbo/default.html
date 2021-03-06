@@ -1,0 +1,31 @@
+<div class="slider_card">
+	<{foreach from=$data.goodsRows item=item}>
+	<div class="slide seka">
+		<div class="card_coli">
+			<div class="card_enlarge">
+				<img class="card_list_img" src="<{$item.goodsPicY}>" >
+			</div>
+			<div class="wow slideInUp fast card_list_name"><{t}><{$item.goodsName}><{/t}></div>
+			<div class="wow slideInUp fast card_list_exlpain"><{$item.brief}></div>
+			<div class="wow slideInUp fast card_list_price"><{if $item.nologin}> <span style="font-size: 12px;color: #8c8c8c;">￥<{t}>登录会员可见<{/t}></span> <{else}><{$item.goodsSalePrice|cur}><{/if}></div>
+			<a href="<{$item.goodsLink}>" target="_blank"><button class="wow slideInUp fast card_list_button"><{t}>立即购买<{/t}></button></a>
+		</div>
+	</div>
+	<{/foreach}>
+</div>
+<style>
+.bx-wrapper .bx-controls-direction a {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.bx-wrapper .bx-prev {
+    background-size: 100% 100% !important;
+    left: -68px !important;
+}
+
+.bx-wrapper .bx-next {
+    background-size: 100% 100% !important;
+    right: -68px !important;
+}
+</style>

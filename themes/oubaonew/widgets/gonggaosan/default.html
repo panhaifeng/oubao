@@ -1,0 +1,47 @@
+<div class="details_list">
+    <div class="details_a_box">
+        <div class="details_a_left">
+            <div class="dal_top" style="background: <{$setting.bgcolor}>"><{$setting.title}></div>
+            <div class="dal_text">
+                <{foreach from=$setting.futitle item=futitle}>
+                <span><{$futitle}></span>
+                <{/foreach}>
+            </div>
+            <a href="javascript:;">
+                <div class="dal_button_box details_expand">
+                    <div class="fl dal_button_text">查看详情</div>
+                    <img class="fl dal_button_icon" src="%THEME%/images/newest/img/down.png">
+                    <div class="clear"></div>
+                </div>
+            </a>
+        </div>
+        <div class="details_a_right">
+            <{if $data.goodsinfo}>
+            <img class="dar_img" src="<{$data.goodsinfo.goodsPicY}>">
+            <div class="dar_name"><{$data.goodsinfo.goodsName}></div>
+            <div class="dar_price"><{$data.goodsinfo.goodsSalePrice|cur}></div>
+            <a href="<{$data.goodsinfo.goodsLink}>" target="_blank"><button class="dar_button">立即购买</button></a>
+            <{/if}>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="details_b_box">
+        <{foreach from=$setting.info item=info}>
+        <div class="details_b_list">
+            <div class="details_b_left">
+                <div class="dbl_img_box">
+                    <img src="<{$info.pic}>">
+                    <div class="dbl_img_label" style="background: <{$setting.bgcolor}>">NEW</div>
+                </div>
+            </div>
+            <div class="details_b_right" style="padding-top: 200px;">
+                <div class="dbr_name"><{$info.title}></div>
+                <div class="dbr_text"><{$info.memo}></div>
+                <div class="dar_price">￥<{$info.price}></div>
+                <a href="<{$info.link}>" target="_blank"><button class="dar_button">立即购买</button></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <{/foreach}>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="tableform widgetconfig">
+	<div class="division">
+		<table width="100%" cellpadding="0" cellspacing="0">
+		<tr>
+        	<th colspan="2" style="text-align:center;background:#DDE5FC;color:#669;width:100%;">&nbsp;本挂件需要配合使用CSS样式表，如果您不了解CSS，请勿随意改动。</th>
+		</tr>
+        <tr>
+        	<th width="20%">菜单分隔符：</th>
+			<td width="80%"><input type="text" name="comma" value="<{$setting.comma}>" />&nbsp;&nbsp;(*留空则不显示)</td>
+        </tr>
+        <tr>
+          <th width="20%">前导提示：</th>
+          <td colspan="80%"><input type="text" name="fronttips" style="width:120px" value="<{$setting.fronttips}>"> &nbsp; <input type="checkbox" name="bold" value="1"<{if $setting.bold}> checked<{/if}>>粗体&nbsp;&nbsp;（*留空为不显示)</td>
+         </tr>
+        </table>
+	</div>
+</div>
+<div style="margin-left:10px;"><{button label="添加栏目菜单" app="desktop" icon="btn_add.gif" onclick="addConfig('menus');"}></div>
+
+<div class="tableform widgetconfig">
+	<div class="division" id="listArea_menus">
+		<{foreach from=$setting.menus item=data key=key}>
+		<div class="configs">
+			<table width="100%" cellpadding="0" cellspacing="0">
+			  <tr>
+			  <th>栏目标题：</th>
+			  <td><input type="text" name="menus[<{$data.i}>][text]" style="width:80px" value="<{$data.text}>"></td>
+			  <th>链接地址：</th>
+			  <td><input type="text" name="menus[<{$data.i}>][url]" value="<{$data.url}>" style="width:100px"></td>
+              <th>窗口</th>
+              <td>
+              	<select name="menus[<{$data.i}>][target]">
+              		<option value="0" <{if $data.target=="0"}>selected="selected"<{/if}>>新窗口</option>
+              		<option value="1" <{if $data.target=="1"}>selected="selected"<{/if}>>当前窗口</option>
+            	</select>
+               </td>
+               <th>Class</th>
+			   <td><input type="text" name="menus[<{$data.i}>][classname]" value="<{$data.classname}>" style="width:50px;"></td>
+               <th><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除" app="desktop"}></span></th>
+			  </tr>
+			</table>
+			<input type=hidden name=menus[<{$data.i}>][i] value="<{$data.i}>">
+		</div>
+		<{/foreach}>
+	</div>
+</div>
+
+<script>
+function addConfig(key){
+	var content;
+	d=new Date();
+	i=d.getTime();
+	if(key=='menus'){
+		content='\
+		<div class="configs">\
+			<table width="100%" cellpadding="0" cellspacing="0">\
+			  <tr>\
+			  <th>栏目标题：</th>\
+			  <td><input type="text" name="menus['+i+'][text]" style="width:80px;"></td>\
+			  <th>链接地址：</th>\
+			  <td><input type="text" name="menus['+i+'][url]" style="width:100px" value="./"></td>\
+			  <th>窗口</th>\
+              <td><select name="menus['+i+'][target]">\
+              		<option value="0">新窗口</option>\
+              		<option value="1">当前窗口</option>\
+            	</select></td>\
+			  <th>Class</th>\
+			  <td><input type="text" name="menus['+i+'][classname]" style="width:50px"></td>\
+			  <th><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除" app="desktop"}></span></th>\
+			  </tr>\
+			</table>\
+			<input type=hidden name=menus['+i+'][i] value="'+i+'">\
+		</div>\
+		';
+	}
+	$E('#listArea_'+key).adopt(new Element('div').set('html',content).getFirst());
+}
+
+delLink=function(o){
+	$(o).getParent('.configs').remove();
+}
+</script>

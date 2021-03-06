@@ -1,0 +1,60 @@
+<!--header-->
+<div id="header">
+	<div class="site-topbar">
+       <div class="w1240 clearfix">
+        <div class="topbar-nav l"><{widgets id="hd01"}></div>
+        <div class="topbar-info r"><{widgets id="hd02"}></div>
+      </div>
+    </div>
+
+    <div class="site-header w1240">
+        <div class="clearfix">
+           <div class="site-logo l"><{widgets id="hd03"}></div>
+           <div class="header-info r">
+              <div id="search" class="search-section l"><{widgets id="hd04"}></div>
+              <div class="cart-section r"><{widgets id="hd05"}></div>
+           </div>
+       </div>
+    </div>
+    <div style="background:#fafafa;height:50px;margin-top: 15px;">
+		 <div class="w1240">
+      <div style="float: right;visibility:hidden;" id="bannertop"><{widgets id="aaaa"}></div>
+			<div class="header-nav">
+			<div class="nav-category l"><{widgets id="hd06"}></div>
+			<div class="nav-main l"><{widgets id="hd07"}></div>
+			</div>
+		</div>
+    </div>
+    <div class="ecshop_box">
+          <div class="ecshop"><{t}>微商城<{/t}><img class="drop_down" src="images/drop_down_menu.png"></div>
+          <div class="QR_code">
+            <div class="QR_code_text"><{t}>微信扫一扫<{/t}><br><{t}>进入微商城<{/t}></div>
+            <img class="QR_code_img" src="images/QR_code.jpg">
+          </div>
+    </div>
+</div>
+<script>
+  window.addEvent("domready",function(){
+    if ($('isindex')) {
+      $('bannertop').setStyle('visibility','visible');
+      $('category_box').setStyle('visibility','visible');
+    }else{
+      $('category_handle').addEvents({
+        'mouseover':function(e){
+          $('category_box').setStyle('visibility','visible');
+        },
+        'mouseout':function(e){
+          $('category_box').setStyle('visibility','hidden');
+        }
+      })
+    }
+    //如果是英文版,class=ecshop样式调整;并且隐藏右侧banner
+    var isEn = document.cookie.indexOf('en_US')>0 ? true :false;
+    if(isEn) {
+      //$$('.ecshop').setStyle('margin-right','76px');
+      $('bannertop').setStyle('visibility','hidden');
+    }
+  })
+
+</script>
+

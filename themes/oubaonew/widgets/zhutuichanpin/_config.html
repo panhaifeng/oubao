@@ -1,0 +1,56 @@
+<style>
+<!--
+.tableform table {margin-top:5px;}
+.tableform th,.tableform td{padding:5px;border:1px solid #ddd; vertical-align:middle;line-height:1.8}
+.tableform th {background-color:#E2E8EB}
+.widgetconfig input {padding:2px;line-height:18px;}
+.tableform i {color:#FF0000;}
+.configad {
+  margin-top:6px;padding-bottom:10px;border-bottom:2px solid #d4dde4;
+}
+-->
+</style>
+<div class="clearfix">
+    <{button label=$___b2c="添加系列"|t:'b2c' app="desktop" icon="btn_add.gif" id="add_ad_pic"}>(建议3的倍数)
+ </div>
+<div class="division" style="margin-top:8px;" id="had">
+  <{foreach from=$setting.had key=key item=data}>
+    <div class="configad">
+       <table cellpadding="0" cellspacing="0">
+         <tr><th>图片:</th><td><input type="text" class="imgsrc" name="had[<{$key}>][link]" value="<{$data.link}>" id="had[<{$key}>][link]" > <input type="button" value="上传图片" onclick="addPic($('had[<{$key}>][link]'))">(建议尺寸374*191)</td>
+     <td></td><td></td><td style="width:30px"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title"删除" app="desktop"}></span></td></tr>
+     <tr><th>标题:</th><td><input type="text" style="width:100px;" name="had[<{$key}>][title]" value="<{$data.title}>"></td><th>价格:</th><td><input type="text" style="width:100px;" name="had[<{$key}>][price]" value="<{$data.price}>"></td></tr>
+     <tr><th>描述(最多23字):</th><td><input type="text" style="width:250px;" name="had[<{$key}>][memo]"></td></tr>
+        <tr><th>链接:</th><td><input type="text" style="width:90%" name="had[<{$key}>][tolink]" value="<{$data.tolink}>"></td><td> </td></tr>
+       </table>
+    </div>
+  <{/foreach}>
+</div>
+
+<script>
+$('add_ad_pic').addEvent('click',function(){
+  var d=new Date();
+  var i=d.getTime();
+  $('had').adopt(new Element('div').set('html','\
+    <div class="configad">\
+       <table cellpadding="0" cellspacing="0">\
+         <tr><th>图片:</th><td><input type="text" class="imgsrc" name="had['+i+'][link]" id="had['+i+'][link]" ><input type="button" value="上传图片" onclick="addPic($(\'had['+i+'][link]\'))">(建议尺寸374*191)</td>\
+     <td></td><td></td><td style="width:30px"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title"删除" app="desktop"}></span></td></tr>\
+     <tr><th>标题:</th><td><input type="text" style="width:100px;" name="had['+i+'][title]"></td><th>价格:</th><td><input type="text" style="width:100px;" name="had['+i+'][price]"></td></tr>\
+     <tr><th>描述(最多23字):</th><td><input type="text" style="width:250px;" name="had['+i+'][memo]"></td></tr>\
+          <tr><th>链接:</th><td><input type="text" style="width:90%" name="had['+i+'][tolink]"></td><td> </td></tr>\
+       </table>\
+    </div>\
+  ').getFirst());
+});
+
+function addPic(target){
+  var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+  Ex_Loader('modedialog',function(){
+    return new imgDialog(url,{onCallback:function(image_id,image_src){
+        $(target).value=image_src;
+    }}) ;
+  });
+}
+delLink=function(o){$(o).getParent('.configad').remove();}
+</script>

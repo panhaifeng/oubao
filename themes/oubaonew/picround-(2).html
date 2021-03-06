@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<{header}>
+<link type="text/css" href="images/qingfeng.css" rel="stylesheet" />
+		<link type="text/css" href="images/index.css" rel="stylesheet" />
+		<link type="text/css" href="images/newest/css/animate.css" rel="stylesheet" />
+		<!-- 侧栏样式 -->
+    	<link rel="stylesheet" type="text/css" href="images/newest/css/sidebar.css">
+    	<!-- 侧栏字体图标 -->
+    	<link rel="stylesheet" type="text/css" href="images/newest/css/icon.css">
+		<link type="text/css" href="images/newest/css/jquery.bxslider.css" rel="stylesheet">
+		<link type="text/css" href="images/newest/css/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="images/newest/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript">
+			var jq = jQuery.noConflict();
+		</script>
+</head><body>
+<{require file="block/header.html"}>
+<div class="w1240">
+<div class="breadcrumbs"></div>
+    <{widgets id="picround"}>
+</div>
+<{require file="block/footer.html"}>
+<script type="text/javascript">
+jq(document).ready(function() {
+    //图片轮播
+    let width = 1240;
+    let index = 1;
+    let imgNum = jq(".goods_slide").children("img").length;
+    jq(".goods_slide").css("width", imgNum * width + "px");
+    var pagingInfo = jq("#pageInfo");
+    var data = {
+        pageCount: imgNum,
+    }
+    //表示前后都有省略号时中间页面刷新基准，为了防止点击中间时页面频繁刷新页面导致的视觉错位
+    var tmpPageIndex = 0;
+
+    //添加事件
+    jq(document).on("click", "#pageInfo li", function() {
+        let page = jq(this).attr("page")
+        if (page) {
+            page = parseInt(page)
+            refreshPageInfo(data, page);
+        }
+
+    })
+
+    // 刷新|生成分页信息|自定义属性page表示当前页面索引
+    function refreshPageInfo(data, pageIndex) {
+        var pageSize = data.pageCount;
+        pagingInfo.html('');
+
+        // 总页数小于等于10页，全部显示
+        if (pageSize <= 10) {
+            for (var i = 1; i <= pageSize; i++) {
+                var li = jq('<li page="' + i + '">' + i + '</li>');
+                addActive(li, i, pageIndex);
+                pagingInfo.append(li);
+            }
+            // 当前页是前10页
+        } else if (pageIndex < 10) {
+            for (var i = 1; i <= 10; i++) {
+                var li = jq('<li page="' + i + '">' + i + '</li>');
+                addActive(li, i, pageIndex);
+                pagingInfo.append(li);
+            }
+            pagingInfo.append('<li>......</li>');
+            pagingInfo.append('<li page=' + pageSize + '>' + pageSize + '</li>');
+            // 当前页面是最后10页
+        } else if (pageSize - pageIndex < 10) {
+            if (pageSize - 10 > 1) {
+                pagingInfo.append('<li page="1">1</li>');
+                pagingInfo.append('<li>......</li>');
+            }
+            for (var i = pageSize - 10; i <= pageSize; i++) {
+                var li = jq('<li page="' + i + '">' + i + '</li>');
+                addActive(li, i, pageIndex);
+                pagingInfo.append(li);
+                if (i == 1) {
+                    pagingInfo.append('<li>......</li>');
+                }
+            }
+        } else {
+            // 当前页面基于所有页面中间位置
+            // 初始化页面基准坐标
+            if (tmpPageIndex == 0) {
+                tmpPageIndex = pageIndex;
+            }
+            // 当页面索引达到最前或最后时，需要重新设置页面基准坐标
+            if (tmpPageIndex <= pageIndex - 5 || tmpPageIndex >= pageIndex + 5) {
+                tmpPageIndex = pageIndex;
+            }
+            pagingInfo.append('<li page="1">1</li>');
+            pagingInfo.append('<li>......</li>');
+            for (var i = tmpPageIndex - 5; i <= tmpPageIndex + 5; i++) {
+                var li = jq('<li page="' + i + '">' + i + '</li>');
+                addActive(li, i, pageIndex);
+                pagingInfo.append(li);
+            }
+            pagingInfo.append('<li>......</li>');
+            pagingInfo.append('<li page=' + pageSize + '>' + pageSize + '</li>');
+        }
+        pageIndex = pageIndex-1;
+        jq(".goods_slide").animate({ left: "-" + (width * pageIndex) + "px" });
+    }
+    // 添加分页按钮焦点
+    function addActive(li, i, pageIndex) {
+        if (i == pageIndex) {
+            li.addClass('cur');
+        }
+    }
+    refreshPageInfo(data, 1);
+
+    jq(".slide_right").on("click", function() {
+    	var lis= jq(".slide_handle ul li.cur");
+    	let page = jq(lis).attr("page");
+        page = parseInt(page);
+        if (page) {
+    		page = page+1;
+    		if (page>data.pageCount) {
+    			return false;
+    		}
+            refreshPageInfo(data, page);
+        }
+    })
+    jq(".slide_left").on("click", function() {
+        var lis= jq(".slide_handle ul li.cur");
+    	let page = jq(lis).attr("page");
+    	page = parseInt(page);
+        if (page!=1) {
+    		page = page-1;
+            refreshPageInfo(data, page);
+        }
+    })
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<div class="tableform">
+    <div class="widgetconfig">
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+			<tr>
+                    <th><{t app='b2c'}>标题：<{/t}></th>
+                    <td>
+                       <input type="text" name="seriestitle_title" value="<{$setting.seriestitle_title}>">
+                    </td>
+                </tr>
+                 
+        </tbody></table>
+		 
+		 
+	 
+	 
+		 
+    </div>
+</div>
+<script>
+    function addPic1(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic1').value=image_src;
+            }})	;
+        });
+    }
+	function addPic2(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic2').value=image_src;
+            }})	;
+        });
+    }
+	function addPic3(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic3').value=image_src;
+            }})	;
+        });
+    }
+	function addPic4(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic4').value=image_src;
+            }})	;
+        });
+    }
+	function addPic5(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic5').value=image_src;
+            }})	;
+        });
+    }
+</script>

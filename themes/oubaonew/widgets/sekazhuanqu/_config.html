@@ -1,0 +1,72 @@
+<style>
+<!--
+.division table {margin-top:5px;}
+.division th,.division td{padding:5px;border:1px solid #ddd; vertical-align:middle;line-height:1.8}
+.division th {background-color:#E2E8EB}
+.division input {padding:2px;line-height:18px;}
+.division i {color:#FF0000;}
+-->
+</style>
+
+<div id="goods_exshow_config" class="tableform">
+   <div class="division">
+    <table width="100%" cellpadding="0" cellspacing="0">
+    	<tr>
+        <th width="20%">标题：</th>
+        <td width="30%"><input type="text" name="title1" value="<{$setting.title1}>" style="width:100px" /></td>
+        <th width="20%">副标题：</th>
+        <td width="30%"><input type="text" name="title2" value="<{$setting.title2}>" style="width:100px" /></td>
+        <th width="20%">简介(推荐15字左右)：</th>
+        <td width="30%"><input type="text" name="title3" value="<{$setting.title3}>" style="width:150px" /></td>
+      </tr>
+      <tr>
+        <th>选择展示的单个商品</th>
+        <td><{input type="goods_select" object="goods@b2c" pdt_name="goods_select_dan" pdt_value=$setting.goods_select_dan obj_name="goods_select_linkobj_dan" obj_value=$setting.goods_select_linkobj_dan}></td>
+        <!-- <th>展示图片</th>
+        <td>
+        <input type="text" name='banner_pic' id="banner_pic" value="<{$setting.banner_pic}>"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($('banner_pic'))" />
+        </td> -->
+      </tr>
+     </table>
+   </div>
+       <div class="division">
+        <div class="goods-selector-handle clearfix">
+          *选择切换的商品(4的倍数)
+        </div>
+        <div class="division goods-selector">
+            <div data-extend="select">
+                <{input type="goods_select" object="goods@b2c" pdt_name="goods_select_duo" pdt_value=$setting.goods_select_duo obj_name="goods_select_linkobj_duo" obj_value=$setting.goods_select_linkobj_duo}>
+            </div>
+            <!-- <div class="division">
+                排序规则：
+                <select  name="goods_order_by">
+                    <{foreach from=$data.goods_order_by item=item}>
+                    <option value="<{$item.condition}>"  <{if $setting.goods_order_by == $item.condition}>selected<{/if}>><{$item.label}></option>
+                    <{/foreach}>
+                </select>
+            </div> -->
+        </div>
+    </div>
+</div>
+<script>
+$$('#goods_exshow_config .goods-selector-handle input[type=radio]').addEvent('change',function(){
+	var radio  = this;
+	if(!radio.checked)return;
+	$$('#goods_exshow_config .goods-selector [data-extend]').each(function(item){
+		if(item.get('data-extend')!=radio.value){
+			item.hide();
+			}else{
+			item.show();
+		}
+	});
+});
+
+function addPic(target){
+var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+Ex_Loader('modedialog',function(){
+	return new imgDialog(url,{onCallback:function(image_id,image_src){
+			$(target).value=image_src;
+	}})	;
+});
+}
+</script>

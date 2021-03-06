@@ -1,0 +1,70 @@
+<div class="tableform widgetconfig">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr style="display:none">
+            <th>尺寸设置:</th>
+            <td>
+                <div class="span-auto division">
+                    <label>
+                        <p>弹出分类宽度：</p>
+                        <input type="text" class="x-input"  name="sub_category_width" value="<{$setting.sub_category_width}>" />px
+                    </label>
+                </div>
+                <div class="span-auto division">
+                    <label>
+                        <p>品牌列表宽度：</p>
+                        <input type="text" class="x-input"  name="brands_box_width" value="<{$setting.brands_box_width}>" /> px
+                    </label>
+                </div>
+                <div class="span-auto division">
+                    <label>
+                        <p>品牌logo宽度：</p>
+                        <input type="text" class="x-input"  name="brand_width" value="<{$setting.brand_width}>" /> px
+                    </label>
+                </div>
+                <div class="span-auto division">
+                    <label>
+                        <p>品牌logo高度：</p>
+                        <input type="text" class="x-input"  name="brand_height" value="<{$setting.brand_height}>" /> px
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>其他设置:</th>
+            <td>
+                <div class="span-auto division">
+                    <label>
+                        <p>分类链接在新窗口打开？</p>
+                        <input type="checkbox" name="target_blank" value="1" <{if $setting.target_blank}> checked <{/if}> />是
+                    </label>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+    
+    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+  <tbody><tr>
+    <th><{t app='b2c'}>广告尺寸：<{/t}></th>
+    <td><{t app='b2c'}>宽<{/t}>
+  <input type="text" name="ad_pic_width" value="<{$setting.ad_pic_width}>" style="width:40px">px <{t app='b2c'}>高<{/t}><input type="text" name="ad_pic_height" style="width:40px" value="<{$setting.ad_pic_height}>">px
+	</td>
+  </tr>
+  <tr>
+    <th><{t app='b2c'}>图片：<{/t}></th>
+    <td>
+	<input type=hidden name="ad_pic" value="<{$setting.ad_pic}>"><input name='ad_pic' class="imgsrc" id="ad_pic" value="<{$setting.ad_pic}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic()">
+	</td>
+  </tr>
+   <tr>
+    <th><{t app='b2c'}>图片描述：<{/t}></th>
+    <td><input type="text" name="ad_pic_txt" value="<{$setting.ad_pic_txt}>"></td>
+  </tr>
+  <tr>
+    <th><{t app='b2c'}>图片链接：<{/t}></th>
+    <td><input type="text" name="ad_pic_link" value="<{$setting.ad_pic_link}>"></td>
+  </tr>
+</tbody></table>
+    
+    
+</div>

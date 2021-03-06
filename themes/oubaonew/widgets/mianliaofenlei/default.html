@@ -1,0 +1,37 @@
+<div class="wow slideInUp fast unite_title_box">
+	<div class="unite_title_line"></div>
+	<div class="unite_title_content">
+		<div class="wow slideInUp fast utc_text_ch">面料分类</div>
+		<div class="wow slideInUp fast utc_text_en">FABRIC CLASSIFICATIONS</div>
+	</div>
+</div>
+<ul class="sort_list">
+	<{foreach from=$setting.had item=data}>
+	<li class="wow slideInUp fast mianliaofenlei" data-bgcolor="<{$data.backcolor}>" onclick='window.open("<{$data.tolink}>","_blank")'>
+		<div class="sort_list_img">
+			<img src="<{$data.link}>">
+		</div>
+		<div class="sort_list_content">
+			<div class="slc_ch slc_color_a"><{$data.title}></div>
+			<div class="slc_en"><{$data.en_title}></div>
+			<div class="slc_text"><{$data.content}></div>
+			<a class="slc_clink slc_bg_a" href="javascript:void(0);" target="_blank">进入专区</a>
+		</div>
+	</li>
+	<{/foreach}>
+	<div class="clear"></div>
+</ul>
+<script>
+jq(document).ready(function() {
+	jq('.mianliaofenlei').each(function(index, el) {
+		var color = jq(el).data('bgcolor');
+		jq(el).mouseover(function() {
+			jq(el).find(".slc_color_a").css('color',color);
+			jq(el).find(".slc_bg_a").css('background',color);
+		}).mouseout(function(){
+			jq(el).find(".slc_color_a").css('color','');
+			jq(el).find(".slc_bg_a").css('background','');
+		});
+	});
+})
+</script>

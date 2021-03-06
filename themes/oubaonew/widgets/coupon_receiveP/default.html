@@ -1,0 +1,25 @@
+<div class="title_ad j-coupon" data-cid="<{$setting.coupons}>">
+  <a href="javascript:void(0)"><img src="<{$setting.picLink}>"></a>
+</div>
+<script>
+  $$(".j-coupon").addEvent('click',function(e){
+    // var that = this;
+    // var card = this.get("data-cid");
+    // new Request({
+    //   url:'<{link app=b2c ctl=site_gallery act=coupon_duihuan}>',
+    //   data:'cpns_id='+card,
+    //   onComplete:function(rs) {
+    //     rs = JSON.parse(rs);
+    //     if( rs.status == 'success' ){
+    //         // col.set('text','已领取');
+    //         return Message.success(rs.msg);
+    //     }else{
+    //         Message.error(rs.msg);
+    //         if(rs.url) location.href=rs.url;
+    //     }
+    //   }
+    // }).post();
+    window.open("<{link app=b2c ctl=site_member act=couponExchange}>","_blank");
+  });
+
+</script>

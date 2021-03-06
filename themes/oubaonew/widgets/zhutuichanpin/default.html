@@ -1,0 +1,28 @@
+<div class="wow slideInUp fast unite_title_box">
+    <div class="unite_title_line"></div>
+    <div class="unite_title_content" style="width:240px;">
+        <div class="wow slideInUp fast utc_text_ch">主推产品专区</div>
+        <div class="wow slideInUp fast utc_text_en">MAIN PRODUCTS AREA</div>
+    </div>
+</div>
+<ul class="main_list">
+    <{foreach from=$setting.had item=datas}>
+    <li>
+        <div class="main_img_box">
+            <a href="<{$datas.tolink}>" target="_blank"><img class="main_img" src="<{$datas.link}>"></a>
+        </div>
+        <div class="wow slideInUp fast main_name"><{$datas.title}></div>
+        <div class="wow slideInUp fast main_explain"><{$datas.memo}></div>
+        <div class="wow slideInUp fast ">
+            <{if $data.ifLogin}>
+            <div class="fl main_price"><{$datas.price|cur}></div>
+            <{else}>
+            <div class="fl" style="font-size: 12px;color: #8c8c8c;">￥登录会员可见</div>
+            <{/if}>
+            <div class="fr main_number"></div>
+            <div class="clear"></div>
+        </div>
+    </li>
+    <{/foreach}>
+    <div class="clear"></div>
+</ul>

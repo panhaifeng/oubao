@@ -1,0 +1,64 @@
+<div class="tableform widgetconfig">
+  <table>
+      <tr>
+        <th>标题：</th>
+        <td>
+          <input type="text" name="titleCn" value="<{$setting.titleCn}>">
+          <span>背景色：<input type="color" name="titleCnBg" value="<{$setting.titleCnBg}>"></span>
+        </td>
+        <th>英文标题：</th>
+        <td>
+          <input type="text" name="titleEn" value="<{$setting.titleEn}>">
+          <span>背景色：<input type="color" name="titleEnBg" value="<{$setting.titleEnBg}>"></span>
+        </td>
+      </tr>
+      <tr>
+        <th>左侧背景图：</th>
+        <td>
+          <input type="text" name="left_pic" id="leftpic" value="<{$setting.left_pic}>">
+          <input type="button" value="上传图片" class="uploadbtn" onclick="addPic($('leftpic'))">
+        </td>
+        <th>图片左下角背景颜色：</th>
+        <td>
+          <input type="color" name="left_picBg" value="<{$setting.left_picBg}>">
+        </td>
+      </tr>
+      <tr>
+        <th>右侧背景图：</th>
+        <td>
+          <input type="text" name="right_pic" id="rightpic" value="<{$setting.right_pic}>">
+          <input type="button" value="上传图片" class="uploadbtn" onclick="addPic($('rightpic'))">
+        </td>
+      </tr>
+      <tr>
+        <th>内容介绍：</th>
+        <td>
+          <textarea name="content" style="width: 200px;height: 150px;"><{$setting.content}></textarea>
+        </td>
+      </tr>
+      <tr>
+        <th>查看此系列链接：</th>
+        <td><input type="text" name="link" value="<{$setting.link}>"></td>
+        <th>背景色：</th>
+        <td><input type="color" name="linkBg" value="<{$setting.linkBg}>"></td>
+      </tr>
+      <tr>
+        <th>视频链接：</th>
+        <td>
+          <textarea name="video_link" ><{$setting.video_link}></textarea>
+        </td>
+      </tr>
+  </table>
+</div>
+<script>
+
+function addPic(target){
+  var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+  Ex_Loader('modedialog',function(){
+    return new imgDialog(url,{onCallback:function(image_id,image_src){
+        $(target).value=image_src;
+    }}) ;
+  });
+}
+
+</script>

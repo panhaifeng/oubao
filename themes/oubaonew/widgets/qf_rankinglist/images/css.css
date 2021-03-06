@@ -1,0 +1,25 @@
+<style id="wid<{$widgets_id}>_style">
+/*销售周排行*/
+.qf_Ranking {width:100%;}
+.qf_Ranking a {color:<{$setting.fontColor}>;<{$setting.fontStyle}>;}
+.qf_Ranking a hover {color:<{$setting.fontColor2}>;<{$setting.fontStyle2}>;}
+.qf_Ranking ul {padding:0 10px;}
+.qf_Ranking li {height:18px;border-bottom:1px solid #eaeaea;width:100%;padding:6px 0;_padding:5px 0;line-height:18px;overflow:hidden; cursor:pointer;}
+.qf_Ranking li.last {border-bottom:none;}
+.qf_Ranking li .dotsep {display:block;width:17px;height:14px;background:url("images/ranking_bg.gif") no-repeat 0 0px;color:#666;text-align:center;font-weight:bold;font-size:12px;line-height:14px;float:left;}
+/*.qf_Ranking li.h1 .dotsep {color:#fff;background-position:0px -14px;}*/
+.qf_Ranking .pic {width:100px;height:100px;}
+.qf_Ranking .goodsname {height:18px;line-height:18px;display:block;white-space:normal;overflow:hidden;padding-left:8px;}
+.qf_Ranking .price0 {font-size:12px;color:#c90809;font-family:Arial, Helvetica, sans-serif;}
+
+/*鼠标浮动区*/
+.qf_Ranking li.current {height:100px;position:relative;}
+.qf_Ranking li.current .dotsep {color:#fff;background-position:0px -14px;}
+.qf_Ranking .pic,.qf_Ranking .price0 {display:none;}
+.qf_Ranking li.current .pic,.qf_Ranking li.current .price0 {display:block;}
+.qf_Ranking li.current .dotsep {position:absolute;top:15px;left:0;z-index:3;}
+.qf_Ranking li.current .pic {position:absolute;top:5px;left:20px;z-index:2;}
+.qf_Ranking li.current .price0,.qf_Ranking li.current .goodsname {padding-left:130px;width:auto;line-height:18px;margin-bottom:5px;text-align:left;display:inline-block;}
+.qf_Ranking li.current .goodsname {height:auto;max-height:72px;overflow:hidden;white-space:normal;}
+</style>
+<script>window.addEvent('domready',function(){$('wid<{$widgets_id}>_style').inject($E('link'), 'before');})</script>

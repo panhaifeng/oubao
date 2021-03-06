@@ -1,0 +1,79 @@
+<{if $env.conf.search.associate_enabled == '1'}>
+<{assign var=associate value="true"}>
+<{/if}>
+<div style="margin-top: 13px;  margin-top:30px;    clear: both;">
+<div class="mlzqu_title"><span><{$data.search_key|default:$setting.keywords}></span></div>
+ <div class="mlzqu">
+	 <img data-src="<{$data.search_key|default:$setting.zqu_pic1|storager}>">
+	 <div class="mlzqu_in">
+	   <div class="mlzqu_in_left">
+	      <div class="left_dtitle"><{$data.search_key|default:$setting.left_dtitle}></div>
+	      <div class="left_stitle"><{$data.search_key|default:$setting.left_stitle}></div>
+	      <a href="<{$data.search_key|default:$setting.left_button_link}>"><div class="left_button_title"><{$data.search_key|default:$setting.left_button_title}></div></a>
+	   </div>
+	    <div class="mlzqu_in_right">
+			<{if $data.search}>
+             
+    
+               <{foreach from=$data.search item=toplink key=top_key name=navslist}>
+			  
+               <a href="<{$toplink.top_link_url}>"> <li class="mlzqu_in_right_li"><{$toplink.top_link_title}> </li></a> 
+             
+			  <{/foreach}>
+              
+            <{/if}>
+  	   </div>
+	  
+	  </div>
+ </div>
+ </div>
+<div class="searchbar">
+  
+
+</div>
+<script>
+(function(scope){
+scope.getElement('button[type=submit]').addEvent('click', function(e){
+    if(scope.getElement('input').value.trim() === '') {
+        e.stop();
+    }
+});
+var search_keywords = decodeURIComponent(Memory.get('search_key'));
+if(search_keywords == 'null'){
+      search_keywords = '';
+  }
+//scope.getElement('input[name=search_keywords]').value = search_keywords;
+<{if $associate == 'true'}>
+var path ='<{$env.statics_host_url}>/b2c/statics/js<{if !defined("DEBUG_JS") || !DEBUG_JS}>_mini<{/if}>/';
+$LAB.script(path + 'autocompleter.js').wait(function(){
+    var item = scope.getElement('[data-autocompleter]');
+    var options = {};
+    try {
+        options = JSON.decode(item.get('data-autocompleter-options'));
+    }catch (e) {}
+    Object.merge(options, item.retrieve('autocompleter_options', {}));
+
+    new Autocompleter.Request.JSON(item, "<{link app=b2c ctl=site_search act=associate}>", options);
+});
+<{/if}>
+})($('searchbar_<{$widgets_id}>'));
+	 
+window.addEvent("domready", function() {	
+	$("search").addEvents({
+	  'mouseenter': function(e){
+		  this.addClass("hover");
+	  },
+	  'mouseleave': function(e){
+		  this.removeClass("hover");
+	  }
+	});
+	$("search").getElement(".searchbar").addEvents({
+	  'click': function(e){
+		  this.addClass("search-focus");
+	  },
+	  'mouseleave':function(e){
+		  this.removeClass("search-focus");
+	  }
+	})
+})
+</script>

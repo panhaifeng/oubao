@@ -1,0 +1,56 @@
+<div class="unite_title_box">
+    <div class="unite_title_line"></div>
+    <div class="unite_title_content" style="width:240px;">
+        <div class="utc_text_ch"><{$setting.flag_title}></div>
+        <div class="utc_text_en"><{$setting.flag_titleEn}></div>
+    </div>
+</div>
+<!-- 左右 -->
+<link type="text/css" href="images/newstyle.css" rel="stylesheet" />
+<div class="feature_aa">
+    <div class="feature_left">
+        <div class="feature_title">
+            <div class="feature_ch"><{$setting.title}></div>
+            <div class="feature_en"><{$setting.title_en}></div>
+        </div>
+        <div class="feature_introduction"><{$setting.memo}></div>
+        <a class="feature_more" href="<{$setting.morelink}>" target="_blank">查看更多 ></a>
+    </div>
+    <div class="feature_right">
+        <div class="feature_right_top">
+            <img class="feature_right_img" src="<{$data.goods_dan.goodsPicY}>">
+            <div class="frt_model"><{$data.goods_dan.goodsName}></div>
+        </div>
+        <div class="feature_right_name"><{$data.goods_dan.pinming}></div>
+        <div class="feature_right_price"><{$data.goods_dan.goodsSalePrice|cur}></div>
+        <a href="<{$data.goods_dan.goodsLink}>" target="_blank"><button class="feature_right_buy">立即购买</button></a>
+    </div>
+    <div class="clear"></div>
+</div>
+<!-- 轮播 -->
+<div class="slider1">
+    <{foreach from=$data.goods_duo item=data}>
+    <div class="slide fenlei">
+        <div class="slide_imgbox">
+            <a href="<{$data.goodsLink}>" target="_blank"><img src="<{$data.goodsPicY}>"></a>
+        </div>
+        <div class="bespoke_line"></div>
+    </div>
+    <{/foreach}>
+</div>
+<style>
+.feature_more {
+    background: <{$setting.morelinkBg}> !important;
+    border: 1px solid <{$setting.morelinkBg}> !important;
+}
+.feature_right_buy{
+    background: <{$setting.fastbuyBg}> !important;
+    border: 1px solid <{$setting.fastbuyBg}> !important;
+}
+.fenlei:hover .bespoke_line {
+    background: <{$setting.lunboBg}> !important;
+}
+.feature_right{
+    border: 1px solid <{$setting.borderBg}> !important;
+}
+</style>

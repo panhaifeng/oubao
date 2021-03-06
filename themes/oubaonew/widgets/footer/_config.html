@@ -1,0 +1,42 @@
+<div class="widgetconfig">
+	<div class="clearfix">
+    <{button label=$___b2c="添加链接"|t:'b2c' class="sysiconBtn addorder" app="desktop" icon="btn_add.gif"}>
+    </div>
+
+    <div class="division" id="kffloor">
+      <{foreach from=$setting.floor item=item key=key}>
+		 <div class="configad" style="margin-top:5px;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #888;">
+            <tr>
+				  <th style="width:40px;">标题:</th>
+				  <td><input type="text" style="width:150px" name="floor[<{$item.i}>][title]" value="<{$item.title}>" /></td>
+				  <th style="width:40px;">链接:</th>
+				  <td><input type="text" style="width:300px" name="floor[<{$item.i}>][links]" value="<{$item.links}>" /></td>
+          <th>英文链接:</th>
+          <td><input type="text" style="width:300px" name="floor[<{$item.i}>][linksEn]" value="<{$item.linksEn}>" /></td>
+				  <th style="width:20px;vertical-align:middle;text-align:center;"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除" app="desktop"}></span></th>
+             </tr>
+          </table>
+		  <input type="hidden" name="floor[<{$item.i}>][i]" value="<{$item.i}>" />
+        </div>
+	<{/foreach}>
+	</div>
+</div>
+<script>
+$E('.sysiconBtn').addEvent('click',function(){
+  var d=new Date();
+  var i=d.getTime();
+  $('kffloor').adopt(new Element('div').set('html','\
+	<div class="configad" style="margin-top:5px;">\
+       <table cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #888;">\
+         <tr><th style="width:40px;">标题：</th><td><input type="text" style="width:150px" name="floor['+i+'][title]"></td>\
+		 <th style="width:40px;">链接:</th><td><input type="text" style="width:300px" name="floor['+i+'][links]"></td>\
+     <th>英文链接:</th><td><input type="text" style="width:300px" name="floor['+i+'][linksEn]"></td>\
+		 <td style="width:20px;vertical-align:middle;text-align:center;"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除" app="desktop"}></span></td></tr>\
+	 </table>\
+      <input type="hidden" name="floor['+i+'][i]" value="'+i+'">\
+    </div>\
+  ').getFirst());
+});
+delLink=function(o){$(o).getParent('.configad').remove();}
+</script>

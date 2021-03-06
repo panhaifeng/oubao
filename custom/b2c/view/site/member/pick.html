@@ -1,0 +1,271 @@
+<{script src="jquery-1.9.1.min.js" app="b2c" pdir="js_mini"}>
+<script type="text/javascript">
+    var jq = jQuery.noConflict();
+</script>
+<style type="text/css">
+.zhekou {
+    display: inline-block;
+    background: #d80808;
+    color: #ffffff;
+    padding: 0 6px;
+}
+.memoZhi .memo {
+    padding: 2px 0 2px 4px;
+    margin: 5px 0;
+    border: #ccc 1px solid;
+    width: 600px;
+}
+.table-madan tr td {
+    background-color: #ffffff;
+}
+.pihao th {
+    width: 16%;
+    background-color: #ffffff;
+    border-bottom: 2px solid #efefef;
+}
+.pihao th span {
+    padding: 5px 10px 4px 10px;
+    background-color: #efefef;
+    width: 180px;
+    overflow: visible;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 14px;
+}
+.product-buy-quantity {
+    *zoom: 1;
+    display: list-item;
+    margin-bottom: .0em;
+    text-align: -webkit-match-parent;
+    list-style: none;
+}
+.diquRadio:nth-child(even){
+    margin-left: 20px;
+}
+.product-buy-quantity .p-quantity-ph input {
+    width: 40px;
+    height: 23px;
+    line-height: 21px;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: #a9a9a9;
+    text-align: center;
+    border: 1px solid #a9a9a9;
+    border-right: 0px;
+}
+.product-buy-quantity .p-quantity-ph a {
+    display: inline-block;
+    width: 66px;
+    height: 21px;
+    overflow: hidden;
+    vertical-align: middle;
+    border: 1px solid #a9a9a9;
+    text-align: center;
+    font: 11px/11px Arial;
+    line-height: 21px;
+    background-color: #fff;
+    color: #6a6a6a;
+    text-decoration:none;
+}
+</style>
+<div class="change-payment" >
+    <div style="overflow:auto;height:460px;width:100%;" id="zidong">
+        <div>
+            <div style="margin-bottom: 20px;">选择仓库地区：(订单只能选择从一个仓库发货,否则无法支付订单)</div>
+            <div id="diquDetail0"></div>
+        </div>
+        <div id="ajaxMadan">
+
+        </div>
+    </div>
+    <table>
+        <tfoot>
+            <tr>
+                <th colspan="2">
+                <li class = 'product-buy-quantity'><span class = "item-content"><{t}>数量<{/t}>(M)：<span class = "p-quantity-ph"><input type = 'text' id = 'cntM'><a href="javascript:autoPeihuo();" class="btn-peihuo"><{t}>自动配货<{/t}></a></span>
+                </span></li>
+                </th>
+                <th colspan="2">
+                <!-- <button type="button" class="btn btn-caution btnSure"><span><span><{t}>确认配货<{/t}></span></span></button> -->
+                <span class="label" id='divTotal'></span>
+                </th>
+            </tr>
+            <tr>
+
+            </tr>
+        </tfoot>
+    </table>
+<div>
+    <input type='hidden' id='sonTotal' value='' cntJuan='' madan_ids='' cntM=''/>
+    <input type='' id='diquDetail' value='<{$retDetail}>' />
+    <input type='' id='productIdFlag' value='<{$product_id}>' />
+</div>
+</div>
+<script type="text/javascript">
+    var sonObj = {};
+    var product_id='';
+var callbackOpen = function(product_id,fatherSelectData){
+    product_id = product_id;
+    if (jq('#sonTotal').attr('value')) {
+        //合计显示在页面上
+        var totalStr="<b><{t}>选中<{/t}>:"+"<font color='red'>"+jq('#sonTotal').attr('cntJuan')+"</font>&nbsp;&nbsp;<{t}>卷<{/t}>&nbsp;&nbsp;<{t}>共<{/t}>:"+"<font color='red'>"+jq('#sonTotal').attr('value')+"</font>&nbsp;&nbsp;M</b> <div type='hidden' id='total' value='"+jq('#sonTotal').attr('value')+"' cntJuan='"+jq('#sonTotal').attr('cntJuan')+"' madan_ids='"+jq('#sonTotal').attr('madan_ids')+"' cntM='"+jq('#sonTotal').attr('cntM')+"'></div> ";
+        jq("#divTotal").html(totalStr);
+        sonObj.diquSelectId = fatherSelectData['diquSelectId'];
+    }
+    if (jq('#diquDetail').attr('value')) {
+        var diquDetail = jQuery.parseJSON(jq('#diquDetail').attr('value'));
+        var _html='';
+        for(key in diquDetail){
+            if (fatherSelectData['diquSelectId'] && fatherSelectData['diquSelectId']==key) {
+                _html +="<input class='diquRadio' type='radio' checked=true name='diquSelect' value='"+diquDetail[key]['diquId']+"' diquname='"+diquDetail[key]['diquName']+"'>"+diquDetail[key]['diquName']+"：(库存:"+diquDetail[key]['cnt']+")";
+            }else if(!fatherSelectData['diquSelectId']&&diquDetail[key]['default']){
+                _html +="<input class='diquRadio' type='radio' checked=true name='diquSelect' value='"+diquDetail[key]['diquId']+"' diquname='"+diquDetail[key]['diquName']+"'>"+diquDetail[key]['diquName']+"：(库存:"+diquDetail[key]['cnt']+")";
+            }else{
+                _html +="<input class='diquRadio' type='radio' name='diquSelect' value='"+diquDetail[key]['diquId']+"' diquname='"+diquDetail[key]['diquName']+"'>"+diquDetail[key]['diquName']+"：(库存:"+diquDetail[key]['cnt']+")";
+            }
+        }
+        jq('#diquDetail0').html(_html);
+        //ajax请求 获取码单列表
+        var diquSelectId = jq('input[name="diquSelect"]:checked').val();
+        ajaxMadan(diquSelectId,product_id,fatherSelectData);
+        //仓库地区选择事件
+        jq("input[name='diquSelect']").change(function(){
+            var diquSelectId = jq('input[name="diquSelect"]:checked').val();
+            ajaxMadan(diquSelectId,product_id,fatherSelectData);
+        });
+    }
+}
+jq("#ajaxMadan").on('click','.chkRoll',function(event) {
+        var productIdFlag = jq('#productIdFlag').val();
+        var sign = 0;
+        var totalCnt=0;
+        var cnt=0;
+        var ids= [];
+        var cntM = [];
+        var inputs = document.getElementsByName('chkRoll[]');//获取所有的input标签对象。
+
+        for(var i=0;i<inputs.length;i++){
+            var obj = inputs[i];
+            if(obj.type=='checkbox'){
+                if(obj.checked==true){
+                    sign++;
+                    id = obj.value;
+                    cnt = parseFloat(obj.getAttribute("cnt"))||0;
+                    totalCnt=parseFloat(totalCnt)+cnt;
+                    totalCnt=totalCnt.toFixed(3);
+                    cntM.push(cnt);
+                    ids.push(id);
+                }
+            }
+        }
+        totalCnt=parseFloat(totalCnt).toFixed(2);
+        var diquSelectId = jq('input[name="diquSelect"]:checked').val();
+        sonObj.diquSelectId=diquSelectId;
+        sonObj.madan_ids=ids;
+        sonObj.diquname = jq('input[name="diquSelect"]:checked').attr('diquname');
+        //往选中之中填值
+        //合计显示在页面上
+        var totalStr="<b><{t}>选中<{/t}>:"+"<font color='red'>"+sign+"</font>&nbsp;&nbsp;<{t}>卷<{/t}>&nbsp;&nbsp;<{t}>共<{/t}>:"+"<font color='red'>"+totalCnt+"</font>&nbsp;&nbsp;M</b> <div type='hidden' id='total' value='"+totalCnt+"' cntJuan='"+sign+"' madan_ids='"+ids+"' cntM='"+cntM+"'></div> ";
+        // var spanDiv=window.document.getElementById ("divTotal");
+        jq("#divTotal").html(totalStr);
+    });
+var callbackYes = function (){
+    sonObj.total = jq('#total');
+    return sonObj;
+}
+function ajaxMadan(diquSelectId,product_id,fatherSelectData){
+    if (diquSelectId) {
+        var url = '<{link app=b2c ctl=site_order act=ajax_select_bujuan}>';
+        jq.post(url, {diquSelectId: diquSelectId,product_id:product_id,fatherSelectData:fatherSelectData}, function(res) {
+            jq('#ajaxMadan').html(res);
+        });
+    }
+}
+    /**
+     * ps ：自动配货
+     * Time：2015/10/26 20:23:23
+     * @author liuxin
+     * @param 参数类型
+     * @return 返回值类型
+    */
+    function autoPeihuo(){
+        var inputs = document.getElementsByName('chkRoll[]');//获取所有的input标签对象。
+        for(var i=0;i<inputs.length;i++){
+        var obj = inputs[i];
+            if(obj.type=='checkbox'){
+                if(obj.checked==true){
+                    obj.checked = false;
+                }
+            }
+        }
+        var id = document.getElementById("productId").value;
+        var cntM = document.getElementById("cntM").value;
+        var diquSelectId = jq('input[name="diquSelect"]:checked').val();
+        if(isNaN(Number(cntM))||cntM == ''||cntM <= 0){
+            document.getElementById("cntM").value = "0";
+            var totalStr="<b><{t}>选中<{/t}>:"+"<font color='red'>"+"0"+"</font>&nbsp;&nbsp;<{t}>卷<{/t}>&nbsp;&nbsp;<{t}>共<{/t}>:"+"<font color='red'>"+"0"+"</font>&nbsp;&nbsp;M</b> <div type='hidden' id='total' value='"+"0"+"' cntJuan='"+"0"+"' madan_ids='"+""+"'></div> ";
+            var spanDiv=window.document.getElementById ("divTotal");
+            spanDiv.innerHTML = totalStr;
+        }
+        var url = "<{link app=b2c ctl=site_order act=autoPeihuo}>";
+        //由于$.post() 和 $.get() 默认是 异步请求，如果需要同步请求.改成如下
+        jq.ajaxSettings.async = false;
+        jq.post(url, {product_id: id,'cntM':cntM,diquSelectId:diquSelectId}, function(rs) {
+            if(!rs.data){
+                alert("<{t}>配货失败,请检查填入数量是否正确！<{/t}>");
+                return;
+            }
+            for(var i=0;i<rs.data.length;i++){
+                jq('#chkRoll-'+rs.data[i]).prop('checked',true);
+            }
+            var sign = 0;
+            var totalCnt=0;
+            var cnt=0;
+            var ids= [];
+            var cntM = [];
+            for(var i=0;i<inputs.length;i++){
+            var obj = inputs[i];
+                if(obj.type=='checkbox'){
+                    if(obj.checked==true){
+                        sign++;
+                        id = obj.value;
+                        cnt = parseFloat(obj.getAttribute("cnt"))||0;
+                        totalCnt=parseFloat(totalCnt)+cnt;
+                        totalCnt=totalCnt.toFixed(3);
+                        ids.push(id);
+                        cntM.push(cnt);
+                    }
+                }
+            }
+            totalCnt=parseFloat(totalCnt).toFixed(2);
+            // if(cntM>totalCnt){
+            //     alert("输入数量大于库存，已为您选择最大库存数量！");
+            // }
+            document.getElementById("cntM").value = totalCnt;
+            //往选中之中填值
+            //合计显示在页面上
+            var totalStr="<b><{t}>选中<{/t}>:"+"<font color='red'>"+sign+"</font>&nbsp;&nbsp;<{t}>卷<{/t}>&nbsp;&nbsp;<{t}>共<{/t}>:"+"<font color='red'>"+totalCnt+"</font>&nbsp;&nbsp;M</b> <div type='hidden' id='total' value='"+totalCnt+"' cntJuan='"+sign+"' madan_ids='"+ids+"' cntM='"+cntM+"'></div> ";
+            var spanDiv=window.document.getElementById ("divTotal");
+            spanDiv.innerHTML = totalStr;
+            sonObj.diquSelectId=diquSelectId;
+            sonObj.madan_ids=ids;
+            sonObj.diquname = jq('input[name="diquSelect"]:checked').attr('diquname');
+        },'json');
+    }
+    function show_memoZhi(obj,memoZhi) {
+        var tr=obj.parentNode.parentNode.parentNode;
+        var ns=tr.nextElementSibling;
+        var memo=ns.getElementsByClassName('memo')[0];
+        memo.innerHTML=memoZhi;
+        ns.removeAttribute("style");
+    }
+    function hide_memoZhi(obj) {
+        var tr=obj.parentNode.parentNode.parentNode;
+        var ns=tr.nextElementSibling;
+        ns.style.display='none';
+    }
+
+</script>

@@ -1,0 +1,64 @@
+<div class="tableform widgetconfig">
+  <table>
+    <tr>
+        <th>特点介绍：</th>
+        <td>
+          <input type="text" name="flag_title" value="<{$setting.flag_title}>">
+        </td>
+        <th>英文：</th>
+        <td>
+          <input type="text" name="flag_titleEn" value="<{$setting.flag_titleEn}>">
+        </td>
+      </tr>
+      <tr>
+        <th>左侧标题：</th>
+        <td>
+          <input type="text" name="title" value="<{$setting.title}>">
+        </td>
+        <th>英文副标题：</th>
+        <td>
+          <input type="text" name="title_en" value="<{$setting.title_en}>">
+        </td>
+      </tr>
+      <tr>
+        <th>查看更多链接：</th>
+        <td>
+          <input type="text" name="morelink" value="<{$setting.morelink}>">
+        </td>
+        <th>查看更多背景色：</th>
+        <td>
+          <input type="color" name="morelinkBg" value="<{$setting.morelinkBg}>">
+        </td>
+      </tr>
+      <tr>
+        <th>介绍：</th>
+        <td>
+          <textarea name="memo" style="width: 200px;height: 150px;"><{$setting.memo}></textarea>
+        </td>
+      </tr>
+      <tr>
+        <th>选择展示的单个商品：</th>
+        <td>
+          <td><{input type="goods_select" object="goods@b2c" pdt_name="goods_select_dan" pdt_value=$setting.goods_select_dan obj_name="goods_select_linkobj_dan" obj_value=$setting.goods_select_linkobj_dan}></td>
+        </td>
+        <th>边框颜色：</th>
+        <td>
+          <input type="color" name="borderBg" value="<{$setting.borderBg}>">
+        </td>
+        <th>立即购买背景色：</th>
+        <td>
+          <input type="color" name="fastbuyBg" value="<{$setting.fastbuyBg}>">
+        </td>
+      </tr>
+      <tr>
+        <th>选择切换商品(10个以内)：</th>
+        <td>
+          <td><{input type="goods_select" object="goods@b2c" pdt_name="goods_select_duo" pdt_value=$setting.goods_select_duo obj_name="goods_select_linkobj_duo" obj_value=$setting.goods_select_linkobj_duo}></td>
+        </td>
+        <th>切换商品背景色：</th>
+        <td>
+          <input type="color" name="lunboBg" value="<{$setting.lunboBg}>">
+        </td>
+      </tr>
+  </table>
+</div>

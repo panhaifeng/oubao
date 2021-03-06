@@ -1,0 +1,44 @@
+<div class="menu_header">
+	<label class="menu_global" id="menu_top_login">
+		<a class="OMlogin" data-needlogin="true" href="<{link app=b2c ctl=site_passport act=login}>"><{t}>登录<{/t}></a>
+		<span class="login_padd">|</span>
+		<a class="OMreg"  href="<{link app=b2c ctl=site_passport act=signup}>" target="_blank"><{t}>注册<{/t}></a>
+	</label>
+	<div class="menu_panel menu_top_panel" id="memberBar">
+		<span class="menu-arrow"></span>
+		<div class="slide"><a href="<{link app=b2c ctl=site_member act=index}>" target="_blank"><{t}>个人中心<{/t}></a></div>
+		<div class="slide"><a href="<{link app=b2c ctl=site_member act=balance}>" target="_blank"><{t}>我的账户<{/t}></a></div>
+		<div class="slide last" id="menu_top_panelexit"></div>
+	</div>
+</div>
+<script type="text/javascript">
+var e = Cookie.read('UNAME')?Cookie.read('UNAME'):'';
+var logout = "<a href='<{link app=b2c ctl=site_passport act=logout}>'><{t}>退出登录<{/t}></a>";
+if(e){
+	$('menu_top_login').innerHTML = '<span class="menu_top_login_user"><b>'+e+'<span class="arrow"></span></b></span>';
+
+	$('menu_top_panelexit').innerHTML = logout;
+}else{
+	$('memberBar').setStyle('display','none');
+}
+window.addEvent("domready", function() {
+	// $$(".search-section,.topbar-info").addEvents({
+	// 	"mouseenter":function(){
+	// 		$(this).addClass("hover")
+	// 	},
+	//     "mouseleave":function(){
+	// 		$(this).removeClass("hover")
+	// 	}
+	// })
+	$$('.zh-oubao').addEvent('click', function(){
+		document.cookie="LANG="+"zh_CN; path=/oubao_ec/index.php;";
+		window.location.href=window.location.href;
+	})
+	$$('.en-oubao').addEvent('click', function(){
+		document.cookie="LANG="+"en_US; path=/oubao_ec/index.php;";
+		window.location.href=window.location.href;
+	})
+})
+
+</script>
+

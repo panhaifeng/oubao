@@ -1,0 +1,58 @@
+a,a:hover{text-decoration:none}
+a {color:#666}
+a:hover {color:#F00}
+a,label,:focus{outline:0 none;}
+
+body{font:14px/1.5 "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;color:#000;}
+html,body{width:100%;min-height:100%;height:auto;}
+.top {padding-top:25px;height:75px;ovrflow:hidden;}
+.logo,.content,.footer {width:900px;margin:0 auto;padding:0 30px;}
+#footer {margin-top:45px;text-align:center;color:#999;padding-bottom:30px;}
+.faq_link{margin-bottom:20px;}
+.faq_link a{color:#999;vertical-align:middle}
+.faq_link a:hover{color:#000;font-weight:bold;}
+
+.sys-copyright {height:0;overflow:hidden;}
+
+.suc_content {width:982px;padding:30px 15px 15px;margin:30px auto 0;border:1px solid #e6e6e6;background:#fff;color:#666;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;overflow:hidden;}
+.signupin-content .notice-inline{top:45px;}
+.signupin-content .form-item{height:61px;}
+.signupin-content .form-label{height:35px;line-height:35px;}
+
+/*登录页面*/
+.suc_content li{margin-top:10px;}
+.suc_content .sign-title h2{color:#333;padding-left:30%;}
+.signupin-content .x-input {background:#fff;height:40px;line-height:40px;border:1px solid #e6e6e6;color:#999;font-size:14px;-webkit-appearance:none;-moz-appearance:none;appearance:none;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+.signup,.sign-title,.signin {border-color:#efefef;font-size:12px;} 
+.signin .need-signup{background:#fafafa;}
+.sign-title{margin-bottom:20px;padding-bottom:10px;}
+.signupin-content .verify-input{height:30px !important;}
+.signupin-content .action-verifycode{height:53px;padding-top:10px;}
+.form-act label{margin-right:40px;}
+.form-item .auto-change-verify-handle{color:#00F;}
+.form-item .auto-change-verify-handle:hover{color:#f00;}
+.signupin-content .form-item-normal .btn-major span{width:200px;height:38px;}
+.signupin-content .form-item-normal .btn-big{}
+.signupin-content .form-item-normal .btn-big span{-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;padding-left:0;}
+.signupin-content .form-item-normal .btn-big span span{padding-right:0;}
+/*注册页面*/
+.suc_content .signup-article .signup{border:0;}
+.signup-aside{margin-top:45px;border-left:1px dotted #efefef;}
+
+.signupin-content .form-item-normal .btn-big span span{font-size:16px;}
+.error .icon{color:#ff6f3d;}
+
+/*购物车*/
+.container {width:980px;margin:15px auto;}
+.xm-box {border:none;margin-bottom:10px;background:#fff;_zoom:1;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;position:relative;padding:20px;}
+.cart-main .p-title a:hover, .cart-main .p-gift a:hover, .cart-main .btn-goon:hover {color:#FF7E00}
+
+
+/*购物车按钮*/
+.cart-container .btn {width:200px;cursor:pointer;padding:0;-webkit-appearance:none;-moz-appearance:none;appearance: none;border-radius:6px;height:44px;line-height:44px;margin:0;text-align:center;}
+.cart-container .btn-import {background:#ff7a4d;border:1px solid #ff7549;margin-right:15px;}
+.cart-container .btn:hover,
+.cart-container .btn-import:hover {border:1px solid #FF936A;background:#FF936A;}
+.cart-container .btn:active,
+.cart-container .btn-import:active {background:#f6683b;border:1px solid #f6683b;}
+.cart-container .btn span {padding:0;margin:0;background:none;font-size:16px;border:none;display:inline;line-height:44px;height:44px;}

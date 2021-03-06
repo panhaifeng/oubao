@@ -1,0 +1,53 @@
+<div class="wow slideInUp fast unite_title_box">
+	<div class="unite_title_line"></div>
+	<div class="unite_title_content">
+		<div class="wow slideInUp fast utc_text_ch">色卡专区</div>
+		<div class="wow slideInUp fast utc_text_en">Color card area</div>
+	</div>
+</div>
+<div class="card_box">
+	<div class="card_top">
+		<div class="wow slideInUp fast fl card_left_box">
+			<div class="card_name"><{$setting.title1}></div>
+			<div class="card_type"><{$setting.title2}></div>
+			<div class="card_explain"><{$setting.title3}></div>
+			<div class="card_price"><{$data.goods_dan.goodsSalePrice|cur}></div>
+			<a href="<{$data.goods_dan.goodsLink}>"><button class="card_button">立即购买</button></a>
+		</div>
+		<div class="wow slideInUp fast fr card_right_box">
+			<img class="card_img" src="<{$data.goods_select_linkobj_dan.pic}>">
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="slider_card">
+		<{foreach from=$data.goods_duo item=item}>
+		<div class="slide seka">
+			<div class="card_coli">
+				<div class="card_enlarge">
+					<img class="card_list_img" src="<{$item.goodsPicY}>" >
+				</div>
+				<div class="wow slideInUp fast card_list_name"><{$item.goodsName}></div>
+				<div class="wow slideInUp fast card_list_exlpain"><{$item.brief}></div>
+				<div class="wow slideInUp fast card_list_price"><{$item.goodsSalePrice|cur}></div>
+				<a href="<{$item.goodsLink}>"><button class="wow slideInUp fast card_list_button">立即购买</button></a>
+			</div>
+		</div>
+		<{/foreach}>
+	</div>
+</div>
+<style>
+.bx-wrapper .bx-controls-direction a {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.bx-wrapper .bx-prev {
+    background-size: 100% 100% !important;
+    left: -68px !important;
+}
+
+.bx-wrapper .bx-next {
+    background-size: 100% 100% !important;
+    right: -68px !important;
+}
+</style>

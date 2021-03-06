@@ -1,0 +1,106 @@
+<style>
+<!--
+.division table {margin-top:5px;}
+.division th,.division td{padding:5px;border:1px solid #ddd; vertical-align:middle;line-height:1.8}
+.division th {background-color:#E2E8EB}
+.division input {padding:2px;line-height:18px;}
+.division i {color:#FF0000;}
+.division em {color:#999;font-style:normal;}
+-->
+</style>
+<div class="tableform widgetconfig">
+  <div class="division">
+    <table width="100%" cellpadding="0" cellspacing="0">
+     <tr>
+     	<th width="20%">栏目标题</th>
+        <td width="30%"><input type="text" name="title" value="<{$setting.title}>" style="width:200px;margin-right:15px;"><em>留空则不显示标题栏</em></td>
+        <th width="20%">更多链接</th>
+        <td width="30%"><input type="text" name="morelink" value="<{$setting.morelink}>" style="width:200px;" /></td>
+     </tr>      
+     <tr>
+        <th width="20%"><strong><i>*</i>多张广告图排列方式</strong> </th>
+        <td width="30%">
+        	<select name="adscrolltype">
+            	<option value="1"<{if $setting.adscrolltype != 2}> selected="selected"<{/if}>>上下换行</option>
+                <option value="2"<{if $setting.adscrolltype == 2}> selected="selected"<{/if}>>左右横排</option>
+            </select>
+        </td>
+        <th width="20%"><strong><i>*</i>是否开启悬停效果</strong> </th>
+        <td width="30%">
+        	<select name="showjs">
+            	<option value="1"<{if $setting.showjs != 2}> selected="selected"<{/if}>> 开启 </option>
+                <option value="2"<{if $setting.showjs == 2}> selected="selected"<{/if}>> 不开启 </option>
+            </select>
+        </td>
+      </tr>      
+    </table>
+  </div>
+  
+  <div class="clearfix">
+  	<{button label=$___b2c="添加图片广告"|t:'b2c' app="desktop" icon="btn_add.gif" id="add_ad_pic"}>
+ </div>
+ 
+  <div class="division" style="margin-top:8px;" id="had">
+  <{foreach from=$setting.had item=data key=key}>
+    <div id="ad_<{$data.i}>" class="configad">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <input type="hidden" name="had[<{$data.i}>][i]" value="<{$data.i}>" />
+        <tr>
+          <th width="20%">图片地址:</th>
+          <td><input type="text" style="width:78%" class="imgsrc" name="had[<{$data.i}>][link]" id="had[<{$data.i}>][link]" value="<{$data.link}>" />
+			<input type="button" value="上传图片" onclick="addPic($('had[<{$data.i}>][link]'))" />
+		</td>
+          <td style="width:30px;"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt=$___b2c="删除"|t:'b2c' title=$___b2c="删除"|t:'b2c' app="desktop"}></span></td>
+        </tr>
+        <tr>
+          <th width="20%">图片尺寸:</th>
+          <td>宽
+            <input type="text" style="width:100px" name="had[<{$data.i}>][showwidth]" value="<{$data.showwidth}>">px&nbsp;&nbsp;高
+            <input type="text" style="width:100px" name="had[<{$data.i}>][showheight]" value="<{$data.showheight}>">px </td>
+          <td></td>
+        </tr>
+        <tr>
+          <th width="20%">链接地址:</th>
+          <td><input type="text" style="width:90%" name="had[<{$data.i}>][tolink]" value="<{$data.tolink}>"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th width="20%">广告说明:</th>
+          <td><input type="text" style="width:90%" name="had[<{$data.i}>][text]" value="<{$data.text}>"></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <{/foreach}>
+    </div>
+</div>
+
+<script>
+$('add_ad_pic').addEvent('click',function(){
+  var d=new Date();
+  var i=d.getTime();
+  $('had').adopt(new Element('div').set('html','\
+    <div class="configad" style="margin-top:6px;">\
+       <table cellpadding="0" cellspacing="0">\
+         <tr><th width=20%>图片地址:</th><td><input type="text" style="width:78%" class="imgsrc" name="had['+i+'][link]" id="had['+i+'][link]" value="%THEME%/images/"><input type="button" value="上传图片" onclick="addPic($(\'had['+i+'][link]\'))"></td>\
+		 <td style="width:30px"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title"删除" app="desktop"}></span></td></tr>\
+		  <tr><th width=20%>图片尺寸:</th><td>宽<input type="text" style="width:100px" name="had['+i+'][showwidth]" value="">px&nbsp;&nbsp;高<input type="text" style="width:100px" name="had['+i+'][showheight]" value="">px</td><td></td></tr>\
+          <tr><th>链接地址:</th><td><input type="text" style="width:90%" name="had['+i+'][tolink]"></td><td> </td></tr>\
+		  <tr><th>广告说明：</th><td><input type="text" style="width:90%" name="had['+i+'][text]"></td><td> </td></tr>\
+       </table>\
+      <input type=hidden name=had['+i+'][i] value="'+i+'">\
+    </div>\
+  ').getFirst());
+	$('had['+i+']').addEvent('click',function(e){bindevent(this)});
+});
+
+function addPic(target){
+	var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+	Ex_Loader('modedialog',function(){
+		return new imgDialog(url,{onCallback:function(image_id,image_src){
+				$(target).value=image_src;
+		}})	;
+	});
+}	
+delLink=function(o){$(o).getParent('.configad').remove();}
+</script>

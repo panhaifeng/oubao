@@ -1,0 +1,73 @@
+<div class="tableform widgetconfig">
+    <div class="divsion">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>图片1：</th>
+        <td>
+        <input type="text" name='banner_pic1' id="banner_pic1" value="<{$setting.banner_pic1}>"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($('banner_pic1'))" />
+        </td>
+      </tr>
+       <tr>
+        <th>图片描述：</th>
+        <td><input type="text" name="ad_pic1_txt" value="<{$setting.ad_pic1_txt}>" /></td>
+      </tr>
+      <tr>
+        <th>图片链接：</th>
+        <td><input type="text" name="ad_pic1_link" value="<{$setting.ad_pic1_link}>" /></td>
+      </tr>
+      <tr>
+        <th>图片2：</th>
+        <td>
+        <input type="text" name='banner_pic2' id="banner_pic2" value="<{$setting.banner_pic2}>"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($('banner_pic2'))" />
+        </td>
+      </tr>
+       <tr>
+        <th>图片描述：</th>
+        <td><input type="text" name="ad_pic2_txt" value="<{$setting.ad_pic2_txt}>" /></td>
+      </tr>
+      <tr>
+        <th>图片链接：</th>
+        <td><input type="text" name="ad_pic2_link" value="<{$setting.ad_pic2_link}>" /></td>
+      </tr>
+      <tr>
+        <th>图片3：</th>
+        <td>
+        <input type="text" name='banner_pic3' id="banner_pic3" value="<{$setting.banner_pic3}>"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($('banner_pic3'))" />
+        </td>
+      </tr>
+       <tr>
+        <th>图片描述：</th>
+        <td><input type="text" name="ad_pic3_txt" value="<{$setting.ad_pic3_txt}>" /></td>
+      </tr>
+      <tr>
+        <th>图片链接：</th>
+        <td><input type="text" name="ad_pic3_link" value="<{$setting.ad_pic3_link}>" /></td>
+      </tr>
+      <tr>
+        <th>图片4：</th>
+        <td>
+        <input type="text" name='banner_pic4' id="banner_pic4" value="<{$setting.banner_pic4}>"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($('banner_pic4'))" />
+        </td>
+      </tr>
+       <tr>
+        <th>图片描述：</th>
+        <td><input type="text" name="ad_pic4_txt" value="<{$setting.ad_pic4_txt}>" /></td>
+      </tr>
+      <tr>
+        <th>图片链接：</th>
+        <td><input type="text" name="ad_pic4_link" value="<{$setting.ad_pic4_link}>" /></td>
+      </tr>
+     </table>
+    </div>
+</div>
+
+<script>
+    function addPic(target){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $(target).value=image_src;
+            }})	;
+        });
+    }
+</script>

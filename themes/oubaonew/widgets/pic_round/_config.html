@@ -1,0 +1,56 @@
+﻿<style>
+i{color:#FF0000;font-style:normal}
+</style>
+<div class="tableform">
+    <div class="clearfix"><{button label=$___b2c="添加图片"|t:'b2c' app="desktop" icon="btn_add.gif" id="addFocus"}></div>
+    <div class="division" id="focus">
+      <{foreach from=$setting.focus item=data key=key}>
+        <div id="focus_<{$data.i}>" class="configad" style="margin-top:5px;">
+         <input type="hidden" name="focus[<{$data.i}>][i]" value="<{$data.i}>" />
+          <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #ddd;">
+             <tr>
+                  <th style="width:30px;">图片地址:</th>
+                  <td><input type="text" style="width:200px" name="focus[<{$data.i}>][imgurl]" id="focus[<{$data.i}>][imgurl]" value="<{$data.imgurl}>" /><input type=button value="上传" onClick="addPic($('focus[<{$data.i}>][imgurl]'))" /></td>
+                  <th style="width:30px;">图片热点代码:</th>
+                  <td>
+                    <input type="hidden" style="width:150px" name="focus[<{$data.i}>][orderByOld]" value="<{$data.orderByOld}>"/>
+                    <textarea name="focus[<{$data.i}>][tolink]"><{$data.tolink}></textarea>
+                  </td>
+                  <th style="width:30px;">排序:</th>
+                  <td><input type="text" style="width:20px" name="focus[<{$data.i}>][orderBy]" value="<{$data.orderBy}>" /></td>
+                  <td style="width:20px;vertical-align:middle;text-align:center;"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除" app="desktop"}></span></td>
+             </tr>
+          </table>
+        </div>
+        <{/foreach}>
+    </div>
+</div>
+
+<script>
+$('addFocus').addEvent('click',function(){
+  var d=new Date();
+  var i=d.getTime();
+  $('focus').adopt(new Element('div').set('html','\
+   <div class="configad" style="margin-top:5px;">\
+       <table cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #ddd;">\
+         <tr>\
+		 <th style="width:30px;">图片地址:</th><td><input type="text" style="width:200px" name=focus['+i+'][imgurl] id="focus['+i+'][imgurl]"><input type=button value="上传" onClick=addPic($(\'focus['+i+'][imgurl]\'))></td>\
+		 <th style="width:30px;">图片热点代码:</th><td><textarea name=focus['+i+'][tolink]></textarea></td>\
+     <th style="width:30px;">排序：</th><td><input type="text" style="width:20px" name=focus['+i+'][orderBy]></td>\
+		 <td style="width:20px;vertical-align:middle;text-align:center;"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title"删除" app="desktop"}></span></td>\
+	   </tr></table>\
+      <input type="hidden" name="focus['+i+'][i]" value="'+i+'">\
+    </div>\
+  ').getFirst());
+});
+
+function addPic(target){
+	var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+	Ex_Loader('modedialog',function(){
+		return new imgDialog(url,{onCallback:function(image_id,image_src){
+				$(target).value=image_src;
+		}})	;
+	});
+}
+delLink=function(o){$(o).getParent('.configad').remove();}
+</script>

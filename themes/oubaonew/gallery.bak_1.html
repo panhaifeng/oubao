@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<{header}>
+<link rel="stylesheet" type="text/css" href="images/qingfeng.css" />
+<link rel="stylesheet" type="text/css" href="images/list.css" />
+<!-- 侧栏样式 -->
+    	<link rel="stylesheet" type="text/css" href="images/newest/css/sidebar.css">
+    	<!-- 侧栏字体图标 -->
+    	<link rel="stylesheet" type="text/css" href="images/newest/css/icon.css">
+		<link type="text/css" href="images/newest/css/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="images/newest/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript">
+			var jq = jQuery.noConflict();
+		</script>
+		<script type="text/javascript" src="images/newest/js/wow.min.js"></script>
+		<script type="text/javascript" src="images/newest/js/jquery.bxslider.js"></script>
+</head>
+<body>
+<{require file="block/header.html"}>
+
+<div class="w1240">
+  <div class="breadcrumbs"><{widgets id="w1"}></div>
+         <div class="main">
+          <{main}>
+         </div>
+<script>
+window.addEvent('domready', function() {
+    $('gallery_show').getElements('li').each(function(item) {
+        item.addEvents({
+            "mouseenter": function() {
+                item.addClass("active")
+            },
+            "mouseleave": function() {
+                item.removeClass("active")
+            }
+        })
+    })
+})
+</script>
+
+</div>
+
+<{require file="block/footer.html"}>
+
+</body>
+</html>

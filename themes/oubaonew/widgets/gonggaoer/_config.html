@@ -1,0 +1,134 @@
+<style>
+<!--
+.division table {margin-top:5px;}
+.configad {
+  margin-top:6px;padding-bottom:10px;border-bottom:2px solid #d4dde4;
+}
+-->
+</style>
+<div class="tableform widgetconfig">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>banner图片：</th>
+        <td>
+        <input type="text" name='banner_pic' id="banner_pic" value="<{$setting.banner_pic}>"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($('banner_pic'))" />
+        </td>
+      </tr>
+  </table>
+  <div class="clearfix">
+  	<{button label=$___b2c="添加年份"|t:'b2c' app="desktop" icon="btn_add.gif" id="add_ad_pic"}>
+ </div>
+
+<div class="division" style="margin-top:8px;" id="had">
+  <{foreach from=$setting.year key=key item=year}>
+    <div class="configad">
+      年:<input type="text" name="year[<{$key}>][year]" value="<{$year.year}>"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt=$___b2c="删除年份"|t:'b2c' title=$___b2c="删除年份"|t:'b2c' app="desktop"}></span>
+      <div id="year<{$key}>">
+        <{foreach from=$year.shijian key=shijiankey item=shijian}>
+        <div class="configad">
+          <br>事件:
+          <table>
+            <tr>
+              <th>左侧大标题</th>
+              <td>
+                <input type="text" name="year[<{$key}>][shijian][<{$shijiankey}>][left_title]" value="<{$shijian.left_title}>">
+              </td>
+              <th>年-月</th>
+              <td>
+                <input type="text" name="year[<{$key}>][shijian][<{$shijiankey}>][year_month]" value="<{$shijian.year_month}>">
+              </td>
+              <th>日</th>
+              <td>
+                <input type="text" name="year[<{$key}>][shijian][<{$shijiankey}>][date]" value="<{$shijian.date}>">
+              </td>
+            </tr>
+            <tr>
+              <th>标题</th>
+              <td>
+                <input type="text" name="year[<{$key}>][shijian][<{$shijiankey}>][title]" value="<{$shijian.title}>">
+              </td>
+              <th>简介</th>
+              <td>
+                <textarea name="year[<{$key}>][shijian][<{$shijiankey}>][jianjie]" style="width:100px;height:50px;"><{$shijian.jianjie}></textarea>
+              </td>
+              <th>链接</th>
+              <td>
+                <textarea name="year[<{$key}>][shijian][<{$shijiankey}>][video]"><{$shijian.video}></textarea>
+              </td>
+            </tr>
+            <tr>
+              <th>排序</th>
+              <td>
+                <input type="text" name="year[<{$key}>][shijian][<{$shijiankey}>][order]" value="<{$shijian.order}>">
+              </td>
+            </tr>
+          </table><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt=$___b2c="删除"|t:'b2c' title=$___b2c="删除事件"|t:'b2c' app="desktop"}></span>
+        </div>
+        <{/foreach}>
+      </div>
+      <button type="button" onclick="addShiJian('<{$key}>');">添加事件</button>
+    </div>
+  <{/foreach}>
+</div>
+
+<script>
+//添加年份
+$('add_ad_pic').addEvent('click',function(){
+  var d = new Date();
+  var i = d.getTime();
+  $('had').adopt(new Element('div').set('html','\
+    <div class="configad">\
+    年:<input type=text name="year['+i+'][year]">\
+    <span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除年份" app="desktop"}></span>\
+       <div id="year'+i+'"></div>\
+       <button type="button" onclick="addShiJian('+i+');">添加事件</button>\
+    </div>\
+  ').getFirst());
+});
+//添加月份
+function addYue(o){
+  var d = new Date();
+  var i = d.getTime();
+  var yeardiv = 'year'+o;
+  $(yeardiv).adopt(new Element('div').set('html','\
+    <div class="configad">\
+    月:<input type="text" name="year['+o+'][yue]['+i+'][yue] " style="width:50px;">\
+    <span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除月份" app="desktop"}></span>\
+    <div id="yue'+i+'" ></div>\
+    <button type="button" onclick="addShiJian('+o+','+i+');">添加事件</button>\
+    </div>\
+  ').getFirst());
+}
+//添加事件
+function addShiJian(o){
+  var d = new Date();
+  var i = d.getTime();
+  var yeardiv = 'year'+o;
+  $(yeardiv).adopt(new Element('div').set('html','\
+    <div class="configad">\
+    事件:\
+    <table><tr><th>左侧大标题</th><td><input type="text" name="year['+o+'][shijian]['+i+'][left_title]"></td>\
+    <th>年-月</th><td><input type="text" name="year['+o+'][shijian]['+i+'][year_month]"></td>\
+    <th>日</th><td><input type="text" name="year['+o+'][shijian]['+i+'][date]"></td>\</tr>\
+    <tr><th>标题</th><td><input type="text" name="year['+o+'][shijian]['+i+'][title]"></td>\
+    <th>简介</th><td><textarea name="year['+o+'][shijian]['+i+'][jianjie]"  style="width:100px;height:50px;" ></textarea></td>\
+    <th>链接</th><td><textarea name="year['+o+'][shijian]['+i+'][video]"></textarea></td>\</tr>\
+    <tr><th>排序</th><td><input type="text" name="year['+o+'][shijian]['+i+'][order]"/></td></tr>\
+    </table>\
+    <span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除事件" app="desktop"}></span>\
+    </div>\
+  ').getFirst());
+}
+delLink=function(o){
+  $(o).getParent('.configad').remove();
+}
+function addPic(target){
+  var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+  Ex_Loader('modedialog',function(){
+    return new imgDialog(url,{onCallback:function(image_id,image_src){
+        $(target).value=image_src;
+    }}) ;
+  });
+}
+
+</script>

@@ -1,0 +1,119 @@
+<style>
+<!--
+.division table {margin-top:5px;}
+.configad {
+  margin-top:6px;padding-bottom:10px;border-bottom:2px solid #d4dde4;
+}
+-->
+</style>
+<div class="tableform widgetconfig">
+  <div class="division">
+    <table width="100%" cellpadding="0" cellspacing="0">
+     <tr>
+     	<th>视频日期</th>
+        <td>
+          年-月：
+          <input type="text" name="video_ym" value="<{$setting.video_ym}>" style="width:100px;margin-right:15px;">
+          日期：
+          <input type="text" name="video_date" value="<{$setting.video_date}>" style="width:50px;margin-right:15px;">
+        </td>
+        <th width="20%">视频链接</th>
+        <td width="30%">
+          <textarea name="video_link"><{$setting.video_link}></textarea>
+     </tr>
+     <tr>
+        <th><strong><i>*</i>视频标题</strong> </th>
+        <td>标题：
+          <input type="text" name="video_title" value="<{$setting.video_title}>" style="width:200px;margin-right:15px;">
+        </td>
+        <th><strong><i>*</i>内容简介(50字以内)</strong> </th>
+        <td>
+        	<textarea name="video_memo" style="height: 100px;width: 200px;resize:none;"><{$setting.video_memo}></textarea>
+        </td>
+      </tr>
+      <tr>
+        <th width="20%">视频背景图片(建议尺寸550*197):</th>
+          <td><input type="text" style="width:78%" class="imgsrc" name="video_img" id="video_img" value="<{$setting.video_img}>" />
+      <input type="button" value="上传图片" onclick="addPic($('video_img'))" />
+    </td>
+        <th>查看更多链接：</th>
+        <td>
+          <input type="text" name="more_link" value="<{$setting.more_link}>" style="width:200px;margin-right:15px;">
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="clearfix">
+  	<{button label=$___b2c="添加公告"|t:'b2c' app="desktop" icon="btn_add.gif" id="add_ad_pic"}>
+ </div>
+
+<div class="division" style="margin-top:8px;" id="had">
+  <{foreach from=$setting.had item=data key=key}>
+    <div id="ad_<{$data.i}>" class="configad">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <input type="hidden" name="had[<{$data.i}>][i]" value="<{$data.i}>" />
+        <tr>
+          <th width="20%">年-月:</th>
+          <td><input type="text" style="width:20%" class="imgsrc" name="had[<{$data.i}>][y_m]" value="<{$data.y_m}>" />
+		      </td>
+          <th width="20%">日期:</th>
+          <td><input type="text" style="width:20%" class="imgsrc" name="had[<{$data.i}>][date]" value="<{$data.date}>" />
+          </td>
+          <th width="20%">排序:</th>
+          <td><input type="text" style="width:20%" class="imgsrc" name="had[<{$data.i}>][orderBy]" value="<{$data.orderBy}>" />
+          </td>
+          <td style="width:30px;"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt=$___b2c="删除"|t:'b2c' title=$___b2c="删除"|t:'b2c' app="desktop"}></span></td>
+        </tr>
+        <tr>
+          <th width="20%">标题:</th>
+          <td><input type="text" style="width:90%" name="had[<{$data.i}>][title]" value="<{$data.title}>"></td>
+        </tr>
+        <tr>
+          <th>内容简介(50字以内):</th>
+          <td><textarea name="had[<{$data.i}>][content]"  style="height: 100px;width: 200px;resize:none;"><{$data.content}></textarea>
+          </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <th>链接地址:</th>
+          <td><input type="text" style="width:90%" name="had[<{$data.i}>][tolink]" value="<{$data.tolink}>"></td>
+          <td> </td>
+        </tr>
+      </table>
+    </div>
+    <{/foreach}>
+    </div>
+</div>
+
+<script>
+$('add_ad_pic').addEvent('click',function(){
+  var d=new Date();
+  var i=d.getTime();
+  $('had').adopt(new Element('div').set('html','\
+    <div class="configad">\
+       <table cellpadding="0" cellspacing="0">\
+         <tr><th width=20%>年-月：</th><td><input type="text" style="width:20%" class="imgsrc" name="had['+i+'][y_m]"></td>\
+         <th width=20%>日期：</th><td><input type="text" style="width:20%" class="imgsrc" name="had['+i+'][date]"></td>\
+         <th width=20%>排序：</th><td><input type="text" style="width:20%" class="imgsrc" name="had['+i+'][orderBy]"></td>\
+		 <td style="width:30px"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title"删除" app="desktop"}></span></td></tr>\
+     <tr><th>标题:</th><td><input type="text" style="width:90%" name="had['+i+'][title]"></td></tr>\
+     <tr><th>内容简介(50字以内):</th><td><textarea name="had['+i+'][content]" style="height: 100px;width: 200px;resize:none;"></textarea></td><td> </td></tr>\
+          <tr><th>链接地址:</th><td><input type="text" style="width:90%" name="had['+i+'][tolink]"></td><td> </td></tr>\
+       </table>\
+      <input type=hidden name=had['+i+'][i] value="'+i+'"/>\
+    </div>\
+  ').getFirst());
+});
+
+function addPic(target){
+	var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+	Ex_Loader('modedialog',function(){
+		return new imgDialog(url,{onCallback:function(image_id,image_src){
+				$(target).value=image_src;
+		}})	;
+	});
+}
+delLink=function(o){$(o).getParent('.configad').remove();}
+</script>
+

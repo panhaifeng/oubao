@@ -1,0 +1,59 @@
+<style>
+<!--
+.tableform table {margin-top:5px;}
+.tableform th,.tableform td{padding:5px;border:1px solid #ddd; vertical-align:middle;line-height:1.8}
+.tableform th {background-color:#E2E8EB}
+.widgetconfig input {padding:2px;line-height:18px;}
+.tableform i {color:#FF0000;}
+.configad {
+  margin-top:6px;padding-bottom:10px;border-bottom:2px solid #d4dde4;
+}
+-->
+</style>
+<div class="clearfix">
+    <{button label=$___b2c="添加"|t:'b2c' app="desktop" icon="btn_add.gif" id="add_ad_pic"}>
+ </div>
+<div class="division" style="margin-top:8px;" id="had">
+  <{foreach from=$setting.had key=key item=data}>
+    <div class="configad">
+       <table cellpadding="0" cellspacing="0">
+         <tr><th>图片:</th><td><input type="text" class="imgsrc" name="had[<{$key}>][link]" value="<{$data.link}>" id="had[<{$key}>][link]" > <input type="button" value="上传图片" onclick="addPic($('had[<{$key}>][link]'))"></td>
+     <td></td><td></td><td style="width:30px"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title"删除" app="desktop"}></span></td></tr>
+     <tr><th>标题:</th><td><input type="text" style="width:50%" name="had[<{$key}>][title]" value="<{$data.title}>"></td><th>英文标题:</th><td><input type="text" style="width:50%" name="had[<{$key}>][en_title]" value="<{$data.en_title}>"></td></tr>
+     <tr><th>背景色：</th><td><input type="color" name="had[<{$key}>][backcolor]" value="<{$data.backcolor}>" size="7" maxlength="7"></td></tr>
+     <tr><th>内容简介(50字以内):</th><td><textarea name="had[<{$key}>][content]" style="height: 100px;width: 200px;resize:none;"><{$data.content}></textarea></td><td> </td></tr>
+          <tr><th>链接地址:</th><td><input type="text" style="width:90%" name="had[<{$key}>][tolink]" value="<{$data.tolink}>"></td><td> </td></tr>
+       </table>
+    </div>
+  <{/foreach}>
+</div>
+
+<script>
+$('add_ad_pic').addEvent('click',function(){
+  var d=new Date();
+  var i=d.getTime();
+  $('had').adopt(new Element('div').set('html','\
+    <div class="configad">\
+       <table cellpadding="0" cellspacing="0">\
+         <tr><th>图片:</th><td><input type="text" class="imgsrc" name="had['+i+'][link]" id="had['+i+'][link]" ><input type="button" value="上传图片" onclick="addPic($(\'had['+i+'][link]\'))"></td>\
+     <td></td><td></td><td style="width:30px"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title"删除" app="desktop"}></span></td></tr>\
+     <tr><th>标题:</th><td><input type="text" style="width:50%" name="had['+i+'][title]"></td><th>英文标题:</th><td><input type="text" style="width:50%" name="had['+i+'][en_title]"></td></tr>\
+     <tr><th>背景色：</th><td><input type="color" name="had['+i+'][backcolor]" size="7" maxlength="7"></td></tr>\
+     <tr><th>内容简介(50字以内):</th><td><textarea name="had['+i+'][content]" style="height: 100px;width: 200px;resize:none;"></textarea></td><td> </td></tr>\
+          <tr><th>链接地址:</th><td><input type="text" style="width:90%" name="had['+i+'][tolink]"></td><td> </td></tr>\
+       </table>\
+    </div>\
+  ').getFirst());
+});
+
+function addPic(target){
+  var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+  Ex_Loader('modedialog',function(){
+    return new imgDialog(url,{onCallback:function(image_id,image_src){
+        $(target).value=image_src;
+    }}) ;
+  });
+}
+delLink=function(o){$(o).getParent('.configad').remove();}
+</script>
+

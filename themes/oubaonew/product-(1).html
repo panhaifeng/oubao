@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<{header}>
+<link rel="stylesheet" type="text/css" href="images/qingfeng.css" />
+<link rel="stylesheet" type="text/css" href="images/list.css" />
+</head>
+<body>
+<{require file="block/header.html"}>
+<div class="w1240">
+ <div class="breadcrumbs">
+ <{widgets id="w1"}> 
+ </div>
+   <div class="w248 l col-left">
+   <!-- 同款推荐 -->
+      <div class="xm-box likeList">
+        <div class="hd">
+          <h3 class="title"><{t}>同款商品推荐<{/t}></h3><span class="morelink frt"><a class="lnk clearAll" href="<{link app=b2c ctl=site_gallery act=index arg0=$goods_cat_id}>"><{t}>更多<{/t}></a></span>
+        </div>
+        
+        <div class="bd">
+          <ul class="xm-goods-sublist xm-goods-sublist-l">
+          <{foreach from=$goods_sameKind item=goodsk key=gid}>
+            <li class="<{if $gid>5}>hide<{/if}>">  
+             <div class="item-name">
+                <a href="<{link app=b2c ctl=site_product act=index arg0=$goodsk.productId}>" target="_blank" title="<{$goodsk.name}>" ><{$goodsk.name}></a>
+             </div>
+             <div class="item-price"><{$goodsk.price}></div>
+             <div class="item-thumb">
+              <a href="<{link app=b2c ctl=site_product act=index arg0=$goodsk.productId}>" target="_blank" title="<{$goodsk.name}>" data-gid="<{$goodsk.productId}>"><img src="<{$goodsk.image_default_id|default:$setting.imageDefault.S.default_image|storager:'m'}>" alt="<{$goodsk.name}>" /></a>
+             </div>
+            </li>
+           <{/foreach}>
+          </ul>
+        </div>
+      </div>
+      
+   <{require file="block/sidebar.html"}>
+   </div>
+   <div class="w982 r">
+    <div class="page-maincontent clearfix">
+ 
+        <{main}>
+         
+     </div>
+   </div>  
+ 
+</div>
+<{require file="block/footer.html"}>
+<script>
+try{
+  var productdiv = $('product_information').getElement(".product-concerns");
+  var moveElement=$('product_container').getElement(".product-titles");
+	if (productdiv) {
+		$(moveElement).inject(productdiv,'before');
+	}
+}catch(e){}
+</script>
+</body>
+</html>

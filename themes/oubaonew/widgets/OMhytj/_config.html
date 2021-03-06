@@ -1,0 +1,255 @@
+<div class="tableform">
+    <div class="widgetconfig">
+        <table cellspacing="0" cellpadding="0" border="0" width="40%" style="float:left;">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片1：<{/t}></th>
+                    <td>
+                        <input type=hidden name="hytj_pic1" value="<{$setting.hytj_pic1}>"><input name='hytj_pic1' class="imgsrc" id="hytj_pic1" value="<{$setting.hytj_pic1}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic1()">
+                    </td>
+                </tr>
+				       <tr>
+                    <th><{t app='b2c'}>标题1：<{/t}></th>
+                    <td>
+                       <input type="text" name="hytj_title1" value="<{$setting.hytj_title1}>"> 小标题1：<input type="text" name="hytj_etitle1" value="<{$setting.hytj_etitle1}>">
+                    </td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>文字链接：<br>[文字标题][文字链接]<{/t}></th>
+                    <td>
+					 
+					   【文字链接1：<input type="text" name="hytj_word1_1" value="<{$setting.hytj_word1_1|default:''}>">
+					<input type="text" name="hytj_wordlink1_1" value="<{$setting.hytj_wordlink1_1|default:''}>">	】<br>
+					
+						【文字链接2：<input type="text" name="hytj_word1_2" value="<{$setting.hytj_word1_2|default:''}>">
+					<input type="text" name="hytj_wordlink1_2" value="<{$setting.hytj_wordlink1_2|default:''}>">	】<br>
+					
+						【文字链接3：<input type="text" name="hytj_word1_3" value="<{$setting.hytj_word1_3|default:''}>">
+					<input type="text" name="hytj_wordlink1_3" value="<{$setting.hytj_wordlink1_3|default:''}>">	】<br>
+					
+					【文字链接4：<input type="text" name="hytj_word1_4" value="<{$setting.hytj_word1_4|default:''}>">
+					<input type="text" name="hytj_wordlink1_4" value="<{$setting.hytj_wordlink2_4|default:''}>">	】<br>
+					
+					【文字链接5：<input type="text" name="hytj_word1_5" value="<{$setting.hytj_word1_5|default:''}>">
+					<input type="text" name="hytj_wordlink1_5" value="<{$setting.hytj_wordlink1_5|default:''}>">	】<br>
+					
+					【文字链接6：<input type="text" name="hytj_word1_6" value="<{$setting.hytj_word1_6|default:''}>">
+					<input type="text" name="hytj_wordlink1_6" value="<{$setting.hytj_wordlink1_6|default:''}>">	】<br>
+					
+					【文字链接7：<input type="text" name="hytj_word1_7" value="<{$setting.hytj_word1_7|default:''}>">
+					<input type="text" name="hytj_wordlink1_7" value="<{$setting.hytj_wordlink1_7|default:''}>">	】<br>
+					
+					【文字链接8：<input type="text" name="hytj_word1_8" value="<{$setting.hytj_word1_8|default:''}>">
+					<input type="text" name="hytj_wordlink1_8" value="<{$setting.hytj_wordlink1_8|default:''}>">	】<br>
+					
+					【文字链接9：<input type="text" name="hytj_word1_9" value="<{$setting.hytj_word1_9|default:''}>">
+					<input type="text" name="hytj_wordlink1_9" value="<{$setting.hytj_wordlink1_9|default:''}>">	】<br>
+					
+					【文字链接10：<input type="text" name="hytj_word1_10" value="<{$setting.hytj_word1_10|default:''}>">
+					<input type="text" name="hytj_wordlink1_10" value="<{$setting.hytj_wordlink1_10|default:''}>">	】<br>
+					 </td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片链接1： <{/t}></th>
+                    <td><input type="text" name="hytj_link1" value="<{$setting.hytj_link1}>"></td>
+                </tr>
+        </tbody></table>
+		<hr>
+		 <table cellspacing="0" cellpadding="0" border="0" width="40%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片2：<{/t}></th>
+                    <td>
+                        <input type=hidden name="hytj_pic2" value="<{$setting.hytj_pic2}>"><input name='hytj_pic2' class="imgsrc" id="hytj_pic2" value="<{$setting.hytj_pic2}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic2()">
+                    </td>
+                </tr>
+				       <tr>
+                    <th><{t app='b2c'}>标题2：<{/t}></th>
+                    <td>
+                       <input type="text" name="hytj_title2" value="<{$setting.hytj_title2}>"> 小标题2：<input type="text" name="hytj_etitle2" value="<{$setting.hytj_etitle2}>">
+                    </td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>文字链接：<br>[文字标题][文字链接]<{/t}></th>
+                    <td>
+					
+					   【文字链接1：<input type="text" name="hytj_word2_1" value="<{$setting.hytj_word2_1|default:''}>">
+					<input type="text" name="hytj_wordlink2_1" value="<{$setting.hytj_wordlink2_1|default:''}>">	】<br>
+					
+						【文字链接2：<input type="text" name="hytj_word2_2" value="<{$setting.hytj_word2_2|default:''}>">
+					<input type="text" name="hytj_wordlink2_2" value="<{$setting.hytj_wordlink2_2|default:''}>">	】<br>
+					
+						【文字链接3：<input type="text" name="hytj_word2_3" value="<{$setting.hytj_word2_3|default:''}>">
+					<input type="text" name="hytj_wordlink2_3" value="<{$setting.hytj_wordlink2_3|default:''}>">	】<br>
+					
+					【文字链接4：<input type="text" name="hytj_word2_4" value="<{$setting.hytj_word2_4|default:''}>">
+					<input type="text" name="hytj_wordlink2_4" value="<{$setting.hytj_wordlink2_4|default:''}>">	】<br>
+					
+					【文字链接5：<input type="text" name="hytj_word2_5" value="<{$setting.hytj_word2_5|default:''}>">
+					<input type="text" name="hytj_wordlink2_5" value="<{$setting.hytj_wordlink2_5|default:''}>">	】<br>
+					
+					【文字链接6：<input type="text" name="hytj_word2_6" value="<{$setting.hytj_word2_6|default:''}>">
+					<input type="text" name="hytj_wordlink2_6" value="<{$setting.hytj_wordlink2_6|default:''}>">	】<br>
+					
+					【文字链接7：<input type="text" name="hytj_word2_7" value="<{$setting.hytj_word2_7|default:''}>">
+					<input type="text" name="hytj_wordlink2_7" value="<{$setting.hytj_wordlink2_7|default:''}>">	】<br>
+					
+					【文字链接8：<input type="text" name="hytj_word2_8" value="<{$setting.hytj_word2_8|default:''}>">
+					<input type="text" name="hytj_wordlink2_8" value="<{$setting.hytj_wordlink2_8|default:''}>">	】<br>
+					
+					【文字链接9：<input type="text" name="hytj_word2_9" value="<{$setting.hytj_word2_9|default:''}>">
+					<input type="text" name="hytj_wordlink2_9" value="<{$setting.hytj_wordlink2_9|default:''}>">	】<br>
+					
+					【文字链接10：<input type="text" name="hytj_word2_10" value="<{$setting.hytj_word2_10|default:''}>">
+					<input type="text" name="hytj_wordlink2_10" value="<{$setting.hytj_wordlink2_10|default:''}>">	】<br>
+					</td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片链接2：<{/t}></th>
+                    <td><input type="text" name="hytj_link2" value="<{$setting.hytj_link2}>"></td>
+                </tr>
+        </tbody></table><hr>
+		<table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片3：<{/t}></th>
+                    <td>
+                        <input type=hidden name="hytj_pic3" value="<{$setting.hytj_pic3}>"><input name='hytj_pic3' class="imgsrc" id="hytj_pic3" value="<{$setting.hytj_pic3}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic3()">
+                    </td>
+                </tr>
+				       <tr>
+                    <th><{t app='b2c'}>标题3：<{/t}></th>
+                    <td>
+                       <input type="text" name="hytj_title3" value="<{$setting.hytj_title3}>"> 小标题3：<input type="text" name="hytj_etitle3" value="<{$setting.hytj_etitle3}>">
+                    </td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>文字链接：<br>[文字标题][文字链接]<{/t}></th>
+                    <td>
+					
+					 【文字链接1：<input type="text" name="hytj_word3_1" value="<{$setting.hytj_word3_1|default:''}>">
+					<input type="text" name="hytj_wordlink3_1" value="<{$setting.hytj_wordlink3_1|default:''}>">	】<br>
+					
+						【文字链接2：<input type="text" name="hytj_word3_2" value="<{$setting.hytj_word3_2|default:''}>">
+					<input type="text" name="hytj_wordlink3_2" value="<{$setting.hytj_wordlink3_2|default:''}>">	】<br>
+					
+						【文字链接3：<input type="text" name="hytj_word3_3" value="<{$setting.hytj_word3_3|default:''}>">
+					<input type="text" name="hytj_wordlink3_3" value="<{$setting.hytj_wordlink3_3|default:''}>">	】<br>
+					
+					【文字链接4：<input type="text" name="hytj_word3_4" value="<{$setting.hytj_word3_4|default:''}>">
+					<input type="text" name="hytj_wordlink3_4" value="<{$setting.hytj_wordlink2_4|default:''}>">	】<br>
+					
+					【文字链接5：<input type="text" name="hytj_word3_5" value="<{$setting.hytj_word3_5|default:''}>">
+					<input type="text" name="hytj_wordlink3_5" value="<{$setting.hytj_wordlink3_5|default:''}>">	】<br>
+					
+					【文字链接6：<input type="text" name="hytj_word3_6" value="<{$setting.hytj_word3_6|default:''}>">
+					<input type="text" name="hytj_wordlink3_6" value="<{$setting.hytj_wordlink3_6|default:''}>">	】<br>
+					
+					【文字链接7：<input type="text" name="hytj_word3_7" value="<{$setting.hytj_word3_7|default:''}>">
+					<input type="text" name="hytj_wordlink3_7" value="<{$setting.hytj_wordlink3_7|default:''}>">	】<br>
+					
+					【文字链接8：<input type="text" name="hytj_word3_8" value="<{$setting.hytj_word3_8|default:''}>">
+					<input type="text" name="hytj_wordlink3_8" value="<{$setting.hytj_wordlink3_8|default:''}>">	】<br>
+					
+					【文字链接9：<input type="text" name="hytj_word3_9" value="<{$setting.hytj_word3_9|default:''}>">
+					<input type="text" name="hytj_wordlink3_9" value="<{$setting.hytj_wordlink3_9|default:''}>">	】<br>
+					
+					【文字链接10：<input type="text" name="hytj_word3_10" value="<{$setting.hytj_word3_10|default:''}>">
+					<input type="text" name="hytj_wordlink3_10" value="<{$setting.hytj_wordlink3_10|default:''}>">	】<br>
+					</td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片链接3：<{/t}></th>
+                    <td><input type="text" name="hytj_link3" value="<{$setting.hytj_link3}>"></td>
+                </tr>
+        </tbody></table><hr>
+		<table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片4：<{/t}></th>
+                    <td>
+                        <input type=hidden name="hytj_pic4" value="<{$setting.hytj_pic4}>"><input name='hytj_pic4' class="imgsrc" id="hytj_pic4" value="<{$setting.hytj_pic4}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic4()">
+                    </td>
+                </tr>
+				       <tr>
+                    <th><{t app='b2c'}>标题4：<{/t}></th>
+                    <td>
+                       <input type="text" name="hytj_title4" value="<{$setting.hytj_title4}>"> 小标题4：<input type="text" name="hytj_etitle4" value="<{$setting.hytj_etitle4}>">
+                    </td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>文字链接：<br>[文字标题][文字链接]<{/t}></th>
+                    <td>
+					  【文字链接1：<input type="text" name="hytj_word4_1" value="<{$setting.hytj_word4_1|default:''}>">
+					<input type="text" name="hytj_wordlink4_1" value="<{$setting.hytj_wordlink4_1|default:''}>">	】<br>
+					
+						【文字链接2：<input type="text" name="hytj_word4_2" value="<{$setting.hytj_word4_2|default:''}>">
+					<input type="text" name="hytj_wordlink4_2" value="<{$setting.hytj_wordlink4_2|default:''}>">	】<br>
+					
+						【文字链接3：<input type="text" name="hytj_word4_3" value="<{$setting.hytj_word4_3|default:''}>">
+					<input type="text" name="hytj_wordlink4_3" value="<{$setting.hytj_wordlink4_3|default:''}>">	】<br>
+					
+					【文字链接4：<input type="text" name="hytj_word4_4" value="<{$setting.hytj_word4_4|default:''}>">
+					<input type="text" name="hytj_wordlink4_4" value="<{$setting.hytj_wordlink2_4|default:''}>">	】<br>
+					
+					【文字链接5：<input type="text" name="hytj_word4_5" value="<{$setting.hytj_word4_5|default:''}>">
+					<input type="text" name="hytj_wordlink4_5" value="<{$setting.hytj_wordlink4_5|default:''}>">	】<br>
+					
+					【文字链接6：<input type="text" name="hytj_word4_6" value="<{$setting.hytj_word4_6|default:''}>">
+					<input type="text" name="hytj_wordlink4_6" value="<{$setting.hytj_wordlink4_6|default:''}>">	】<br>
+					
+					【文字链接7：<input type="text" name="hytj_word4_7" value="<{$setting.hytj_word4_7|default:''}>">
+					<input type="text" name="hytj_wordlink4_7" value="<{$setting.hytj_wordlink4_7|default:''}>">	】<br>
+					
+					【文字链接8：<input type="text" name="hytj_word4_8" value="<{$setting.hytj_word4_8|default:''}>">
+					<input type="text" name="hytj_wordlink4_8" value="<{$setting.hytj_wordlink4_8|default:''}>">	】<br>
+					
+					【文字链接9：<input type="text" name="hytj_word4_9" value="<{$setting.hytj_word4_9|default:''}>">
+					<input type="text" name="hytj_wordlink4_9" value="<{$setting.hytj_wordlink4_9|default:''}>">	】<br>
+					
+					【文字链接10：<input type="text" name="hytj_word4_10" value="<{$setting.hytj_word4_10|default:''}>">
+					<input type="text" name="hytj_wordlink4_10" value="<{$setting.hytj_wordlink4_10|default:''}>">	】<br>
+					</td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片链接4：<{/t}></th>
+                    <td><input type="text" name="hytj_link4" value="<{$setting.hytj_link4}>"></td>
+                </tr>
+        </tbody></table>
+    </div>
+</div>
+<script>
+    function addPic1(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('hytj_pic1').value=image_src;
+            }})	;
+        });
+    }
+	function addPic2(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('hytj_pic2').value=image_src;
+            }})	;
+        });
+    }
+	function addPic3(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('hytj_pic3').value=image_src;
+            }})	;
+        });
+    }
+	function addPic4(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('hytj_pic4').value=image_src;
+            }})	;
+        });
+    }
+</script>
+ 

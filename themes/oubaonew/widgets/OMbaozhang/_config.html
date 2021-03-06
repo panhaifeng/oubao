@@ -1,0 +1,103 @@
+<!-- <div class="tableform">
+    <div class="widgetconfig">
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片1：<{/t}></th>
+                    <td>
+                        <input type=hidden name="baozhang1" value="<{$setting.baozhang1}>">
+						<input name='baozhang1' class="imgsrc" id="baozhang1" value="<{$setting.baozhang1}>">
+						<input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic1()">
+                    </td>
+                </tr>
+                 
+                <tr>
+                    <th><{t app='b2c'}>图片链接1：<{/t}></th>
+                    <td><input type="text" name="ad_pic_link1" value="<{$setting.ad_pic_link1}>"></td>
+                </tr>
+        </tbody></table>
+		 <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片2：<{/t}></th>
+                    <td>
+                        <input type=hidden name="baozhang2" value="<{$setting.baozhang2}>">
+						<input name='baozhang2' class="imgsrc" id="baozhang2" value="<{$setting.baozhang2}>">
+						<input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic2()">
+                    </td>
+                </tr>
+                 
+                <tr>
+                    <th><{t app='b2c'}>图片链接2：<{/t}></th>
+                    <td><input type="text" name="ad_pic_link2" value="<{$setting.ad_pic_link2}>"></td>
+                </tr>
+        </tbody></table>
+		 <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片3：<{/t}></th>
+                    <td>
+                        <input type=hidden name="baozhang3" value="<{$setting.baozhang3}>">
+						<input name='baozhang3' class="imgsrc" id="baozhang3" value="<{$setting.baozhang3}>">
+						<input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic3()">
+                    </td>
+                </tr>
+                 
+                <tr>
+                    <th><{t app='b2c'}>图片链接3：<{/t}></th>
+                    <td><input type="text" name="ad_pic_link3" value="<{$setting.ad_pic_link3}>"></td>
+                </tr>
+        </tbody></table>
+		 <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片4：<{/t}></th>
+                    <td>
+                        <input type=hidden name="baozhang4" value="<{$setting.baozhang4}>">
+						<input name='baozhang4' class="imgsrc" id="baozhang4" value="<{$setting.baozhang4}>">
+						<input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic4()">
+                    </td>
+                </tr>
+                 
+                <tr>
+                    <th><{t app='b2c'}>图片链接4：<{/t}></th>
+                    <td><input type="text" name="ad_pic_link4" value="<{$setting.ad_pic_link4}>"></td>
+                </tr>
+        </tbody></table>
+    </div>
+</div>
+<script>
+    function addPic1(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('baozhang1').value=image_src;
+            }})	;
+        });
+    }
+	function addPic2(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('baozhang2').value=image_src;
+            }})	;
+        });
+    }
+	function addPic3(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('baozhang3').value=image_src;
+            }})	;
+        });
+    }
+	function addPic4(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('baozhang4').value=image_src;
+            }})	;
+        });
+    }
+</script>
+ -->

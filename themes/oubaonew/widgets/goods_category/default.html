@@ -1,0 +1,115 @@
+<div class="category-handle" id="category_handle">
+  <span  style="font-size:18px;"><{t}>全部商品分类<{/t}></span>
+  <div class="category-box"  id="category_box"  >
+  <ul class="category-list">
+   <{assign var="fo" value="0"}>
+    <{foreach from=$data.data item=item key=key name=clist}>
+    <li class="category-item<{if !$item.items}> no-lv2<{/if}> icom-<{assign var="fo" value=$fo}><{$fo}>">
+      <div class="cat-root-box-<{assign var="fo" value=$fo}><{$fo}>">
+          <h3 class="cat<{$smarty.foreach.clist.iteration}>">
+              <{if $item.virtualLink}>
+              <a href="<{$item.virtualLink}>" style="position: relative;display: block;color:#fff;" <{if $setting.target_blank=='1'}>target="_blank"<{/if}> class="color"><{t}><{$item.cat_name}><{/t}><span class="right_arrow">＞</span></a>
+              <{else}>
+              <a href="<{$item.link}>" style="position: relative;display: block;color:#fff;" <{if $setting.target_blank=='1'}>target="_blank"<{/if}> class="color"><{t}><{$item.cat_name}><{/t}><span class="right_arrow">＞</span></a>
+              <{/if}>
+              <i class="category-link"></i>
+          </h3>
+
+      </div>
+      <div class="cat-children-box">
+      <{if $item.items}>
+              <div class="cat-children clearfix">
+               <{assign var="do" value="0"}>
+               <{foreach from=$item.items item=sub_item key=sub_key name=clists}>
+                <{if $sub_item.echoTitle==1}>
+                <div class="cat_title"><{t}><{$sub_item.cat_title}><{/t}></div>
+                <{assign var="do" value="0"}>
+                <{/if}>
+                <dl class="sub-category clearfix" <{if ($do%3==0 && $do>0)}>style="clear: both;"<{/if}>>
+                  <dt>
+                  <span class="text ico-<{assign var="do" value=$do+1}><{$do}>  <{if $sub_item.hot_new}> lastcat<{/if}>">
+                    <{if $sub_item.virtualLink}>
+                    <a href="<{$sub_item.virtualLink}>" style="font-size:15px;"  <{if $setting.target_blank=='1'}>target="_blank"<{/if}> class="level2" title="<{$sub_item.echoTitle}>"><{t}><{$sub_item.cat_name}><{/t}></a>
+                    <{else}>
+                    <a href="<{$sub_item.link}>" style="font-size:15px;"  <{if $setting.target_blank=='1'}>target="_blank"<{/if}> class="level2" title="<{$sub_item.echoTitle}>"><{t}><{$sub_item.cat_name}><{/t}></a>
+                    <{/if}>
+                  <{if $sub_item.hot_new==1}>
+                  <img class="tagimg" src="images/hot.gif"/>
+                  <{/if}>
+                  <{if $sub_item.hot_new==2}>
+                  <img class="tagimg" src="images/new.gif"/>
+                  <{/if}>
+                  </span>
+                  </dt>
+                  <!-- <{if $sub_item.lv3}>
+				  <dd class="clearfix">
+                    <{foreach from=$sub_item.lv3 item=lv3_item key=lv3_key}>
+                   <a href="<{$lv3_item.url}>" <{if $setting.target_blank=='1'}>target="_blank"<{/if}> class="level3"><{$lv3_item.cat_name}></a>
+                    <{/foreach}>
+                  </dd>
+				  <{/if}> -->
+                </dl>
+                <{/foreach}>
+              </div>
+
+            <{/if}>
+      </div>
+    </li>
+	 <{if $fo>7}>
+		<{break}>
+	 <{/if}>
+    <{/foreach}>
+  </ul>
+</div>
+</div>
+<script>
+var category = $('category_box');
+category.getElements('.category-item').addEvents({
+    'mouseover':function(e){
+        var self = this;
+        clearTimeout(this.showTimer);
+        clearTimeout(this.hideTimer);
+		var active = function(){
+			if(self.getElement('.cat-children-box')){
+                self.addClass('active');
+            }
+        }
+        this.showTimer = active.delay(100);
+    },
+    'mouseout':function(e){
+        var self = this;
+        clearTimeout(this.showTimer);
+        clearTimeout(this.hideTimer);
+        var active = function(){
+            if(self.getElement('.cat-children-box')){
+                self.removeClass('active');
+            }
+        }
+        this.hideTimer = active.delay(100);
+    }
+});
+
+window.addEvent('domready',function(){
+	var dcat = $$('.category-box .category-item');
+	if(dcat){
+		var dpopup = dcat.getElement('.cat-children-box');
+		for(i=0;i<dcat.length;i++){
+			var a = dcat[i].index = i;
+			var b = 74 * a;
+			var c = dpopup[i].getSize().y;
+			if(b<c-74){
+				dpopup[i].setStyles({
+				      'top':0+'px'
+				});
+			}
+			else{
+				dpopup[i].setStyles({
+					'bottom':0+'px'
+				});
+			};
+		};
+	}
+});
+</script>
+
+

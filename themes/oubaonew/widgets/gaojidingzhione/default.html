@@ -1,0 +1,63 @@
+<div class="bespoke_title">
+    <div class="bespoke_ch"><{$setting.titleCn}></div>
+    <div class="bespoke_en"><{$setting.titleEn}></div>
+</div>
+<!-- 内容介绍 -->
+<div class="template_a_box">
+    <div class="template_aleft">
+        <img src="<{$setting.left_pic}>">
+        <div class="template_al_cornera"></div>
+    </div>
+    <div class="template_aright">
+        <img class="fr template_ar_img" src="<{$setting.right_pic}>">
+        <div class="clear"></div>
+        <div class="template_ar_text">
+            <{$setting.content}>
+        </div>
+        <a href="<{$setting.link}>" target="_blank">
+            <div class="view_details">
+                <div class="vd_text">查看此系列</div>
+                <img class="vd_icon" src="%THEME%/images/newest/img/arrow.png">
+            </div>
+        </a>
+        <div class="template_ar_corner"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+<{if $setting.video_link}>
+<!-- 视频 -->
+<div class="classification_video" style="position: relative;">
+    <img class="classification_play open_popup" src="%THEME%/images/newest/img/play2.png">
+    <div class="popup_bg">
+        <div class="popup_box">
+            <a href="javascript:;" class="close">×</a>
+            <video class="popup_video" controls poster="" data-setup="{}">
+                <source src="<{$setting.video_link}>" type='video/mp4'>
+            </video>
+        </div>
+    </div>
+</div>
+<{/if}>
+
+<style>
+.bespoke_ch {
+    color: <{$setting.titleCnBg}> !important;
+}
+.bespoke_en {
+    color: <{$setting.titleEnBg}> !important;
+}
+.template_al_cornera {
+    width: 220px;
+    height: 180px;
+    background: none;
+    border-left: 8px solid <{$setting.left_picBg}> !important;
+    border-bottom: 8px solid <{$setting.left_picBg}> !important;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+}
+.view_details {
+    background: <{$setting.linkBg}> !important;
+}
+</style>

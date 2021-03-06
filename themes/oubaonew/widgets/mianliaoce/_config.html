@@ -1,0 +1,80 @@
+<style>
+    #top_link_area .add-title,
+    #top_link_area .add-url,
+    #top_link_area .delete{float:left;_display:inline;margin-left:5px;}
+    #top_link_area .delete{height:20px;width:16px;cursor:pointer;}
+    #top_link_area .top-link-item{background-color:#E2E8EB;padding:5px 5px 3px;line-height:22px;margin:2px 0;}
+    #add_top_link{cursor:pointer;}
+</style>
+<div class="tableform">
+    <tr>
+        <th width="10%">主标题</th>
+        <td width="40%"><input type="text" name="keywords" value="<{$setting.keywords|default:'安爵缔丽'}>" /></td>
+
+       </tr> <br>
+         <tr>
+        <th width="10%">副标题</th>
+        <td width="40%"><input type="text" name="left_dtitle" value="<{$setting.left_dtitle|default:'色卡展示册全四套'}>" /></td>
+
+       </tr>
+      <tr>
+      <th width="10%">简介</th>
+        <td width="40%"><input type="text" name="memo" value="<{$setting.memo}>" /></td>
+
+       </tr><br>
+      <tr>
+      <th width="10%">按钮1-标题</th>
+        <td width="40%"><input type="text" name="title1" value="<{$setting.title1|default:'免烫版'}>" /></td>
+
+       </tr>
+      <tr>
+      <th width="10%">链接</th>
+        <td width="40%"><input type="text" name="link1" value="<{$setting.link1}>" /></td>
+
+       </tr><br>
+      <tr>
+        <tr>
+      <th width="10%">按钮2-标题</th>
+        <td width="40%"><input type="text" name="title2" value="<{$setting.title2|default:'柔顺版'}>" /></td>
+
+       </tr>
+      <tr>
+      <th width="10%">链接</th>
+        <td width="40%"><input type="text" name="link2" value="<{$setting.link2}>" /></td>
+
+       </tr><br>
+      <tr>
+        <tr>
+      <th width="10%">按钮3-标题</th>
+        <td width="40%"><input type="text" name="title3" value="<{$setting.title3|default:'整套购买'}>" /></td>
+
+       </tr>
+      <tr>
+      <th width="10%">链接</th>
+        <td width="40%"><input type="text" name="link3" value="<{$setting.link3}>" /></td>
+
+       </tr><br>
+      <tr>
+      <th width="10%">背景大图</th>
+        <td width="40%"><input name='zqu_pic' class="imgsrc" id="zqu_pic" value="<{$setting.zqu_pic}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic($('zqu_pic'))">
+        </td>
+       </tr>
+<!-- <br>
+
+    <input type="button" id="add_top_link" value="添加子标题" />
+    <ul id="top_link_area">
+
+    </ul> -->
+
+</div>
+
+<script>
+  function addPic(target){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $(target).value=image_src;
+            }}) ;
+        });
+    }
+</script>

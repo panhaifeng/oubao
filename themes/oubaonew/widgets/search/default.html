@@ -1,0 +1,63 @@
+<{if $env.conf.search.associate_enabled == '1'}>
+<{assign var=associate value="true"}>
+<{/if}>
+<div class="searchbar">
+  <form action="<{link app=b2c ctl=site_search act=result}>" method="post" class="search-box" id="searchbar_<{$widgets_id}>" async="false">
+    <input name="search_keywords" type="text" value="<{t}><{$data.search_key|default:$setting.keywords}><{/t}>" onfocus="this.value=(this.value=='<{t}><{$data.search_key|default:$setting.keywords}><{/t}>')?'':this.value;" onblur="this.value=(this.value=='')?'<{t}><{$data.search_key|default:$setting.keywords}><{/t}>':this.value;" class="keywords" autocompleter="associate_autocomplete_goods:name,goods_id" ac_options="{}" />
+    <button type="submit" class="btn btn-search"><i class="iconsearch"></i><{t}>搜索<{/t}></button>
+  </form>
+<{if $data.search}>
+  <div class="hots">
+    <span><{$setting.hotkey}></span>
+    <{foreach from=$data.search item=toplink key=top_key name=navslist}>
+    <a href="<{$toplink.top_link_url}>"><{$toplink.top_link_title}></a><{if $setting.comma && !$smarty.foreach.navslist.last}><{$setting.comma}><{/if}>
+    <{/foreach}>
+  </div>
+<{/if}>
+</div>
+<script>
+(function(scope){
+scope.getElement('button[type=submit]').addEvent('click', function(e){
+    if(scope.getElement('input').value.trim() === '') {
+        e.stop();
+    }
+});
+var search_keywords = decodeURIComponent(Memory.get('search_key'));
+if(search_keywords == 'null'){
+      search_keywords = '';
+  }
+//scope.getElement('input[name=search_keywords]').value = search_keywords;
+<{if $associate == 'true'}>
+var path ='<{$env.statics_host_url}>/b2c/statics/js<{if !defined("DEBUG_JS") || !DEBUG_JS}>_mini<{/if}>/';
+$LAB.script(path + 'autocompleter.js').wait(function(){
+    var item = scope.getElement('[data-autocompleter]');
+    var options = {};
+    try {
+        options = JSON.decode(item.get('data-autocompleter-options'));
+    }catch (e) {}
+    Object.merge(options, item.retrieve('autocompleter_options', {}));
+
+    new Autocompleter.Request.JSON(item, "<{link app=b2c ctl=site_search act=associate}>", options);
+});
+<{/if}>
+})($('searchbar_<{$widgets_id}>'));
+	 
+window.addEvent("domready", function() {	
+	$("search").addEvents({
+	  'mouseenter': function(e){
+		  this.addClass("hover");
+	  },
+	  'mouseleave': function(e){
+		  this.removeClass("hover");
+	  }
+	});
+	$("search").getElement(".searchbar").addEvents({
+	  'click': function(e){
+		  this.addClass("search-focus");
+	  },
+	  'mouseleave':function(e){
+		  this.removeClass("search-focus");
+	  }
+	})
+})
+</script>

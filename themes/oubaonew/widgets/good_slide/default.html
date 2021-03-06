@@ -1,0 +1,43 @@
+<div class="slider auto-bind-widget" data-widget-type="Slide" data-widget-config="{
+    autoplay:false,
+    effect:'scrollx',
+    hasTriggers:false,
+    panels:'.slide-item',
+    haslrbtn:true,
+    isFloat:false,
+    viewStep:5
+}">
+  <div class="prev clearfix"><a class="page-btn-next more-l" href="javascript:void(0);"> &lt;</a></div>
+  
+  <div class="slide-box">
+    <ul class="slide-list">
+      <{foreach from=$data.goodsRows item=row key=gid name=goodsrow}>
+        <li class="slide-item">
+        <div class="item-content">
+         <{assign var=pickey  value=$setting.gpic_size|default:'goodsPicM'}>
+         <div class="goodpic" style="width:200px;height:200px;overflow:hidden;background-color:#FFF;margin:20px auto 0 auto;"><a target="_blank" href="<{$row.goodsLink}>"><img data-src="<{$row[$pickey]}>" alt="<{$row.goodsName}>" /><div class="pic_bg"></div></a>
+          </div>
+          <div class="info">
+             <h4><a target="_blank" href="<{$row.goodsLink}>"><{$row.goodsName|cut:$setting.maxlength}></a></h4>
+             <{if $setting.showgoodsIntro == 'on' && $row.goodsIntro}><p class="goods-intro"> <{$row.goodsIntro|cut:$setting.maxlength2}></p><{/if}>
+          </div>
+          </div>
+         </li>
+         <{/foreach}>
+    </ul>
+  </div>
+  <div class="next"><a class="page-btn-next more-r"> &gt; </a></div>
+</div>
+<script>
+window.addEvent('domready',function(){
+    $$(".slide-item").addEvents({
+		"mouseenter":function(){
+		this.addClass("hover")
+		},
+		"mouseleave":function(){
+			this.removeClass("hover")
+		}
+		})
+	})
+</script>
+

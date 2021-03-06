@@ -1,0 +1,21 @@
+<{if $setting.title}>
+<div class="qfbox <{$setting.cssname}>">
+  <div class="hd">
+    <h3 class="title"> <a target="_blank" href="<{$setting.title}>"><{$setting.title}></a></h3>
+    <div class="lnks"><a target="_blank" href="<{$setting.morelink}>">更多»</a>&nbsp;&nbsp;&nbsp;</div>
+  </div>
+  <div class="bd"> <{/if}>
+    <ul id="ad_<{$widgets_id}>" class="qf-hbox<{if $setting.adscrolltype == '2'}> clearfix<{/if}>">
+      <{assign var="do" value="0"}>
+      <{foreach from=$data item=item key=key name=aditem}>
+      <{assign var="do" value=$do+1}>
+      <li class="type-<{$do}><{if $setting.adscrolltype == 2}> l <{/if}>">
+        <div class="item-content">
+        <a href="<{$item.tolink}>" target="_blank" title="<{$item.text|escape:html}>"><img data-src="<{$item.link}>"　data-img-zoom="true" style="width:<{$item.showwidth}>px; height:<{$item.showheight}>px" alt="<{$item.text|escape:html}>" /></a>
+        </div>
+      </li>
+      <{/foreach}>
+    </ul>
+    <{if $setting.title}> </div>
+</div>
+<{/if}>

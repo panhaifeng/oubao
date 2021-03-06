@@ -1,0 +1,35 @@
+
+	<{if $setting.title}>
+    <div class="hd">
+    	<h3 class="title"><{$setting.title}></h3>
+        <span class="morelink frt"><a href="<{if $setting.morelink}><{$setting.morelink}><{else}><{$data.goodsMoreLink}><{/if}>">更多»</a></span>
+    </div>
+	<{/if}>
+<div class="xm-box <{$setting.stylename}>">
+
+   <div class="bd<{if $setting.ad_pic}> clearfix<{/if}>">
+ 	<{if $setting.ad_pic}>
+ 	<div class="home-featured-goods qf-hbox flt" id="qf-<{$widgets_id}>">
+    	<a target="_blank" href="<{$setting.ad_pic_link}>"><img alt="<{$setting.ad_pic_name|escape:html}>" data-src="<{$setting.ad_pic}>" data-img-zoom="true" style="width:<{$setting.ad_pic_width}>px;height:<{$setting.ad_pic_height}>px" /></a>
+    </div>
+    <script>var b_<{$widgets_id}> = new HightLight('qf-<{$widgets_id}>')</script>
+ 	<div class="xm-goods-list-wrap flt">
+    <{/if}>
+     <ul class="xm-goods-list clearfix">
+        <{assign var="do" value='1'}>
+        <{foreach from=$data.goodsRows item=row key=gid name=goodsrow}>    
+          <li class="item-<{$do}>">
+            <div class="xm-goods-item">
+                
+                <div class="item-name"><a href="<{$row.goodsLink}>" target="_blank"><{$row.goodsName|cut:$setting.maxlength}></a></div>
+                <{if $setting.showgoodsMarketPrice == 'on' || $setting.showgoodsSalePrice == 'on'}><div class="item-price"><{if $setting.showgoodsSalePrice =='on'}><span class="selling-price"><{$row.goodsSalePrice|cur}></span><{/if}><{if $setting.showgoodsMarketPrice == 'on'}><del class="market-price"><{$row.goodsMarketPrice|cur}></del><{/if}></div><{/if}>
+                
+                <div class="item-thumb"><a href="<{$row.goodsLink}>" title="<{$row.goodsName}>" target="_blank"><img alt="<{$row.goodsName|escape:html}>" data-src="<{$row.goodsPicS}>" data-img-zoom="true" width="<{$setting.width}>" height="<{$setting.height}>" /></a></div>
+            </div>
+            <{assign var="do" value=$do+1}>
+         </li>
+       <{/foreach}>
+     </ul>
+   <{if $setting.ad_pic}></div><{/if}>
+ </div>
+</div>

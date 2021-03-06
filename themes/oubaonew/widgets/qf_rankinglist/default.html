@@ -1,0 +1,24 @@
+<div class="xm-box likeList">
+  <{if $setting.title}><div class="hd">
+    <h3 class="title"><{t}><{$setting.title}><{/t}></h3>
+  </div>
+  <{/if}>
+  <div class="bd">
+    <ul class="xm-goods-sublist xm-goods-sublist-l">
+    <{foreach from=$data.goodsRows item=row key=gid name=goodsrow}>
+      <{assign var=pickey value=$setting.gpic_size|default:'goodsPicS'}>
+      <li class="<{if $smarty.foreach.goodsrow.last}>last<{/if}>">
+        <div class="item-name"><a href="<{$row.goodsLink}>" target="_blank" title="<{$row.goodsName|escape:html}>"><{t}><{$row.goodsName}><{/t}></a></div>
+        <div class="item-price">
+          <{if $row.goodsSalePrice}>
+          <{$row.goodsSalePrice|cur}>
+          <{else}>
+          <font style="font-size: 12px;color: #8c8c8c;">￥登录会员可见</font>
+          <{/if}>
+        </div>
+        <div class="item-thumb"><a href="<{$row.goodsLink}>" target="_blank" title="<{$row.goodsName|escape:html}>"><img alt="<{$row.goodsName|escape:html}>" data-src="<{$row[$pickey]}>" data-img-zoom="true" width="<{$setting.rankwidth}>" height="<{$setting.rankheight}>" /></a> </div>
+      </li>
+     <{/foreach}>
+    </ul>
+  </div>
+</div>

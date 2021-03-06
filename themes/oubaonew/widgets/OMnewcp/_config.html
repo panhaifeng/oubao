@@ -1,0 +1,130 @@
+<div class="tableform">
+    <div class="widgetconfig">
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片1：<{/t}></th>
+                    <td>
+                        <input type=hidden name="newcp_pic1" value="<{$setting.newcp_pic1}>"><input name='newcp_pic1' class="imgsrc" id="newcp_pic1" value="<{$setting.newcp_pic1}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic1()">
+                    </td>
+                </tr>
+				       <tr>
+                    <th><{t app='b2c'}>标题1：<{/t}></th>
+                    <td>
+                       <input type="text" name="newcp_title1" value="<{$setting.newcp_title1}>">
+                    </td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片描述1：<{/t}></th>
+                    <td><input type="text" name="newcp_txt1" value="<{$setting.newcp_txt1}>"></td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片链接1：<{/t}></th>
+                    <td><input type="text" name="newcp_link1" value="<{$setting.newcp_link1}>"></td>
+                </tr>
+        </tbody></table>
+		 <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片2：<{/t}></th>
+                    <td>
+                        <input type=hidden name="newcp_pic2" value="<{$setting.newcp_pic2}>"><input name='newcp_pic2' class="imgsrc" id="newcp_pic2" value="<{$setting.newcp_pic2}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic2()">
+                    </td>
+                </tr>
+				       <tr>
+                    <th><{t app='b2c'}>标题2：<{/t}></th>
+                    <td>
+                       <input type="text" name="newcp_title2" value="<{$setting.newcp_title2}>">
+                    </td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片描述2：<{/t}></th>
+                    <td><input type="text" name="newcp_txt2" value="<{$setting.newcp_txt2}>"></td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片链接2：<{/t}></th>
+                    <td><input type="text" name="newcp_link2" value="<{$setting.newcp_link2}>"></td>
+                </tr>
+        </tbody></table>
+		<table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片3：<{/t}></th>
+                    <td>
+                        <input type=hidden name="newcp_pic3" value="<{$setting.newcp_pic3}>"><input name='newcp_pic3' class="imgsrc" id="newcp_pic3" value="<{$setting.newcp_pic3}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic3()">
+                    </td>
+                </tr>
+				       <tr>
+                    <th><{t app='b2c'}>标题3：<{/t}></th>
+                    <td>
+                       <input type="text" name="newcp_title3" value="<{$setting.newcp_title3}>">
+                    </td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片描述3：<{/t}></th>
+                    <td><input type="text" name="newcp_txt3" value="<{$setting.newcp_txt3}>"></td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片链接3：<{/t}></th>
+                    <td><input type="text" name="newcp_link3" value="<{$setting.newcp_link3}>"></td>
+                </tr>
+        </tbody></table>
+		<table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>图片4：<{/t}></th>
+                    <td>
+                        <input type=hidden name="newcp_pic4" value="<{$setting.newcp_pic4}>"><input name='newcp_pic4' class="imgsrc" id="newcp_pic4" value="<{$setting.newcp_pic4}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic4()">
+                    </td>
+                </tr>
+				       <tr>
+                    <th><{t app='b2c'}>标题4：<{/t}></th>
+                    <td>
+                       <input type="text" name="newcp_title4" value="<{$setting.newcp_title4}>">
+                    </td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片描述4：<{/t}></th>
+                    <td><input type="text" name="newcp_txt4" value="<{$setting.newcp_txt4}>"></td>
+                </tr>
+                <tr>
+                    <th><{t app='b2c'}>图片链接4：<{/t}></th>
+                    <td><input type="text" name="newcp_link4" value="<{$setting.newcp_link4}>"></td>
+                </tr>
+        </tbody></table>
+    </div>
+</div>
+<script>
+    function addPic1(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('newcp_pic1').value=image_src;
+            }})	;
+        });
+    }
+	function addPic2(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('newcp_pic2').value=image_src;
+            }})	;
+        });
+    }
+	function addPic3(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('newcp_pic3').value=image_src;
+            }})	;
+        });
+    }
+	function addPic4(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('newcp_pic4').value=image_src;
+            }})	;
+        });
+    }
+</script>

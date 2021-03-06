@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<script>
+  window.__disableMootload=true;
+</script>
+<head>
+  <{header}>
+    <link type="text/css" href="images/qingfeng.css" rel="stylesheet" />
+    <link type="text/css" href="images/index.css" rel="stylesheet" />
+    <link type="text/css" href="images/newest/css/animate.css" rel="stylesheet" />
+    <!-- 侧栏样式 -->
+      <link rel="stylesheet" type="text/css" href="images/newest/css/sidebar.css">
+      <!-- 侧栏字体图标 -->
+      <link rel="stylesheet" type="text/css" href="images/newest/css/icon.css">
+    <link type="text/css" href="images/newest/css/jquery.bxslider.css" rel="stylesheet">
+    <link type="text/css" href="images/newest/css/style.css" rel="stylesheet" />
+    <script type="text/javascript" src="images/newest/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+      var jq = jQuery.noConflict();
+    </script>
+    <script type="text/javascript" src="images/newest/js/wow.min.js"></script>
+    <script type="text/javascript" src="images/newest/js/jquery.bxslider.js"></script>
+</head>
+<body id="isindex">
+  <{require file="block/header.html" }>
+  <div class="fpics row clearfix">
+    <{widgets id="e01" }>
+  </div>
+  <!-- banner下方图标 -->
+  <div class="features_box">
+    <{widgets id="e02" }>
+  </div>
+  <div class="w1240">
+    <!-- 重要公告 -->
+    <div class="affiche_box">
+      <{widgets id="e03" }>
+    </div>
+    <!-- 面料分类 -->
+    <div class="sort_box">
+      <{widgets id="e04" }>
+    </div>
+    <!-- 色卡专区 -->
+    <div class="color_card_box">
+      <div class="wow slideInUp fast unite_title_box">
+        <div class="unite_title_line"></div>
+        <div class="unite_title_content">
+          <div class="wow slideInUp fast utc_text_ch" style="font-size: 20px">COLOR CARD AREA</div>
+        </div>
+      </div>
+      <{widgets id="e05" }>
+    </div>
+    <!-- 面料册专区 -->
+    <div class="fabric_book">
+      <div class="unite_title_box">
+          <div class="unite_title_line"></div>
+          <div class="unite_title_content">
+              <div class="wow slideInUp fast utc_text_ch" style="font-size: 20px">BESPOKE AREA</div>
+          </div>
+      </div>
+      <{widgets id="e06" }>
+    </div>
+    <!-- 新品速递 -->
+    <div class="new_products">
+      <{widgets id="e07" }>
+    </div>
+  </div>
+  <!-- 取消花型 打折促销 -->
+  <div class="bg_gray">
+    <div class="w1240">
+      <{widgets id="e08" }>
+    </div>
+  </div>
+  <!-- 主推产品专区 -->
+  <div class="w1240">
+    <div class="main_product">
+      <{widgets id="e09" }>
+    </div>
+  </div>
+    <{require file="block/footer.html" }>
+<script type="text/javascript">
+  // 验证浏览器版本
+// alert(test);
+var DEFAULT_VERSION = "8.0";
+var ua = navigator.userAgent.toLowerCase();
+var isIE = ua.indexOf("msie") > -1;
+var safariVersion;
+if (isIE) {
+    safariVersion = ua.match(/msie ([\d.]+)/)[1];   //获取浏览器版本号
+}
+if (safariVersion*1 <= DEFAULT_VERSION*1) {   //若版本号低于IE8，则出现提示
+    alert('您的浏览器版本过低，请更新浏览器');
+}
+
+// 判断360浏览器的运行模式
+// if(window.navigator.userAgent.indexOf('AppleWebKit') != -1) {
+//     // alert('360极速模式');
+//     console.log('360极速模式');
+// } else {
+//     alert('请切换至极速模式下预览');
+// }
+//add guomin 20180607  ie浏览器下样式调整
+  // var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+  // var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器
+  // var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+  // if(isIE || isIE11){
+  //  var mlzqu=document.getElementsByClassName('mlzqu_title')[0];
+  //  var spans=mlzqu.getElementsByTagName('span')[0];
+  //  spans.style.position='static';
+  //  spans.style.marginLeft='auto';
+  //  var colorzqu=document.getElementsByClassName('colorzqu_title')[0];
+  //  var spans2=colorzqu.getElementsByTagName('span')[0];
+  //  spans2.style.position='static';
+  //  spans2.style.marginLeft='auto';
+  //  var seriestitle=document.getElementsByClassName('seriestitle_title')[0];
+  //  var spans3=seriestitle.getElementsByTagName('span')[0];
+  //  spans3.style.position='static';
+  //  spans3.style.marginLeft='auto';
+  // }
+// 视频弹出
+jq(document).ready(function($) {
+  jq('.open_popup').click(function() {
+    jq('.popup_bg').fadeIn(100);
+    jq('.popup_box').slideDown(200);
+  });
+  jq('.close').click(function() {
+    jq('.popup_bg').fadeOut(200);
+    jq('.popup_box').slideUp(100);
+  });
+});
+//向下浏览页面加载动画
+new WOW().init();
+//图片幻灯片切换
+jq(document).ready(function() {
+  jq('.slider_card').bxSlider({
+    slideWidth: 304,
+    minSlides: 2,
+    maxSlides: 4,
+    slideMargin: 8,
+    auto: true,
+    autoControls: false,
+  });
+});
+</script>
+</body>
+</html>

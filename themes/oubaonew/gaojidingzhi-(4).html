@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<script>
+	window.__disableMootload=true;
+</script>
+<head>
+<{header}>
+<link type="text/css" href="images/qingfeng.css" rel="stylesheet" />
+		<link type="text/css" href="images/index.css" rel="stylesheet" />
+		<link type="text/css" href="images/newest/css/animate.css" rel="stylesheet" />
+		<!-- 侧栏样式 -->
+    	<link rel="stylesheet" type="text/css" href="images/newest/css/sidebar.css">
+    	<!-- 侧栏字体图标 -->
+    	<link rel="stylesheet" type="text/css" href="images/newest/css/icon.css">
+		<link type="text/css" href="images/newest/css/jquery.bxslider.css" rel="stylesheet">
+		<link type="text/css" href="images/newest/css/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="images/newest/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript">
+			var jq = jQuery.noConflict();
+		</script>
+		<script type="text/javascript" src="images/newest/js/wow.min.js"></script>
+		<script type="text/javascript" src="images/newest/js/jquery.bxslider.js"></script>
+</head>
+<body>
+<{require file="block/header.html"}>
+<div class="w1240">
+	<div class="bread_crumbs">
+		<span>您当前的位置：</span>
+	    <span>首页 >> </span>
+	    <span><{$title}></span>
+	</div>
+	<div class="template_content">
+		<div class="fl template_left">
+    		<{widgets id="gaojileft"}>
+		</div>
+		<div class="fl template_right">
+    		<{widgets id="gaoji01"}>
+            <!-- 左右+轮播挂件 在此上下添加多个挂件 组合成楼层 -->
+    		<{widgets id="gaoji02"}>
+		</div>
+	</div>
+</div>
+<{require file="block/footer.html"}>
+<script type="text/javascript">
+    jq(document).ready(function(){
+    	// <!-- 轮播 -->
+        jq('.slider1').bxSlider({
+            slideWidth: 218,
+            minSlides: 2,
+            maxSlides: 4,
+            slideMargin: 10
+        });
+        // <!-- 视频弹出 -->
+        jq('.open_popup').click(function(){
+	        jq('.popup_bg').fadeIn(100);
+	        jq('.popup_box').slideDown(200);
+    	});
+	    jq('.close').click(function(){
+	        jq('.popup_bg').fadeOut(200);
+	        jq('.popup_box').slideUp(100);
+	    });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+#artable .ulist {padding-bottom:20px;}
+#artable .ulist li {padding:0 0 0 20px;} 
+#artable .ulist .lv-1 {padding-top:10px;font-weight:bold;}
+#artable .ulist .current a{color: #F84858;}
+#artable .ulist .lv-2 {height:30px;line-height:30px;}
+
+.introduction {line-height:1.5;color:#656D78;overflow:hidden;min-height:618px;height:auto;}
+.padd15{padding:0 15px;}
+.introduction .mod {border:none}
+.introduction .about_index_box { border-bottom: 1px dotted #EDEDED;padding: 10px 0;}
+.introduction p,
+.introduction h1,
+.introduction h2 {margin:10px 0}
+.introduction h3,
+.introduction h4 {margin:5px 0}
+
+.article-list .article-item{padding:0;}
+.article-item .article-title {margin-right:165px;}
+.article-item .article-title a {padding:0;display:inline;width:auto;padding-left:15px;background:url("i/dian.gif") 0 50% no-repeat;}
+.article-item .article-title a:hover{color:#ff7100;}
+.article-item .datetime {font-size:12px;right:0px;width:110px;}
+
+.article-main .mod-title {height:50px;border-bottom:1px solid #e6e9ed;background:none}
+.article-main .mod-title h2 {margin:0;font:400 18px/50px "Microsoft YaHei",Arial,"Hiragino Sans GB",SimHei, sans-serif;color:#434a54;text-align:center;}
+.article-main .article-time {text-align:center;}
+
+@media (max-width:1200px) {	
+	.introduction img {max-width:670px;}
+}

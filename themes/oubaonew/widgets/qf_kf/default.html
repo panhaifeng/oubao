@@ -1,0 +1,29 @@
+<{if $setting.showkf =="on"}>
+<style type="text/css">
+.hnqss_cn_kf .qf_backtop,
+.hnqss_cn_kf .kf_service,
+.hnqss_cn_kf .kf_floor {background:url("images/kfbg.gif") no-repeat;}
+.hnqss_cn_kf {width:78px;height:auto;position:fixed;border:solid 1px #e7e7e7;bottom:5px;right:5px;box-shadow:0 1px 3px #ddd;z-index:9999;background:#FFF;}
+*html .hnqss_cn_kf {_position:absolute;_top:expression((-500+(document.documentElement.clientHeight ? document.documentElement.clientHeight:document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop:document.body.scrollTop))+'px');}
+.hnqss_cn_kf a {border-bottom:2px solid #E7E7E7;height:78px;width:78px;overflow:hidden;opacity:0.8;transition:opacity 0.3s ease-in 0s,opacity 0.3s ease-out 0s;text-align:center;float:left;}
+.hnqss_cn_kf .qf_backtop,
+.hnqss_cn_kf .kf_service{border-top:solid 1px #e7e7e7;border-bottom:none;text-indent:-999em;}
+.hnqss_cn_kf .kf_floor {height:39px;line-height:39px;background-position:0 -330px;color:#1a1a1a}
+.hnqss_cn_kf a:hover {opacity:1;}
+.hnqss_cn_kf .kf_floor:hover {background-position:-78px -330px;color:#FFF}
+
+.hnqss_cn_kf .kf_service {background-position:0 0px}
+.hnqss_cn_kf .kf_service:hover {background-position:-78px 0px}
+.hnqss_cn_kf .qf_backtop {background-position:0 -159px}
+.hnqss_cn_kf .qf_backtop:hover {background-position:-78px -159px}
+</style>
+<div id="qf_kfbox" class="hnqss_cn_kf"><{if $data.floor && $data.isindex == true}><{foreach from=$data.floor item=item key=key}><{if $item.title}><a class="kf_floor" href="<{$item.links}>" title="<{$item.title|escape:html}>"><{$item.title|escape:html}></a><{/if}><{/foreach}><{/if}>
+
+<{if $setting.qqnumber}><a class="kf_service" id="kfonline" title="若不能点击请手加QQ<{$setting.qqnumber}>与客服对话" rel="nofollow" onclick="javascript:window.open('<{if $setting.qyqq_link}><{$setting.qyqq_link}><{else}>http://wpa.qq.com/msgrd?v=3&uin=<{$setting.qqnumber}>&site=qq&menu=yes<{/if}>', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');" href="javascript:void(0);">在线客服</a><{/if}>
+<a class="kf_service" id="kfonline" title="若不能点击请手加QQ3002060903与客服对话" rel="nofollow" onclick="javascript:window.open('http://wpa.qq.com/msgrd?v=3&amp;uin=3002060903&amp;site=qq&amp;menu=yes', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');" href="javascript:void(0);">在线客服</a>
+<a rel="nofollow" class="qf_backtop" href="javascript:viod(0);"></a>
+</div>
+<script>var online= new Array();</script> 
+<script src="http://webpresence.qq.com/getonline?Type=1&<{$setting.qqnumber}>:"></script>
+<script src="images/hnqss_cn_kf.js"></script>
+<{/if}>

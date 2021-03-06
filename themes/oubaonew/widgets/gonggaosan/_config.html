@@ -1,0 +1,115 @@
+<div class="tableform widgetconfig">
+  <table>
+      <tr>
+        <th>标题：</th>
+        <td>
+        <input type="text" name='title' value="<{$setting.title|default:'色卡新增：'}>">
+        </td>
+        <th>
+          <{button label=$___b2c="添加副标题"|t:'b2c' app="desktop" icon="btn_add.gif" id="add_futitle"}>
+        </th>
+        <td>
+          <div id="futitle">
+            <{foreach from=$setting.futitle key=fukey item=futitle}>
+              <div class="configad"> 副标题:
+                <input type="text" name="futitle[<{$fukey}>]" value="<{$futitle}>"><span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除副标题" app="desktop"}></span>
+              </div>
+            <{/foreach}>
+          </div>
+        </td>
+        <th>背景色：</th>
+        <td>
+          <input type="color" name="bgcolor" value="<{$setting.bgcolor}>">
+        </td>
+      </tr>
+      <tr>
+        <th>
+          *选择一个主显商品：
+        </th>
+        <td>
+          <{input type="goods_select" object="goods@b2c" pdt_name="goods_select" pdt_value=$setting.goods_select obj_name="goods_select_linkobj" obj_value=$setting.goods_select_linkobj}>
+        </td>
+      </tr>
+  </table>
+  <{button label=$___b2c="添加详情"|t:'b2c' app="desktop" icon="btn_add.gif" id="add_info"}>
+  <div id="info">
+    <{foreach from=$setting.info key=infokey item=info}>
+      <div class="configad"> 详情:<span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除副标题" app="desktop"}></span>
+        <table>
+          <tr>
+            <th>商品图片</th>
+            <td>
+              <input type="text" name="info[<{$infokey}>][pic]" id="pic[<{$infokey}>]" value="<{$info.pic}>">
+              <input type="button" value="上传图片" class="uploadbtn" onclick="addPic($('pic[<{$infokey}>]'))">
+            </td>
+          </tr>
+          <tr>
+            <th>商品标题</th>
+            <td>
+              <input type="text" name="info[<{$infokey}>][title]" value="<{$info.title}>">
+            </td>
+            <th>商品介绍</th>
+            <td>
+              <input type="text" name="info[<{$infokey}>][memo]" value="<{$info.memo}>">
+            </td>
+            <th>商品价格</th>
+            <td>
+              <input type="text" name="info[<{$infokey}>][price]" value="<{$info.price}>">
+            </td>
+            <th>购买链接</th>
+            <td>
+              <input type="text" name="info[<{$infokey}>][link]" value="<{$info.link}>">
+            </td>
+            <th>排序</th>
+            <td>
+              <input type="text" name="info[<{$infokey}>][sort]" value="<{$info.sort}>" style="width: 20px;">
+            </td>
+          </tr>
+        </table>
+      </div>
+    <{/foreach}>
+  </div>
+</div>
+<script>
+//添加副标题
+$('add_futitle').addEvent('click',function(){
+  var d = new Date();
+  var i = d.getTime();
+  $('futitle').adopt(new Element('div').set('html','\
+    <div class="configad">\
+    副标题:<input type="text" name="futitle['+i+']">\
+    <span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除副标题" app="desktop"}></span>\
+    </div>\
+  ').getFirst());
+});
+//添加详情
+$('add_info').addEvent('click',function(){
+  var d = new Date();
+  var i = d.getTime();
+  $('info').adopt(new Element('div').set('html','\
+    <div class="configad">\
+    详情:<span onclick="delLink(this);"><{img src="bundle/delecate.gif" style="cursor:pointer;" alt="删除" title="删除事件" app="desktop"}></span>\
+    <table><tr><th>商品图片</th><td><input type="text" name="info['+i+'][pic]" id="pic['+i+']"><input type=button value="上传图片" class="uploadbtn" onclick="addPic($(\'pic['+i+']\'))" /></td>\
+    <tr><th>商品标题</th><td><input type="text" name="info['+i+'][title]"></td>\
+    <th>商品介绍</th><td><input type="text" name="info['+i+'][memo]"></td>\
+    <th>商品价格</th><td><input type="text" name="info['+i+'][price]"></td>\
+    <th>购买链接</th><td><input type="text" name="info['+i+'][link]"></td>\
+    <th>排序</th><td><input type="text" name="info['+i+'][sort]" style="width: 20px;"></td>\
+    </tr>\
+    </table>\
+    </div>\
+  ').getFirst());
+});
+
+delLink=function(o){$(o).getParent('.configad').remove();}
+function addPic(target){
+  var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+  Ex_Loader('modedialog',function(){
+    return new imgDialog(url,{onCallback:function(image_id,image_src){
+        $(target).value=image_src;
+    }}) ;
+  });
+}
+
+</script>
+

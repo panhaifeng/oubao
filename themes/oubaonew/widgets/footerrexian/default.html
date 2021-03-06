@@ -1,0 +1,26 @@
+<div class="fl footer_contact">
+    <div class="service_line_box">
+        <img class="fl service_line_icon" src="%THEME%/images/newest/img/phone.png">
+        <div class="fl service_line_text"><{t}>全国服务热线<{/t}></div>
+        <div class="clear"></div>
+    </div>
+    <div class="service_phone">400-1133-885</div>
+    <div class="service_phone">186-6121-1551</div>
+    <div class="service_time"><{t}>周一至周六<{/t}>&nbsp;&nbsp;00:00-00:00</div>
+</div>
+<div class="scan_box" style="float: left;">
+    <img class="scan_img" src="%THEME%/images/newest/img/scan.jpg">
+    <div class="scan_text isEnscan">扫一扫关注<br>官方微信公众号</div>
+</div>
+<div class="scan_box" style="float: left;margin-left: 20px;">
+    <img class="scan_img" src="%THEME%/images/newest/img/kefu.jpg">
+    <div class="scan_text isEnscan">扫一扫添加<br>官方微信客服号</div>
+</div>
+<div class="clear"></div>
+<script>
+	//如果是英文版，去掉‘扫一扫关注我们’
+    var isEn = document.cookie.indexOf('en_US')>0 ? true :false;
+    if(isEn) {
+      $$('.isEnscan').setStyle('display','none')
+    }
+</script>

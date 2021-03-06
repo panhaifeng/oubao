@@ -1,0 +1,53 @@
+<div class="tableform">
+<div class="widgetconfig">
+	<div class="division">
+	<table width="100%" cellpadding="0" cellspacing="0">
+         <tr>
+			<th>是否显示：</th>
+			<td><input type="radio" name="showkf" value="on"<{if $setting.showkf != "off"}> checked="checked"<{/if}>> 显示&nbsp;<input type="radio" name="showkf" value="off"<{if $setting.showkf=="off"}> checked="checked"<{/if}>>不显示</td>
+		 </tr>
+     </table>
+    </div>
+    <div class="division" id="kffloor">
+		 <div class="configad" style="margin-top:5px;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #888;">
+            <tr>
+				  <th style="width:40px;">购物车:</th>
+				  <th style="width:40px;">链接:</th>
+				  <td><input type="text" style="width:300px" name="gouwuche" value="<{$setting.gouwuche}>" /></td>
+             </tr>
+            <tr>
+				  <th style="width:40px;">用户中心:</th>
+				  <th style="width:40px;">链接:</th>
+				  <td><input type="text" style="width:300px" name="yonghuzhongxin" value="<{$setting.yonghuzhongxin}>" /></td>
+             </tr>
+            <tr>
+				  <th style="width:40px;">收藏:</th>
+				  <th style="width:40px;">链接:</th>
+				  <td><input type="text" style="width:300px" name="shoucang" value="<{$setting.shoucang}>" /></td>
+             </tr>
+            <tr>
+				  <th style="width:40px;">订单:</th>
+				  <th style="width:40px;">链接:</th>
+				  <td><input type="text" style="width:300px" name="dingdan" value="<{$setting.dingdan}>" /></td>
+             </tr>
+            <tr>
+				  <th style="width:40px;">打折促销:</th>
+				  <th style="width:40px;">链接:</th>
+				  <td><input type="text" style="width:300px" name="dazhecuxiao" value="<{$setting.dazhecuxiao}>" /></td>
+             </tr>
+            <tr>
+				  <th style="width:40px;">客服:</th>
+				  <th style="width:40px;">链接:</th>
+				  <td><input type="text" style="width:300px" name="kefu" value="<{$setting.kefu}>" /></td>
+             </tr>
+            <tr>
+				  <th style="width:40px;">主页:</th>
+				  <th style="width:40px;">链接:</th>
+				  <td><input type="text" style="width:300px" name="zhuye" value="<{$setting.zhuye}>" /></td>
+             </tr>
+          </table>
+        </div>
+	</div>
+</div>
+</div>

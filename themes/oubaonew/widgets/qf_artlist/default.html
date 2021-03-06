@@ -1,0 +1,12 @@
+<{if $setting.title}>
+<div class="hd">
+		<h3 class="title"><a href="<{$data.node_url}>" target="_blank"><{$setting.title}></a></h3>
+</div> 
+<{/if}>
+<div class="bd">
+	<ul class="artlist">
+		<{foreach from=$data.artlist item=item key=key name=news}>
+		<li><a title="<{$item.articleTitle}>" href="<{$item.articleLink}>" target="_blank"><{$item.articleTitle|cut:$setting.titlecut}></a></li>
+		<{/foreach}>
+	</ul>
+</div>

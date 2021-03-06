@@ -1,0 +1,65 @@
+<!-- 底部导航与版权 -->
+<div style="background: #fafafa;">
+<div class="pagefooter" style="margin-top: 0px;margin-top: 0px;position: relative;margin-left: auto;margin-right: auto;width: 1530px;">
+    <div class="" style="padding: 0px 70px;">
+        <ul class="fl footer_links">
+            <{widgets id="f1" }>
+        </ul>
+        <{widgets id="f2" }>
+        <div class="footer_bottom_box">
+        </div>
+    </div>
+</div>
+</div>
+<div class="side" style="display: none;">
+    <ul>
+    	<!-- 侧边栏菜单 -->
+    	<{widgets id="f3" }>
+    </ul>
+</div>
+<{footer}>
+<!-- 侧边栏菜单 -->
+    <script type="text/javascript">
+    //百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src =  "https://hm.baidu.com/hm.js?328b7913e8b10e429f6cd50bcb491dbf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+
+    })();
+    jq(document).ready(function() {
+        jq(".side ul li").hover(function() {
+            jq(this).find(".sidebox").stop().animate({ "width": "124px" }, 100).css({ "opacity": "1", "filter": "Alpha(opacity=100)", "background": "#ceb981" })
+        }, function() {
+            jq(this).find(".sidebox").stop().animate({ "width": "30px" }, 100).css({ "opacity": "1", "filter": "Alpha(opacity=100)", "background": "#ceb981" })
+        });
+    });
+    //回到顶部
+    function goTop() {
+        jq('html,body').animate({ 'scrollTop': 0 }, 600)
+    }
+
+    // 到页面顶部隐藏
+    jq(function() {
+        jq(window).scroll(function() {
+            var scrollY = jq(document).scrollTop(); // 获取垂直滚动的距离，即滚动了多少
+
+            if (scrollY > 550) { //如果滚动距离大于550px则隐藏，否则删除隐藏类
+                jq('.side').css('display', 'block');
+            } else {
+                jq('.side').css('display', 'none');
+            }
+        });
+    });
+    //如果是英文版，隐藏相关的元素
+    var isEn = document.cookie.indexOf('en_US')>0 ? true :false;
+    if(isEn) {
+      $$('.en-need-delete').setStyle('display','none')
+    }
+    var xiaoman = "<{$xiaoman}>";
+    if (xiaoman) {
+        jq('.cat-children-box').addClass('xiaoman');
+    }
+    </script>

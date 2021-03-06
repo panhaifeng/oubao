@@ -1,0 +1,303 @@
+<style>
+    #top_link_area .add-title,
+    #top_link_area .add-url,
+    #top_link_area .delete{float:left;_display:inline;margin-left:5px;}
+    #top_link_area .delete{height:20px;width:16px;cursor:pointer;}
+    #top_link_area .top-link-item{background-color:#E2E8EB;padding:5px 5px 3px;line-height:22px;margin:2px 0;}
+    #add_top_link{cursor:pointer;}
+	
+	
+	    #right_link_area .add-title,
+    #right_link_area .add-url,
+    #right_link_area .delete{float:left;_display:inline;margin-left:5px;}
+    #right_link_area .delete{height:20px;width:16px;cursor:pointer;}
+    #right_link_area .top-link-item{background-color:#E2E8EB;padding:5px 5px 3px;line-height:22px;margin:2px 0;}
+    #add_right_link{cursor:pointer;}
+.small{height:12px; width:30px;}
+.solids{font-weight:bold;}
+ 
+</style>
+<div class="tableform">
+     <tr>
+        <th width="10%" class="solids">【基本设置】</th>
+          <td width="40%">
+	    	<hr>
+	          背景色：<input type="text" name="bgcolor" value="<{$setting.bgcolor|default:'#fdf2f6'}>" />   
+	        距下模块：<input type="text" name="marginbottom" value="<{$setting.marginbottom|default:'25'}>" /> 
+	 
+	        </td>
+      
+     </tr>
+	   <Br>
+	   <Br>
+    <tr>
+        <th width="10%" class="solids">【标题栏设置】</th>
+        <td width="40%">
+		<hr>
+		  标题左侧图标色:<input type="text" name="icon_color" value="<{$setting.icon_color|default:'#e6f0f9'}>" />
+		 大标题：<input type="text" name="s_dtitle" value="<{$setting.s_dtitle|default:''}>" /><Br>
+		 
+		 小标题1：<input type="text" name="s_xtitle1" value="<{$setting.s_xtitle1|default:''}>" />  
+		 
+		 链接1：<input type="text" name="s_link1" value="<{$setting.s_link1|default:'#'}>" />  <br>
+		 
+		 小标题2：<input type="text" name="s_xtitle2" value="<{$setting.s_xtitle2|default:''}>" />  
+		 
+		 链接2：<input type="text" name="s_link2" value="<{$setting.s_link2|default:'#'}>" />  <br>
+		 
+		 小标题3：<input type="text" name="s_xtitle3" value="<{$setting.s_xtitle3|default:''}>" />  
+		 
+		 链接3：<input type="text" name="s_link3" value="<{$setting.s_link3|default:'#'}>" />  <br>
+		 
+		 小标题4：<input type="text" name="s_xtitle4" value="<{$setting.s_xtitle4|default:''}>" />  
+		 
+		 链接4：<input type="text" name="s_link4" value="<{$setting.s_link4|default:'#'}>" />  <br>
+		
+		 <br>右侧小标题:<Br>
+		<input class="small" type="text" name="small_1" value="<{$setting.small_1|default:'NEW'}>" />
+		<input type="text" name="small_11" value="<{$setting.small_11}>" />
+		<input type="text" name="small_1_link" value="<{$setting.small_1_link|default:'链接'}>" />   
+		<input class="small" type="text" name="small_2" value="<{$setting.small_2|default:'NEW'}>" />
+		<input type="text" name="small_22" value="<{$setting.small_22}>" />
+		<input type="text" name="small_2_link" value="<{$setting.small_2_link|default:'链接'}>" /><br>
+		<input class="small" type="text" name="small_3" value="<{$setting.small_3|default:'NEW'}>" />
+		<input type="text" name="small_33" value="<{$setting.small_33}>" />
+		<input type="text" name="small_3_link" value="<{$setting.small_3_link|default:'链接'}>" />  
+		<input class="small" type="text" name="small_4" value="<{$setting.small_4|default:'NEW'}>" />
+		<input type="text" name="small_44" value="<{$setting.small_44}>" />
+		<input type="text" name="small_4_link" value="<{$setting.small_4_link|default:'链接'}>" /> 
+		<Br>
+		 更多商品链接：<input type="text" name="morelink" value="<{$setting.morelink|default:'#'}>" />
+	 
+		</td>
+     
+       </tr> <br><br>
+	   <tr>
+        <th width="10%" class="solids">【左侧设置】</th>
+        <td width="40%" >
+		<hr>
+		 <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody>
+            <tr><td>			
+		  左侧大图:<input type=hidden name="zqu_pic1" value="<{$setting.zqu_pic1}>"><input name='zqu_pic1' class="imgsrc" id="zqu_pic1" value="<{$setting.zqu_pic1}>"><input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic1()">
+			</td></tr><Br>
+		 左侧小标题：
+		<input type="button" id="add_right_link" value="添加左侧小标题" />
+       <ul id="right_link_area">
+
+       </ul>
+	   </tbody>
+	   </table>
+		</td>
+     
+       </tr> <br>
+	   <br>
+	  <tr>
+        <th width="10%" class="solids">【右侧设置】</th>
+        <td width="40%">
+		<hr>
+		   <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>小图图片1：<{/t}></th>
+                    <td>
+                        <input type=hidden name="zqu_pic2" value="<{$setting.zqu_pic2}>">
+						<input name='zqu_pic2' class="imgsrc" id="zqu_pic2" value="<{$setting.zqu_pic2}>">
+						<input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic2()">
+                    标题1： <input type="text" name="zqu_title2" value="<{$setting.zqu_title2}>"> <br>
+                 小图下图1： <input type=hidden name="zqu_pic22" value="<{$setting.zqu_pic22}>">
+						<input name='zqu_pic22' class="imgsrc" id="zqu_pic22" value="<{$setting.zqu_pic22}>">
+						<input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic22()">
+						<br>
+					   【文字链接1：<input type="text" name="zqu_word1_1" value="<{$setting.zqu_word1_1|default:'文字标题'}>">
+					<input type="text" name="zqu_wordlink1_1" value="<{$setting.zqu_wordlink1_1|default:'文字链接'}>">	】<br>
+					
+						【文字链接2：<input type="text" name="zqu_word1_2" value="<{$setting.zqu_word1_2|default:'文字标题'}>">
+					<input type="text" name="zqu_wordlink1_2" value="<{$setting.zqu_wordlink1_2|default:'文字链接'}>">	】<br>
+					
+						【文字链接3：<input type="text" name="zqu_word1_3" value="<{$setting.zqu_word1_3|default:'文字标题'}>">
+					<input type="text" name="zqu_wordlink1_3" value="<{$setting.zqu_wordlink1_3|default:'文字链接'}>">	】<br>
+					
+                     更多：<input type="text" name="zqu_more2" value="<{$setting.zqu_more2|default:'MORE>'}>">						
+					图片链接1：<input type="text" name="zqu_link2" value="<{$setting.zqu_link2}>">
+					<hr>
+					</td>
+                </tr>
+			 
+			</tbody>
+		</table>
+		<table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>小图图片2：<{/t}></th>
+                    <td>
+                        <input type=hidden name="zqu_pic3" value="<{$setting.zqu_pic3}>">
+						<input name='zqu_pic3' class="imgsrc" id="zqu_pic3" value="<{$setting.zqu_pic3}>">
+						<input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic3()">
+                    标题2： <input type="text" name="zqu_title3" value="<{$setting.zqu_title3}>"> <br>
+                 小图下图2： <input type=hidden name="zqu_pic33" value="<{$setting.zqu_pic33}>">
+						<input name='zqu_pic33' class="imgsrc" id="zqu_pic33" value="<{$setting.zqu_pic33}>">
+						<input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic33()">
+							<br>
+					   【文字链接1：<input type="text" name="zqu_word2_1" value="<{$setting.zqu_word2_1|default:'文字标题'}>">
+					<input type="text" name="zqu_wordlink2_1" value="<{$setting.zqu_wordlink2_1|default:'文字链接'}>">	】<br>
+					
+						【文字链接2：<input type="text" name="zqu_word2_2" value="<{$setting.zqu_word2_2|default:'文字标题'}>">
+					<input type="text" name="zqu_wordlink2_2" value="<{$setting.zqu_wordlink2_2|default:'文字链接'}>">	】<br>
+					
+						【文字链接3：<input type="text" name="zqu_word2_3" value="<{$setting.zqu_word2_3|default:'文字标题'}>">
+					<input type="text" name="zqu_wordlink2_3" value="<{$setting.zqu_wordlink2_3|default:'文字链接'}>">	】<br>
+						
+                     更多：<input type="text" name="zqu_more3" value="<{$setting.zqu_more3|default:'MORE>'}>">						
+					图片链接2：<input type="text" name="zqu_link3" value="<{$setting.zqu_link3}>">
+					<hr>
+					</td>
+                </tr>
+				     
+                 
+             
+			</tbody>
+		</table>
+		<table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody> 
+                <tr>
+                    <th><{t app='b2c'}>小图图片3：<{/t}></th>
+                    <td>
+                        <input type=hidden name="zqu_pic4" value="<{$setting.zqu_pic4}>">
+						<input name='zqu_pic4' class="imgsrc" id="zqu_pic4" value="<{$setting.zqu_pic4}>">
+						<input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic4()">
+                    标题3： <input type="text" name="zqu_title4" value="<{$setting.zqu_title4}>"> <br>
+                 小图下图3： <input type=hidden name="zqu_pic44" value="<{$setting.zqu_pic44}>">
+						<input name='zqu_pic44' class="imgsrc" id="zqu_pic44" value="<{$setting.zqu_pic44}>">
+						<input type=button value="<{t app='b2c'}>上传图片<{/t}>" class="uploadbtn" onclick="addPic44()">
+							<br>
+					   【文字链接1：<input type="text" name="zqu_word3_1" value="<{$setting.zqu_word3_1|default:'文字标题'}>">
+					<input type="text" name="zqu_wordlink3_1" value="<{$setting.zqu_wordlink3_1|default:'文字链接'}>">	】<br>
+					
+						【文字链接2：<input type="text" name="zqu_word3_2" value="<{$setting.zqu_word3_2|default:'文字标题'}>">
+					<input type="text" name="zqu_wordlink3_2" value="<{$setting.zqu_wordlink3_2|default:'文字链接'}>">	】<br>
+					
+						【文字链接3：<input type="text" name="zqu_word3_3" value="<{$setting.zqu_word3_3|default:'文字标题'}>">
+					<input type="text" name="zqu_wordlink3_3" value="<{$setting.zqu_wordlink3_3|default:'文字链接'}>">	】<br>
+						
+                     更多：<input type="text" name="zqu_more4" value="<{$setting.zqu_more4|default:'MORE>'}>">						
+					图片链接3：<input type="text" name="zqu_link4" value="<{$setting.zqu_link4}>">
+					<hr>
+					</td>
+                </tr>
+				     
+			</tbody>
+		</table>
+		</td>
+     
+       </tr> <br>
+	      
+	   
+	   
+	   
+	   
+<br>	   
+     
+    
+     
+</div>
+<script>
+        var RightLinkTitle = new Array(<{foreach from=$setting.right_link_title item=title_item}> "<{$title_item}>", <{/foreach}>"end");
+    RightLinkTitle.pop();
+    var RightLinkUrl = new Array(<{foreach from=$setting.right_link_url item=url_item}>"<{$url_item}>",<{/foreach}>"end");
+    RightLinkUrl.pop();
+    var RightLink = new Hash(RightLinkUrl.associate(RightLinkTitle));
+    function DelRightLink(item){
+        item.getParent(".top-link-item").destroy();
+    }
+    function CreateRightLinkDom(DomHash){
+        DomHash.each(function(v,k){
+            var ActiveLi = new Element('li',{'class':'top-link-item clearfix','html':'<div class="add-title"> 文字：<input type="text" name="right_link_title[]" value="'+k+'"/> </div> <div class="add-url"> 链接地址：<input type="text" name="right_link_url[]" value="'+v+'"/> </div> <span class="delete" title="删除"></span>'}).inject('right_link_area');
+            ActiveLi.getElement('.delete').addEvent('click',function(){
+                DelRightLink(this);
+            });
+        });
+    }
+    CreateRightLinkDom(RightLink);
+    var AddRightLink = $('add_right_link');
+    AddRightLink.addEvent('click',function(){
+        var ActiveLi = new Element('li',{'class':'top-link-item clearfix','html':'<div class="add-title"> 文字：<input type="text" name="right_link_title[]"/> </div> <div class="add-url"> 链接地址：<input type="text" name="right_link_url[]"/> </div> <span class="delete" title="删除"></span>'}).inject('right_link_area');
+        ActiveLi.getElement('.delete').addEvent('click',function(){
+            DelRightLink(this);
+        });
+    });
+</script>
+<script>
+    function addPic1(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic1').value=image_src;
+            }})	;
+        });
+    }
+	function addPic2(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic2').value=image_src;
+            }})	;
+        });
+    }
+	function addPic22(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic22').value=image_src;
+            }})	;
+        });
+    }
+	function addPic3(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic3').value=image_src;
+            }})	;
+        });
+    }
+	function addPic33(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic33').value=image_src;
+            }})	;
+        });
+    }
+	function addPic4(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic4').value=image_src;
+            }})	;
+        });
+    }
+	function addPic44(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic44').value=image_src;
+            }})	;
+        });
+    }
+	function addPic5(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic5').value=image_src;
+            }})	;
+        });
+    }
+	function addPic55(){
+        var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+        Ex_Loader('modedialog',function(){
+            return new imgDialog(url,{onCallback:function(image_id,image_src){
+                    $('zqu_pic55').value=image_src;
+            }})	;
+        });
+    }
+</script>

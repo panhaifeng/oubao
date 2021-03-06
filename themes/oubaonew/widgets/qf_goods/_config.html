@@ -1,0 +1,106 @@
+<style>
+<!--
+.division table {margin-top:5px;}
+.division th,.division td{padding:5px;border:1px solid #ddd; vertical-align:middle;line-height:1.8}
+.division th {background-color:#E2E8EB}
+.division input {padding:2px;line-height:18px;}
+.division i {color:#FF0000;}
+-->
+</style>
+
+<div id="goods_exshow_config" class="tableform">
+   <div class="division">
+    <table width="100%" cellpadding="0" cellspacing="0">
+    	<tr>
+        	<th width="100%" colspan="4" style="text-align:center;"><h4>栏目样式设置</h4></th>
+        </tr> 
+    	<tr>
+        	<th width="20%">栏目标题：</th>
+            <td width="30%"><input type="text" name="title" value="<{$setting.title}>" style="width:200px" /></td>
+            <th width="20%">栏目样式</th>
+            <td width="30%"><input type="text" name="stylename" value="<{$setting.stylename|default:'home-hot-goods'}>" style="width:200px" /></td>
+        </tr>
+     </table>
+   </div>
+   
+  
+    <div class="division" style="margin-top:8px;">
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        	<th width="100%" colspan="4" style="text-align:center;"><h4>商品展示设置</h4></th>
+      </tr> 
+      <tr>
+      	<th width="20%">商品数量：</th>
+        <td width="30%"><input type="text" class="x-input" name="limit" value="<{$setting.limit|default:'6'}>" /></td>
+        <th>商品名最长显示长度：</th>
+        <td><{input name="maxlength" value=$setting.maxlength|default:"42"}></td>
+      </tr>
+      <tr>
+      	<th width="20%">显示销售价：</th>
+        <td><select name="showgoodsSalePrice">
+            <option<{if $setting.showgoodsSalePrice == "on"}> selected="selected"<{/if}> value="on">显示</option>
+            <option<{if $setting.showgoodsSalePrice == "off"}> selected="selected"<{/if}> value="off">不显示</option>
+          </select>
+         </td>
+      	<th width="20%">显示市场价：</th>
+        <td width="30%"> 
+        	<select name="showgoodsMarketPrice">
+            <option<{if $setting.showgoodsMarketPrice == "on"}> selected="selected"<{/if}> value="on">显示</option>
+            <option<{if $setting.showgoodsMarketPrice == "off"}> selected="selected"<{/if}> value="off">不显示</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th width="20%">产品缩略图大小：</th>
+        <td width="30%">宽<input type="text" name="width" value="<{$setting.width|default:180}>" style="width:60px">px 高&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="height" style="width:60px" value="<{$setting.height|default:180}>">px</td>
+        <th width="20%"> </th>
+        <td width="30%"> </td>
+      </tr>
+    </table>
+  </div>
+  
+       <div class="division">
+       <div class="goods-selector-handle clearfix">
+            <div class="span-auto"><label><input type="radio"  name="selector" value="filter" <{if $setting.selector!="select"}> checked<{/if}> />&nbsp;范围选择商品</label></div>
+            <div class="span-auto"><label><input type="radio"  name="selector" value="select" <{if $setting.selector=="select"}> checked<{/if}> />&nbsp;精确选择商品</label></div>
+        </div>
+        <div class="division goods-selector">
+            <div data-extend="filter"<{if $setting.selector=="select"}> style="display:none"<{/if}>> 
+                <{input type="goodsfilter"  name="goods_filter" value=$setting.goods_filter}>
+            </div>
+            <div data-extend="select"<{if $setting.selector =="filter"}> style="display:none;"<{/if}>>
+                <{input type="goods_select" object="goods@b2c" pdt_name="goods_select" pdt_value=$setting.goods_select obj_name="goods_select_linkobj" obj_value=$setting.goods_select_linkobj}>
+            </div>
+            <div class="division">
+                排序规则：
+                <select  name="goods_order_by">
+                    <{foreach from=$data.goods_order_by item=item}>
+                    <option value="<{$item.condition}>"  <{if $setting.goods_order_by == $item.condition}>selected<{/if}>><{$item.label}></option>
+                    <{/foreach}>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$$('#goods_exshow_config .goods-selector-handle input[type=radio]').addEvent('change',function(){
+	var radio  = this;
+	if(!radio.checked)return;
+	$$('#goods_exshow_config .goods-selector [data-extend]').each(function(item){
+		if(item.get('data-extend')!=radio.value){
+			item.hide();
+			}else{
+			item.show();
+		}
+	});
+});
+
+function addPic(target){
+var url='index.php?app=desktop&act=alertpages&goto='+encodeURIComponent("index.php?app=image&ctl=admin_manage&act=image_broswer&type=big");
+Ex_Loader('modedialog',function(){
+	return new imgDialog(url,{onCallback:function(image_id,image_src){
+			$(target).value=image_src;
+	}})	;
+});
+}	
+</script>

@@ -1,0 +1,11 @@
+.bx-wrapper .bx-prev {
+    background: url('../images/lb_left.png') no-repeat !important;
+    background-size: 100% 100% !important;
+    left: -68px !important;
+}
+
+.bx-wrapper .bx-next {
+    background: url('../images/lb_right.png') no-repeat !important;
+    background-size: 100% 100% !important;
+    right: -68px !important;
+}
